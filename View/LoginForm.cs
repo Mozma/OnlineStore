@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace OnlineStore
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            var connection = new ConnectionController();
+
+            connection.MakeConnection(tbUsername.Text, tbPassword.Text);
+            connection.TestConnection();
         }
     }
 }
