@@ -16,5 +16,17 @@ namespace OnlineStore.View
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            
+            loginForm.ShowDialog();
+            
+            if(loginForm.DialogResult == DialogResult.Cancel) 
+            {
+                Close();
+            }
+        }
     }
 }
