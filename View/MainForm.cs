@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,21 +18,28 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
+        public SqlConnection Connection { get; set; }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var loginForm = new LoginForm();
-            
-            loginForm.ShowDialog();
-            
-            if(loginForm.DialogResult == DialogResult.Cancel) 
+            using (var loginForm = new LoginForm())
             {
-                Close();
+
+                loginForm.ShowDialog();
+
+                if (loginForm.DialogResult == DialogResult.OK) {
+                    Connection = loginForm.Connection;
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
 
         private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ordersForm = new OrdersForm();
+            var ordersForm = new OrdersForm(Connection);
 
             ordersForm.ShowDialog();
         }

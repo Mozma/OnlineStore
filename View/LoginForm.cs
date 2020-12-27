@@ -1,6 +1,7 @@
 ﻿using OnlineStore.Controller;
 using OnlineStore.View;
 using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 
@@ -12,6 +13,9 @@ namespace OnlineStore
         {
             InitializeComponent();
         }
+
+        public SqlConnection Connection { get; set; }
+
 
         // Обработка кнопки "Вход"
         private void btnAccept_Click(object sender, EventArgs e)
@@ -27,7 +31,7 @@ namespace OnlineStore
                 // Создание подключения.
                 try
                 {
-                    ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
+                    Connection = ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
                     ConnectionController.TestConnection();
                     DialogResult = DialogResult.OK;
                 }

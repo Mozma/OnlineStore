@@ -12,7 +12,7 @@ namespace OnlineStore.Controller
         /// </summary>
         /// <param name="username">Логин</param>
         /// <param name="password">Пароль</param>
-        public static void MakeConnection(string username, string password)
+        public static SqlConnection MakeConnection(string username, string password)
         {
             var connectionString = new SqlConnectionStringBuilder();
 
@@ -20,10 +20,9 @@ namespace OnlineStore.Controller
             connectionString.InitialCatalog = DataBaseConnection.InitialCatalog;
             connectionString.UserID = username;
             connectionString.Password = password;
-                
-             //MarketDBDataSet.
-
             DataBaseConnection.Connection = new SqlConnection(connectionString.ToString());
+
+            return new SqlConnection(connectionString.ToString());
         }
 
         /// <summary>
