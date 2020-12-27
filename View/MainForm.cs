@@ -19,7 +19,7 @@ namespace OnlineStore.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
+            var loginForm = new LoginForm();
             
             loginForm.ShowDialog();
             
@@ -27,6 +27,13 @@ namespace OnlineStore.View
             {
                 Close();
             }
+        }
+
+        private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var ordersForm = new OrdersForm();
+
+            ordersForm.ShowDialog();
         }
     }
 }

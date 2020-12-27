@@ -33,8 +33,9 @@ namespace OnlineStore.View
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.функцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.functionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@ namespace OnlineStore.View
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.функцииToolStripMenuItem,
+            this.functionToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
@@ -69,17 +70,26 @@ namespace OnlineStore.View
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
-            // функцииToolStripMenuItem
+            // functionToolStripMenuItem
             // 
-            this.функцииToolStripMenuItem.Name = "функцииToolStripMenuItem";
-            this.функцииToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.функцииToolStripMenuItem.Text = "Функции";
+            this.functionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewOrdersToolStripMenuItem});
+            this.functionToolStripMenuItem.Name = "functionToolStripMenuItem";
+            this.functionToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.functionToolStripMenuItem.Text = "Функции";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.ExitToolStripMenuItem.Text = "Выход";
+            // 
+            // viewOrdersToolStripMenuItem
+            // 
+            this.viewOrdersToolStripMenuItem.Name = "viewOrdersToolStripMenuItem";
+            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewOrdersToolStripMenuItem.Text = "Просмотреть заказы";
+            this.viewOrdersToolStripMenuItem.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -107,7 +117,8 @@ namespace OnlineStore.View
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem функцииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem functionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewOrdersToolStripMenuItem;
     }
 }

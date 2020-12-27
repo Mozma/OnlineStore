@@ -1,23 +1,12 @@
-﻿using System;
+﻿using OnlineStore.Model;
+using System;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+using System.Configuration;
 
 namespace OnlineStore.Controller
 {
-    public static class ConnectionController
+    class ConnectionController
     {
-        
-        static SqlConnection connection;
-
-        static string initialCatalog = "OnlineStore";
-        static string dataSource = @"USERPC";
-        static bool State { 
-            get
-            { 
-                return connection.State.ToString().Equals("Open") ? true : false; 
-            }
-        } 
-
         /// <summary>
         /// Создание или обновление подключения 
         /// </summary>
@@ -25,15 +14,16 @@ namespace OnlineStore.Controller
         /// <param name="password">Пароль</param>
         public static void MakeConnection(string username, string password)
         {
-          
-                var connectionString = new SqlConnectionStringBuilder();
+            var connectionString = new SqlConnectionStringBuilder();
 
-                connectionString.DataSource = dataSource;
-                connectionString.InitialCatalog = initialCatalog;
-                connectionString.UserID = username;
-                connectionString.Password = password;
+            connectionString.DataSource = DataBaseConnection.DataSource;
+            connectionString.InitialCatalog = DataBaseConnection.InitialCatalog;
+            connectionString.UserID = username;
+            connectionString.Password = password;
+                
+             //MarketDBDataSet.
 
-                connection = new SqlConnection(connectionString.ToString());
+            DataBaseConnection.Connection = new SqlConnection(connectionString.ToString());
         }
 
         /// <summary>
@@ -42,11 +32,11 @@ namespace OnlineStore.Controller
         /// <returns>true - если подключение работает.</returns>
         public static bool TestConnection() 
         {
-            using(connection) 
+            using(DataBaseConnection.Connection) 
             {
-                connection.Open();
+                DataBaseConnection.Connection.Open();
 
-                switch (connection.State.ToString())
+                switch (DataBaseConnection.Connection.State.ToString())
                 {
                     case "Open" : 
                         return true;
