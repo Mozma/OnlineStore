@@ -39,9 +39,16 @@ namespace OnlineStore.View
 
         private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ordersForm = new OrdersForm(Connection);
+          
+        }
 
-            ordersForm.ShowDialog();
+        private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var ordersForm = new OrdersForm())
+            {
+                ordersForm.Connection = Connection;
+                ordersForm.ShowDialog();
+            }
         }
     }
 }
