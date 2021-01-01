@@ -32,7 +32,7 @@ namespace OnlineStore
                 try
                 {
                     Connection = ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
-                    ConnectionController.TestConnection();
+                  //  ConnectionController.TestConnection();
                     DialogResult = DialogResult.OK;
                 }
                 catch (Exception exp)

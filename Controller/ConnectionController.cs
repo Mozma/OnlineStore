@@ -29,25 +29,25 @@ namespace OnlineStore.Controller
         /// Проверка работы подключения.
         /// </summary>
         /// <returns>true - если подключение работает.</returns>
-        public static bool TestConnection() 
+        public static bool TestConnection()
         {
-            using(DataBaseConnection.Connection) 
+            using (DataBaseConnection.Connection)
             {
                 DataBaseConnection.Connection.Open();
 
                 switch (DataBaseConnection.Connection.State.ToString())
                 {
-                    case "Open" : 
+                    case "Open":
                         return true;
-                    default: 
+                    default:
                         return false;
                 }
-                
+
                 //MessageBox.Show(connection.State.ToString());   // Для отладки.
             }
 
         }
 
 
-   }
+    }
 }
