@@ -31,12 +31,6 @@ namespace OnlineStore.View
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lbTableName = new System.Windows.Forms.Label();
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
-            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,10 +40,16 @@ namespace OnlineStore.View
             this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lbTableName = new System.Windows.Forms.Label();
+            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -75,48 +75,6 @@ namespace OnlineStore.View
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(869, 365);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(855, 1);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(38, 31);
-            this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lbTableName
-            // 
-            this.lbTableName.AutoSize = true;
-            this.lbTableName.Location = new System.Drawing.Point(12, 10);
-            this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(0, 13);
-            this.lbTableName.TabIndex = 7;
-            // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // marketDBDataSetBindingSource
-            // 
-            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
-            this.marketDBDataSetBindingSource.Position = 0;
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataMember = "Order";
-            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
-            // 
-            // orderTableAdapter
-            // 
-            this.orderTableAdapter.ClearBeforeFill = true;
             // 
             // orderidDataGridViewTextBoxColumn
             // 
@@ -181,11 +139,53 @@ namespace OnlineStore.View
             this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
             this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataMember = "Order";
+            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
+            // 
+            // marketDBDataSetBindingSource
+            // 
+            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
+            this.marketDBDataSetBindingSource.Position = 0;
+            // 
+            // marketDBDataSet
+            // 
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(855, 1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(38, 31);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lbTableName
+            // 
+            this.lbTableName.AutoSize = true;
+            this.lbTableName.Location = new System.Drawing.Point(12, 10);
+            this.lbTableName.Name = "lbTableName";
+            this.lbTableName.Size = new System.Drawing.Size(0, 13);
+            this.lbTableName.TabIndex = 7;
+            // 
+            // orderTableAdapter
+            // 
+            this.orderTableAdapter.ClearBeforeFill = true;
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 449);
+            this.ClientSize = new System.Drawing.Size(896, 448);
             this.Controls.Add(this.lbTableName);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);
@@ -194,9 +194,9 @@ namespace OnlineStore.View
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

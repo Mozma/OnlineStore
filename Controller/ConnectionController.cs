@@ -1,4 +1,4 @@
-﻿using OnlineStore.Model;
+﻿using OnlineStore.View;
 using System;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -20,8 +20,10 @@ namespace OnlineStore.Controller
 
             builder.UserID = username;
             builder.Password = password;
-
-//            DataBaseConnection.Connection = new SqlConnection(builder.ToString());
+           
+            //TODO: Убрать присвоение из логин формы.
+           
+            //DataBaseConnection.Connection = new SqlConnection(builder.ToString());
 
             return new SqlConnection(builder.ToString());
         }

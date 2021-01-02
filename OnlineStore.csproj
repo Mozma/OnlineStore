@@ -81,21 +81,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ConnectionController.cs" />
-    <Compile Include="Model\DataBaseConnection.cs" />
-    <Compile Include="OnlineStoreDataSet.Designer.cs">
+    <Compile Include="MarketDBDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineStoreDataSet.xsd</DependentUpon>
+      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseConnection.cs" />
     <Compile Include="View\BorderlessWinForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\BorderlessWinForm.Designer.cs">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="View\LoginForm.cs" />
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
@@ -135,16 +133,16 @@
     <EmbeddedResource Include="View\OrdersForm.resx">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="OnlineStoreDataSet.xsc">
-      <DependentUpon>OnlineStoreDataSet.xsd</DependentUpon>
+    <None Include="MarketDBDataSet1.xsc">
+      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="OnlineStoreDataSet.xsd">
+    <None Include="MarketDBDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OnlineStoreDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MarketDBDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="OnlineStoreDataSet.xss">
-      <DependentUpon>OnlineStoreDataSet.xsd</DependentUpon>
+    <None Include="MarketDBDataSet1.xss">
+      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

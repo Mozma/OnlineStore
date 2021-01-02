@@ -20,7 +20,7 @@ namespace OnlineStore.View
                 loginForm.ShowDialog();
 
                 if (loginForm.DialogResult == DialogResult.OK) {
-                    Connection = loginForm.Connection;
+                 //   Connection = loginForm.Connection;
                 }
                 else
                 {

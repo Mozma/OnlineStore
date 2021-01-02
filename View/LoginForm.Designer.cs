@@ -1,5 +1,5 @@
 ﻿
-namespace OnlineStore
+namespace OnlineStore.View
 {
     partial class LoginForm
     {

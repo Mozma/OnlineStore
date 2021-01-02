@@ -24,25 +24,11 @@ namespace OnlineStore.View
 
         private void OrdersForm_Load(object sender, EventArgs e)
         {
-            orderTableAdapter.Connection = Connection;
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "marketDBDataSet.Order". При необходимости она может быть перемещена или удалена.
+            orderTableAdapter.Connection = Values.Connection;
+            
             this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
 
-
-            /* DataSet dataSet = new DataSet();
-
-                 string command = "Select * From Admin.[Order]";
-
-                 SqlDataAdapter adapter = new SqlDataAdapter(command, Connection);
-                 adapter.TableMappings.Add("Table", "Order");
-
-                 adapter.Fill(dataSet);
-
-                 dataGridView1.DataSource = dataSet.Tables[0];
-
-
-                 lbTableName.Text = $"Обзор таблицы \"{dataSet.Tables[0].TableName}\"";
-             */
+            lbTableName.Text = $"Обзор таблицы \"Заказы\"";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
