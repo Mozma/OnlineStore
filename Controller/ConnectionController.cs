@@ -2,6 +2,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Odbc;
 
 namespace OnlineStore.Controller
 {
@@ -12,7 +13,7 @@ namespace OnlineStore.Controller
         /// </summary>
         /// <param name="username">Логин</param>
         /// <param name="password">Пароль</param>
-        public static SqlConnection MakeConnection(string username, string password)
+       /* public static SqlConnection MakeConnection(string username, string password)
         {
             var connectionString = new SqlConnectionStringBuilder();
 
@@ -24,7 +25,17 @@ namespace OnlineStore.Controller
 
             return new SqlConnection(connectionString.ToString());
         }
+       */
+        public static OdbcConnection MakeConnection(string username, string password)
+        {
+            var connectionString = new OdbcConnectionStringBuilder();
 
+            connectionString.Dsn = "OnlineStore";
+            connectionString.Add("Uid", username);
+            connectionString.Add("Pwd", password);
+            
+            return new OdbcConnection(connectionString.ToString());
+        }
         /// <summary>
         /// Проверка работы подключения.
         /// </summary>

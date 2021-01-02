@@ -1,6 +1,7 @@
 ﻿using OnlineStore.Controller;
 using OnlineStore.View;
 using System;
+using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -14,8 +15,8 @@ namespace OnlineStore
             InitializeComponent();
         }
 
-        public SqlConnection Connection { get; set; }
-
+        //public SqlConnection Connection { get; set; }
+        public OdbcConnection Connection { get; set; }
 
         // Обработка кнопки "Вход"
         private void btnAccept_Click(object sender, EventArgs e)

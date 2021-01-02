@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
-        public SqlConnection Connection { get; set; }
-
+        //  public SqlConnection Connection { get; set; }
+        public OdbcConnection Connection { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
             using (var loginForm = new LoginForm())
