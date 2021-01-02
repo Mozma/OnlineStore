@@ -31,6 +31,12 @@ namespace OnlineStore.View
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lbTableName = new System.Windows.Forms.Label();
+            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +46,6 @@ namespace OnlineStore.View
             this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lbTableName = new System.Windows.Forms.Label();
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
@@ -59,6 +59,8 @@ namespace OnlineStore.View
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orderidDataGridViewTextBoxColumn,
             this.useridDataGridViewTextBoxColumn,
@@ -75,69 +77,6 @@ namespace OnlineStore.View
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(869, 365);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // orderidDataGridViewTextBoxColumn
-            // 
-            this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
-            this.orderidDataGridViewTextBoxColumn.HeaderText = "Order_id";
-            this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
-            this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // useridDataGridViewTextBoxColumn
-            // 
-            this.useridDataGridViewTextBoxColumn.DataPropertyName = "User_id";
-            this.useridDataGridViewTextBoxColumn.HeaderText = "User_id";
-            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
-            this.useridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ordernumberDataGridViewTextBoxColumn
-            // 
-            this.ordernumberDataGridViewTextBoxColumn.DataPropertyName = "Order_number";
-            this.ordernumberDataGridViewTextBoxColumn.HeaderText = "Order_number";
-            this.ordernumberDataGridViewTextBoxColumn.Name = "ordernumberDataGridViewTextBoxColumn";
-            this.ordernumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orderdateDataGridViewTextBoxColumn
-            // 
-            this.orderdateDataGridViewTextBoxColumn.DataPropertyName = "Order_date";
-            this.orderdateDataGridViewTextBoxColumn.HeaderText = "Order_date";
-            this.orderdateDataGridViewTextBoxColumn.Name = "orderdateDataGridViewTextBoxColumn";
-            this.orderdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // completiondateDataGridViewTextBoxColumn
-            // 
-            this.completiondateDataGridViewTextBoxColumn.DataPropertyName = "Completion_date";
-            this.completiondateDataGridViewTextBoxColumn.HeaderText = "Completion_date";
-            this.completiondateDataGridViewTextBoxColumn.Name = "completiondateDataGridViewTextBoxColumn";
-            this.completiondateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusecodeDataGridViewTextBoxColumn
-            // 
-            this.statusecodeDataGridViewTextBoxColumn.DataPropertyName = "Statuse_code";
-            this.statusecodeDataGridViewTextBoxColumn.HeaderText = "Statuse_code";
-            this.statusecodeDataGridViewTextBoxColumn.Name = "statusecodeDataGridViewTextBoxColumn";
-            this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalcostDataGridViewTextBoxColumn
-            // 
-            this.totalcostDataGridViewTextBoxColumn.DataPropertyName = "Total_cost";
-            this.totalcostDataGridViewTextBoxColumn.HeaderText = "Total_cost";
-            this.totalcostDataGridViewTextBoxColumn.Name = "totalcostDataGridViewTextBoxColumn";
-            this.totalcostDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paidDataGridViewTextBoxColumn
-            // 
-            this.paidDataGridViewTextBoxColumn.DataPropertyName = "Paid";
-            this.paidDataGridViewTextBoxColumn.HeaderText = "Paid";
-            this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
-            this.paidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cancellationsignDataGridViewTextBoxColumn
-            // 
-            this.cancellationsignDataGridViewTextBoxColumn.DataPropertyName = "Cancellation_sign";
-            this.cancellationsignDataGridViewTextBoxColumn.HeaderText = "Cancellation_sign";
-            this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
-            this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // orderBindingSource
             // 
@@ -180,6 +119,73 @@ namespace OnlineStore.View
             // orderTableAdapter
             // 
             this.orderTableAdapter.ClearBeforeFill = true;
+            // 
+            // orderidDataGridViewTextBoxColumn
+            // 
+            this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
+            this.orderidDataGridViewTextBoxColumn.HeaderText = "Ид заказа";
+            this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
+            this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // useridDataGridViewTextBoxColumn
+            // 
+            this.useridDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.useridDataGridViewTextBoxColumn.DataPropertyName = "User_id";
+            this.useridDataGridViewTextBoxColumn.HeaderText = "Ид пользователя";
+            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
+            this.useridDataGridViewTextBoxColumn.ReadOnly = true;
+            this.useridDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // ordernumberDataGridViewTextBoxColumn
+            // 
+            this.ordernumberDataGridViewTextBoxColumn.DataPropertyName = "Order_number";
+            this.ordernumberDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.ordernumberDataGridViewTextBoxColumn.Name = "ordernumberDataGridViewTextBoxColumn";
+            this.ordernumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orderdateDataGridViewTextBoxColumn
+            // 
+            this.orderdateDataGridViewTextBoxColumn.DataPropertyName = "Order_date";
+            this.orderdateDataGridViewTextBoxColumn.HeaderText = "Дата заказа";
+            this.orderdateDataGridViewTextBoxColumn.Name = "orderdateDataGridViewTextBoxColumn";
+            this.orderdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // completiondateDataGridViewTextBoxColumn
+            // 
+            this.completiondateDataGridViewTextBoxColumn.DataPropertyName = "Completion_date";
+            this.completiondateDataGridViewTextBoxColumn.HeaderText = "Дата завершения";
+            this.completiondateDataGridViewTextBoxColumn.Name = "completiondateDataGridViewTextBoxColumn";
+            this.completiondateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusecodeDataGridViewTextBoxColumn
+            // 
+            this.statusecodeDataGridViewTextBoxColumn.DataPropertyName = "Statuse_code";
+            this.statusecodeDataGridViewTextBoxColumn.HeaderText = "Код статуса";
+            this.statusecodeDataGridViewTextBoxColumn.Name = "statusecodeDataGridViewTextBoxColumn";
+            this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalcostDataGridViewTextBoxColumn
+            // 
+            this.totalcostDataGridViewTextBoxColumn.DataPropertyName = "Total_cost";
+            this.totalcostDataGridViewTextBoxColumn.HeaderText = "Полная стоимость";
+            this.totalcostDataGridViewTextBoxColumn.Name = "totalcostDataGridViewTextBoxColumn";
+            this.totalcostDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paidDataGridViewTextBoxColumn
+            // 
+            this.paidDataGridViewTextBoxColumn.DataPropertyName = "Paid";
+            this.paidDataGridViewTextBoxColumn.HeaderText = "Оплачено";
+            this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
+            this.paidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cancellationsignDataGridViewTextBoxColumn
+            // 
+            this.cancellationsignDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cancellationsignDataGridViewTextBoxColumn.DataPropertyName = "Cancellation_sign";
+            this.cancellationsignDataGridViewTextBoxColumn.HeaderText = "Причина отмены";
+            this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
+            this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cancellationsignDataGridViewTextBoxColumn.Width = 117;
             // 
             // OrdersForm
             // 
