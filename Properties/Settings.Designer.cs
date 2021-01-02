@@ -32,5 +32,15 @@ namespace OnlineStore.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USERPC;Initial Catalog=MarketDB;User ID=Admin")]
+        public string MarketDBConnectionString {
+            get {
+                return ((string)(this["MarketDBConnectionString"]));
+            }
+        }
     }
 }

@@ -14,8 +14,8 @@ namespace OnlineStore.View
 {
     public partial class OrdersForm : BorderlessWinForm
     {
-        //public SqlConnection Connection { get; set; }
-        public OdbcConnection Connection { get; set; }
+        public SqlConnection Connection { get; set; }
+       
 
         public OrdersForm()
         {
@@ -24,25 +24,25 @@ namespace OnlineStore.View
 
         private void OrdersForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "onlineStoreDataSet.Order". При необходимости она может быть перемещена или удалена.
-
             orderTableAdapter.Connection = Connection;
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "marketDBDataSet.Order". При необходимости она может быть перемещена или удалена.
+            this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
 
-            this.orderTableAdapter.Fill(this.onlineStoreDataSet.Order);
-           /* DataSet dataSet = new DataSet();
 
-                string command = "Select * From Admin.[Order]";
+            /* DataSet dataSet = new DataSet();
 
-                SqlDataAdapter adapter = new SqlDataAdapter(command, Connection);
-                adapter.TableMappings.Add("Table", "Order");
+                 string command = "Select * From Admin.[Order]";
 
-                adapter.Fill(dataSet);
+                 SqlDataAdapter adapter = new SqlDataAdapter(command, Connection);
+                 adapter.TableMappings.Add("Table", "Order");
 
-                dataGridView1.DataSource = dataSet.Tables[0];
-            
-            
-                lbTableName.Text = $"Обзор таблицы \"{dataSet.Tables[0].TableName}\"";
-            */
+                 adapter.Fill(dataSet);
+
+                 dataGridView1.DataSource = dataSet.Tables[0];
+
+
+                 lbTableName.Text = $"Обзор таблицы \"{dataSet.Tables[0].TableName}\"";
+             */
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -13,29 +13,19 @@ namespace OnlineStore.Controller
         /// </summary>
         /// <param name="username">Логин</param>
         /// <param name="password">Пароль</param>
-       /* public static SqlConnection MakeConnection(string username, string password)
+        public static SqlConnection MakeConnection(string username, string password)
         {
-            var connectionString = new SqlConnectionStringBuilder();
+            var configConnectionString = ConfigurationManager.ConnectionStrings["MarketDB"].ConnectionString;
+            var builder = new SqlConnectionStringBuilder(configConnectionString);
 
-            connectionString.DataSource = DataBaseConnection.DataSource;
-            connectionString.InitialCatalog = DataBaseConnection.InitialCatalog;
-            connectionString.UserID = username;
-            connectionString.Password = password;
-            DataBaseConnection.Connection = new SqlConnection(connectionString.ToString());
+            builder.UserID = username;
+            builder.Password = password;
 
-            return new SqlConnection(connectionString.ToString());
+//            DataBaseConnection.Connection = new SqlConnection(builder.ToString());
+
+            return new SqlConnection(builder.ToString());
         }
-       */
-        public static OdbcConnection MakeConnection(string username, string password)
-        {
-            var connectionString = new OdbcConnectionStringBuilder();
 
-            connectionString.Dsn = "OnlineStore";
-            connectionString.Add("Uid", username);
-            connectionString.Add("Pwd", password);
-            
-            return new OdbcConnection(connectionString.ToString());
-        }
         /// <summary>
         /// Проверка работы подключения.
         /// </summary>

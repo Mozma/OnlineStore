@@ -33,9 +33,10 @@ namespace OnlineStore.View
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.lbTableName = new System.Windows.Forms.Label();
-            this.onlineStoreDataSet = new OnlineStore.OnlineStoreDataSet();
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderTableAdapter = new OnlineStore.OnlineStoreDataSetTableAdapters.OrderTableAdapter();
+            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,8 @@ namespace OnlineStore.View
             this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.onlineStoreDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,15 +99,20 @@ namespace OnlineStore.View
             this.lbTableName.Size = new System.Drawing.Size(0, 13);
             this.lbTableName.TabIndex = 7;
             // 
-            // onlineStoreDataSet
+            // marketDBDataSet
             // 
-            this.onlineStoreDataSet.DataSetName = "OnlineStoreDataSet";
-            this.onlineStoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // marketDBDataSetBindingSource
+            // 
+            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
+            this.marketDBDataSetBindingSource.Position = 0;
             // 
             // orderBindingSource
             // 
             this.orderBindingSource.DataMember = "Order";
-            this.orderBindingSource.DataSource = this.onlineStoreDataSet;
+            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
             // 
             // orderTableAdapter
             // 
@@ -187,7 +194,8 @@ namespace OnlineStore.View
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.onlineStoreDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,9 +207,10 @@ namespace OnlineStore.View
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lbTableName;
-        private OnlineStoreDataSet onlineStoreDataSet;
+        private System.Windows.Forms.BindingSource marketDBDataSetBindingSource;
+        private MarketDBDataSet marketDBDataSet;
         private System.Windows.Forms.BindingSource orderBindingSource;
-        private OnlineStoreDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
+        private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
