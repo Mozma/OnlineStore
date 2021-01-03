@@ -7,14 +7,11 @@ namespace OnlineStore.View
 {
     public partial class OrdersForm : BorderlessWinForm
     {
-        //   public SqlConnection Connection { get; set; }
-
         public OrdersForm()
         {
             InitializeComponent();
         }
         
-
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             orderTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
@@ -25,20 +22,16 @@ namespace OnlineStore.View
 
             lbTableName.Text = $"Обзор таблицы \"Заказы\"";
         }
-        private void OrdersForm_Shown(object sender, EventArgs e)
-        {
-        //    orderTableAdapter.Connection = Values.Connection;
-        //    this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
 
-        //    lbTableName.Text = $"Обзор таблицы \"Заказы\"";
-        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        // Обработчик для создания Lookup полей.
         private void ordersDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            // Lookup-поле для Statuse_code.
             if (ordersDataGridView.Columns[e.ColumnIndex].Name.Equals("Statuse_name"))
             {
 
@@ -47,6 +40,11 @@ namespace OnlineStore.View
             }
         }
 
+        /// <summary>
+        /// Возвращает значение поля Statuse_name из таблицы Statuses.
+        /// </summary>
+        /// <param name="status_code">Ключ для поиска.</param>
+        /// <returns></returns>
         public string GetStatusNameLookupValue(string status_code) 
         {
             string status_name = "";
@@ -67,31 +65,6 @@ namespace OnlineStore.View
 
             }
             return status_name;
-
-
-
-            //string sql =
-            //    "select Statuse_name from Admin.Statuses where Statuse_code = @code;";
-
-            //using (SqlConnection con = new SqlConnection(Values.Connection.ConnectionString))
-            //{
-
-            //    SqlCommand cmd = new SqlCommand(sql, con);
-            //    cmd.Parameters.Add("@code", SqlDbType.VarChar);
-            //    cmd.Parameters["@code"].Value = status_code;
-            //    try
-            //    {
-            //        con.Open();
-            //        status_name = cmd.ExecuteScalar().ToString();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            // }
-
         }
-
-
     }
 }
