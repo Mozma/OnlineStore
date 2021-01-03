@@ -8,10 +8,6 @@ using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
-    static class Values
-    {
-        public static SqlConnection Connection { get; set; }
-    }
 
     public partial class LoginForm : BorderlessWinForm
     {
@@ -20,7 +16,7 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
-     
+    //    public SqlConnection Connection { get; set; }
 
         // Обработка кнопки "Вход"
         private void btnAccept_Click(object sender, EventArgs e)
@@ -37,7 +33,8 @@ namespace OnlineStore.View
                 try
                 {
                      Values.Connection = ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
-                  //  ConnectionController.TestConnection();
+      //              Connection = ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
+                    //  ConnectionController.TestConnection();
                     DialogResult = DialogResult.OK;
                 }
                 catch (Exception exp)

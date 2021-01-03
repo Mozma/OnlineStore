@@ -93,7 +93,9 @@
     <Compile Include="View\BorderlessWinForm.Designer.cs">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginForm.cs" />
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
@@ -111,6 +113,7 @@
     <Compile Include="View\OrdersForm.Designer.cs">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -20,6 +20,7 @@ namespace OnlineStore.Controller
 
             builder.UserID = username;
             builder.Password = password;
+            builder.Pooling = true;
            
             //TODO: Убрать присвоение из логин формы.
            

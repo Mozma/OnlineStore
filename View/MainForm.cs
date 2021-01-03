@@ -20,7 +20,7 @@ namespace OnlineStore.View
                 loginForm.ShowDialog();
 
                 if (loginForm.DialogResult == DialogResult.OK) {
-                 //   Connection = loginForm.Connection;
+                //Connection = loginForm.Connection;
                 }
                 else
                 {
@@ -38,7 +38,7 @@ namespace OnlineStore.View
         {
             using (var ordersForm = new OrdersForm())
             {
-                ordersForm.Connection = Connection;
+             //   ordersForm.Connection = Values.Connection;
                 ordersForm.ShowDialog();
             }
         }
