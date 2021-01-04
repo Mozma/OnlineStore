@@ -72,6 +72,21 @@ namespace OnlineStore.View
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
 
+            var newRow = marketDBDataSet.Tables["Order"].NewRow();
+            //newRow[0] = ;
+            newRow[1] = 1;
+            newRow[2] = "004523";
+            newRow[3] = "2019-12-05";
+            newRow[4] = "2019-12-08";
+            newRow[5] = "З04";
+            newRow[6] = 18980d;
+            newRow[7] = 18980d;
+            newRow[8] = null;
+
+            marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+
+            orderTableAdapter.Update(marketDBDataSet);
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -93,8 +108,7 @@ namespace OnlineStore.View
             this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
         }
 
+
         #endregion
-
-
     }
 }

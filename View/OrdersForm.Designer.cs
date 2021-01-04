@@ -31,24 +31,14 @@ namespace OnlineStore.View
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
-            this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.completiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusecodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Statuse_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
@@ -63,12 +53,42 @@ namespace OnlineStore.View
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.orderidTextBox = new System.Windows.Forms.TextBox();
+            this.useridTextBox = new System.Windows.Forms.TextBox();
+            this.orderNumberTextBox = new System.Windows.Forms.TextBox();
+            this.statuseCodeTextBox = new System.Windows.Forms.TextBox();
+            this.completionDateTextBox = new System.Windows.Forms.TextBox();
+            this.orderDateTextBox = new System.Windows.Forms.TextBox();
+            this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.completiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusecodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Statuse_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalCostTextBox = new System.Windows.Forms.TextBox();
+            this.cancellationSignTextBox = new System.Windows.Forms.TextBox();
+            this.paidTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.orderNumberlb = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingNavigator)).BeginInit();
             this.orderBindingNavigator.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ordersDataGridView
@@ -101,13 +121,13 @@ namespace OnlineStore.View
             this.statusecodeDataGridViewTextBoxColumn,
             this.totalcostDataGridViewTextBoxColumn,
             this.paidDataGridViewTextBoxColumn,
-            this.cancellationsignDataGridViewTextBoxColumn,
-            this.Statuse_name});
+            this.Statuse_name,
+            this.cancellationsignDataGridViewTextBoxColumn});
             this.ordersDataGridView.DataSource = this.orderBindingSource;
             this.ordersDataGridView.Location = new System.Drawing.Point(15, 42);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
-            this.ordersDataGridView.Size = new System.Drawing.Size(894, 416);
+            this.ordersDataGridView.Size = new System.Drawing.Size(978, 350);
             this.ordersDataGridView.TabIndex = 0;
             this.ordersDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ordersDataGridView_CellFormatting);
             // 
@@ -133,87 +153,6 @@ namespace OnlineStore.View
             // statusesTableAdapter
             // 
             this.statusesTableAdapter.ClearBeforeFill = true;
-            // 
-            // orderidDataGridViewTextBoxColumn
-            // 
-            this.orderidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.orderidDataGridViewTextBoxColumn.HeaderText = "Ид заказа";
-            this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
-            this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // useridDataGridViewTextBoxColumn
-            // 
-            this.useridDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.useridDataGridViewTextBoxColumn.DataPropertyName = "User_id";
-            this.useridDataGridViewTextBoxColumn.HeaderText = "Ид пользователя";
-            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
-            this.useridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ordernumberDataGridViewTextBoxColumn
-            // 
-            this.ordernumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ordernumberDataGridViewTextBoxColumn.DataPropertyName = "Order_number";
-            this.ordernumberDataGridViewTextBoxColumn.HeaderText = "Номер";
-            this.ordernumberDataGridViewTextBoxColumn.Name = "ordernumberDataGridViewTextBoxColumn";
-            this.ordernumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orderdateDataGridViewTextBoxColumn
-            // 
-            this.orderdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.orderdateDataGridViewTextBoxColumn.DataPropertyName = "Order_date";
-            this.orderdateDataGridViewTextBoxColumn.HeaderText = "Дата заказа";
-            this.orderdateDataGridViewTextBoxColumn.Name = "orderdateDataGridViewTextBoxColumn";
-            this.orderdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // completiondateDataGridViewTextBoxColumn
-            // 
-            this.completiondateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.completiondateDataGridViewTextBoxColumn.DataPropertyName = "Completion_date";
-            this.completiondateDataGridViewTextBoxColumn.HeaderText = "Дата завершения";
-            this.completiondateDataGridViewTextBoxColumn.Name = "completiondateDataGridViewTextBoxColumn";
-            this.completiondateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusecodeDataGridViewTextBoxColumn
-            // 
-            this.statusecodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.statusecodeDataGridViewTextBoxColumn.DataPropertyName = "Statuse_code";
-            this.statusecodeDataGridViewTextBoxColumn.HeaderText = "Код статуса";
-            this.statusecodeDataGridViewTextBoxColumn.Name = "statusecodeDataGridViewTextBoxColumn";
-            this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusecodeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // Statuse_name
-            // 
-            this.Statuse_name.HeaderText = "Статус";
-            this.Statuse_name.Name = "Statuse_name";
-            this.Statuse_name.ReadOnly = true;
-            // 
-            // totalcostDataGridViewTextBoxColumn
-            // 
-            this.totalcostDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.totalcostDataGridViewTextBoxColumn.DataPropertyName = "Total_cost";
-            this.totalcostDataGridViewTextBoxColumn.HeaderText = "Полная стоимость";
-            this.totalcostDataGridViewTextBoxColumn.Name = "totalcostDataGridViewTextBoxColumn";
-            this.totalcostDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paidDataGridViewTextBoxColumn
-            // 
-            this.paidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.paidDataGridViewTextBoxColumn.DataPropertyName = "Paid";
-            this.paidDataGridViewTextBoxColumn.HeaderText = "Оплачено";
-            this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
-            this.paidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cancellationsignDataGridViewTextBoxColumn
-            // 
-            this.cancellationsignDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cancellationsignDataGridViewTextBoxColumn.DataPropertyName = "Cancellation_sign";
-            this.cancellationsignDataGridViewTextBoxColumn.HeaderText = "Причина отмены";
-            this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
-            this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // orderBindingNavigator
             // 
@@ -243,7 +182,7 @@ namespace OnlineStore.View
             this.orderBindingNavigator.Name = "orderBindingNavigator";
             this.orderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
             this.orderBindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.orderBindingNavigator.Size = new System.Drawing.Size(921, 25);
+            this.orderBindingNavigator.Size = new System.Drawing.Size(1005, 25);
             this.orderBindingNavigator.TabIndex = 1;
             // 
             // bindingNavigatorSeparator
@@ -348,14 +287,270 @@ namespace OnlineStore.View
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.orderNumberlb);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.paidTextBox);
+            this.panel1.Controls.Add(this.cancellationSignTextBox);
+            this.panel1.Controls.Add(this.totalCostTextBox);
+            this.panel1.Controls.Add(this.orderDateTextBox);
+            this.panel1.Controls.Add(this.completionDateTextBox);
+            this.panel1.Controls.Add(this.statuseCodeTextBox);
+            this.panel1.Controls.Add(this.orderNumberTextBox);
+            this.panel1.Controls.Add(this.useridTextBox);
+            this.panel1.Controls.Add(this.orderidTextBox);
+            this.panel1.Location = new System.Drawing.Point(15, 404);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(978, 119);
+            this.panel1.TabIndex = 2;
+            // 
+            // orderidTextBox
+            // 
+            this.orderidTextBox.Location = new System.Drawing.Point(38, 30);
+            this.orderidTextBox.Name = "orderidTextBox";
+            this.orderidTextBox.Size = new System.Drawing.Size(100, 20);
+            this.orderidTextBox.TabIndex = 0;
+            // 
+            // useridTextBox
+            // 
+            this.useridTextBox.Location = new System.Drawing.Point(144, 30);
+            this.useridTextBox.Name = "useridTextBox";
+            this.useridTextBox.Size = new System.Drawing.Size(100, 20);
+            this.useridTextBox.TabIndex = 1;
+            // 
+            // orderNumberTextBox
+            // 
+            this.orderNumberTextBox.Location = new System.Drawing.Point(250, 30);
+            this.orderNumberTextBox.Name = "orderNumberTextBox";
+            this.orderNumberTextBox.Size = new System.Drawing.Size(100, 20);
+            this.orderNumberTextBox.TabIndex = 2;
+            // 
+            // statuseCodeTextBox
+            // 
+            this.statuseCodeTextBox.Location = new System.Drawing.Point(144, 80);
+            this.statuseCodeTextBox.Name = "statuseCodeTextBox";
+            this.statuseCodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.statuseCodeTextBox.TabIndex = 3;
+            // 
+            // completionDateTextBox
+            // 
+            this.completionDateTextBox.Location = new System.Drawing.Point(462, 30);
+            this.completionDateTextBox.Name = "completionDateTextBox";
+            this.completionDateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.completionDateTextBox.TabIndex = 4;
+            // 
+            // orderDateTextBox
+            // 
+            this.orderDateTextBox.Location = new System.Drawing.Point(356, 30);
+            this.orderDateTextBox.Name = "orderDateTextBox";
+            this.orderDateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.orderDateTextBox.TabIndex = 5;
+            // 
+            // orderidDataGridViewTextBoxColumn
+            // 
+            this.orderidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.orderidDataGridViewTextBoxColumn.HeaderText = "Ид заказа";
+            this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
+            this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // useridDataGridViewTextBoxColumn
+            // 
+            this.useridDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.useridDataGridViewTextBoxColumn.DataPropertyName = "User_id";
+            this.useridDataGridViewTextBoxColumn.HeaderText = "Ид пользователя";
+            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
+            this.useridDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ordernumberDataGridViewTextBoxColumn
+            // 
+            this.ordernumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ordernumberDataGridViewTextBoxColumn.DataPropertyName = "Order_number";
+            this.ordernumberDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.ordernumberDataGridViewTextBoxColumn.Name = "ordernumberDataGridViewTextBoxColumn";
+            this.ordernumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orderdateDataGridViewTextBoxColumn
+            // 
+            this.orderdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.orderdateDataGridViewTextBoxColumn.DataPropertyName = "Order_date";
+            this.orderdateDataGridViewTextBoxColumn.HeaderText = "Дата заказа";
+            this.orderdateDataGridViewTextBoxColumn.Name = "orderdateDataGridViewTextBoxColumn";
+            this.orderdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // completiondateDataGridViewTextBoxColumn
+            // 
+            this.completiondateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.completiondateDataGridViewTextBoxColumn.DataPropertyName = "Completion_date";
+            this.completiondateDataGridViewTextBoxColumn.HeaderText = "Дата завершения";
+            this.completiondateDataGridViewTextBoxColumn.Name = "completiondateDataGridViewTextBoxColumn";
+            this.completiondateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusecodeDataGridViewTextBoxColumn
+            // 
+            this.statusecodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusecodeDataGridViewTextBoxColumn.DataPropertyName = "Statuse_code";
+            this.statusecodeDataGridViewTextBoxColumn.HeaderText = "Код статуса";
+            this.statusecodeDataGridViewTextBoxColumn.Name = "statusecodeDataGridViewTextBoxColumn";
+            this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusecodeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // totalcostDataGridViewTextBoxColumn
+            // 
+            this.totalcostDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalcostDataGridViewTextBoxColumn.DataPropertyName = "Total_cost";
+            this.totalcostDataGridViewTextBoxColumn.HeaderText = "Полная стоимость";
+            this.totalcostDataGridViewTextBoxColumn.Name = "totalcostDataGridViewTextBoxColumn";
+            this.totalcostDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paidDataGridViewTextBoxColumn
+            // 
+            this.paidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.paidDataGridViewTextBoxColumn.DataPropertyName = "Paid";
+            this.paidDataGridViewTextBoxColumn.HeaderText = "Оплачено";
+            this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
+            this.paidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Statuse_name
+            // 
+            this.Statuse_name.HeaderText = "Статус";
+            this.Statuse_name.Name = "Statuse_name";
+            this.Statuse_name.ReadOnly = true;
+            // 
+            // cancellationsignDataGridViewTextBoxColumn
+            // 
+            this.cancellationsignDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cancellationsignDataGridViewTextBoxColumn.DataPropertyName = "Cancellation_sign";
+            this.cancellationsignDataGridViewTextBoxColumn.HeaderText = "Причина отмены";
+            this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
+            this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalCostTextBox
+            // 
+            this.totalCostTextBox.Location = new System.Drawing.Point(250, 80);
+            this.totalCostTextBox.Name = "totalCostTextBox";
+            this.totalCostTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalCostTextBox.TabIndex = 6;
+            // 
+            // cancellationSignTextBox
+            // 
+            this.cancellationSignTextBox.Location = new System.Drawing.Point(462, 80);
+            this.cancellationSignTextBox.Name = "cancellationSignTextBox";
+            this.cancellationSignTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cancellationSignTextBox.TabIndex = 7;
+            // 
+            // paidTextBox
+            // 
+            this.paidTextBox.Location = new System.Drawing.Point(356, 80);
+            this.paidTextBox.Name = "paidTextBox";
+            this.paidTextBox.Size = new System.Drawing.Size(100, 20);
+            this.paidTextBox.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "orderId";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(141, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "userId";
+            // 
+            // orderNumberlb
+            // 
+            this.orderNumberlb.AutoSize = true;
+            this.orderNumberlb.Location = new System.Drawing.Point(247, 14);
+            this.orderNumberlb.Name = "orderNumberlb";
+            this.orderNumberlb.Size = new System.Drawing.Size(68, 13);
+            this.orderNumberlb.TabIndex = 11;
+            this.orderNumberlb.Text = "orderNumber";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(353, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "orderDate";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(459, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "completionDate";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(141, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "statuseCode";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(250, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "totalCost";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(353, 64);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "paid";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(459, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "cancellationSign";
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 470);
+            this.ClientSize = new System.Drawing.Size(1005, 535);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.orderBindingNavigator);
             this.Controls.Add(this.ordersDataGridView);
             this.DoubleBuffered = true;
+            this.MinimumSize = new System.Drawing.Size(916, 452);
             this.Name = "OrdersForm";
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
@@ -366,6 +561,8 @@ namespace OnlineStore.View
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingNavigator)).EndInit();
             this.orderBindingNavigator.ResumeLayout(false);
             this.orderBindingNavigator.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,16 +576,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.BindingSource orderBindingSource;
         private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
         private MarketDBDataSetTableAdapters.StatusesTableAdapter statusesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn completiondateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusecodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Statuse_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalcostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingNavigator orderBindingNavigator;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -403,5 +590,34 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn completiondateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusecodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalcostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Statuse_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox paidTextBox;
+        private System.Windows.Forms.TextBox cancellationSignTextBox;
+        private System.Windows.Forms.TextBox totalCostTextBox;
+        private System.Windows.Forms.TextBox orderDateTextBox;
+        private System.Windows.Forms.TextBox completionDateTextBox;
+        private System.Windows.Forms.TextBox statuseCodeTextBox;
+        private System.Windows.Forms.TextBox orderNumberTextBox;
+        private System.Windows.Forms.TextBox useridTextBox;
+        private System.Windows.Forms.TextBox orderidTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label orderNumberlb;
+        private System.Windows.Forms.Label label2;
     }
 }
