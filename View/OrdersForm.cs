@@ -14,19 +14,18 @@ namespace OnlineStore.View
         
         private void OrdersForm_Load(object sender, EventArgs e)
         {
-            orderTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
-            statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            SetConnections();
+            FillData();
 
-            this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
-            this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
-
-            lbTableName.Text = $"Обзор таблицы \"Заказы\"";
+            this.Text = $"Обзор таблицы \"Заказы\"";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        #region Обработка Lookup полей.
 
         // Обработчик для создания Lookup полей.
         private void ordersDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -45,7 +44,7 @@ namespace OnlineStore.View
         /// </summary>
         /// <param name="status_code">Ключ для поиска.</param>
         /// <returns></returns>
-        public string GetStatusNameLookupValue(string status_code) 
+        public string GetStatusNameLookupValue(string status_code)
         {
             string status_name = "";
 
@@ -57,14 +56,45 @@ namespace OnlineStore.View
                 // получаем все ячейки строки
                 var cells = row.ItemArray;
 
-                if (cells[0].ToString().Equals(status_code)) 
+                if (cells[0].ToString().Equals(status_code))
                 {
-                    status_name = cells[1].ToString();                    
+                    status_name = cells[1].ToString();
                     break;
                 }
 
             }
             return status_name;
         }
+
+        #endregion
+
+        #region Кнопки
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Дополнительные методы.
+        private void SetConnections()
+        {
+            orderTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+        }
+
+        private void FillData() 
+        {
+            this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
+            this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
+        }
+
+        #endregion
+
+
     }
 }

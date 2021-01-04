@@ -30,9 +30,15 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
+            this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,17 +49,26 @@ namespace OnlineStore.View
             this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lbTableName = new System.Windows.Forms.Label();
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
-            this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
+            this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnUpdate = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingNavigator)).BeginInit();
+            this.orderBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // ordersDataGridView
@@ -61,18 +76,21 @@ namespace OnlineStore.View
             this.ordersDataGridView.AllowUserToAddRows = false;
             this.ordersDataGridView.AllowUserToDeleteRows = false;
             this.ordersDataGridView.AllowUserToResizeRows = false;
+            this.ordersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ordersDataGridView.AutoGenerateColumns = false;
             this.ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordersDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.ordersDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ordersDataGridView.ColumnHeadersHeight = 50;
             this.ordersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orderidDataGridViewTextBoxColumn,
@@ -81,24 +99,47 @@ namespace OnlineStore.View
             this.orderdateDataGridViewTextBoxColumn,
             this.completiondateDataGridViewTextBoxColumn,
             this.statusecodeDataGridViewTextBoxColumn,
-            this.Statuse_name,
             this.totalcostDataGridViewTextBoxColumn,
             this.paidDataGridViewTextBoxColumn,
-            this.cancellationsignDataGridViewTextBoxColumn});
+            this.cancellationsignDataGridViewTextBoxColumn,
+            this.Statuse_name});
             this.ordersDataGridView.DataSource = this.orderBindingSource;
             this.ordersDataGridView.Location = new System.Drawing.Point(15, 42);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
-            this.ordersDataGridView.Size = new System.Drawing.Size(894, 406);
+            this.ordersDataGridView.Size = new System.Drawing.Size(894, 416);
             this.ordersDataGridView.TabIndex = 0;
             this.ordersDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ordersDataGridView_CellFormatting);
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataMember = "Order";
+            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
+            // 
+            // marketDBDataSetBindingSource
+            // 
+            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
+            this.marketDBDataSetBindingSource.Position = 0;
+            // 
+            // marketDBDataSet
+            // 
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // orderTableAdapter
+            // 
+            this.orderTableAdapter.ClearBeforeFill = true;
+            // 
+            // statusesTableAdapter
+            // 
+            this.statusesTableAdapter.ClearBeforeFill = true;
             // 
             // orderidDataGridViewTextBoxColumn
             // 
             this.orderidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.orderidDataGridViewTextBoxColumn.HeaderText = "Ид заказа";
             this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
             this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
@@ -142,6 +183,7 @@ namespace OnlineStore.View
             this.statusecodeDataGridViewTextBoxColumn.HeaderText = "Код статуса";
             this.statusecodeDataGridViewTextBoxColumn.Name = "statusecodeDataGridViewTextBoxColumn";
             this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusecodeDataGridViewTextBoxColumn.Visible = false;
             // 
             // Statuse_name
             // 
@@ -156,7 +198,6 @@ namespace OnlineStore.View
             this.totalcostDataGridViewTextBoxColumn.HeaderText = "Полная стоимость";
             this.totalcostDataGridViewTextBoxColumn.Name = "totalcostDataGridViewTextBoxColumn";
             this.totalcostDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalcostDataGridViewTextBoxColumn.Visible = false;
             // 
             // paidDataGridViewTextBoxColumn
             // 
@@ -165,7 +206,6 @@ namespace OnlineStore.View
             this.paidDataGridViewTextBoxColumn.HeaderText = "Оплачено";
             this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
             this.paidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paidDataGridViewTextBoxColumn.Visible = false;
             // 
             // cancellationsignDataGridViewTextBoxColumn
             // 
@@ -175,61 +215,147 @@ namespace OnlineStore.View
             this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
             this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // orderBindingSource
+            // orderBindingNavigator
             // 
-            this.orderBindingSource.DataMember = "Order";
-            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
+            this.orderBindingNavigator.AddNewItem = this.btnDelete;
+            this.orderBindingNavigator.BindingSource = this.orderBindingSource;
+            this.orderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.orderBindingNavigator.DeleteItem = this.btnDelete;
+            this.orderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.btnAdd,
+            this.btnUpdate,
+            this.btnDelete,
+            this.btnRefresh});
+            this.orderBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.orderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.orderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.orderBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.orderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.orderBindingNavigator.Name = "orderBindingNavigator";
+            this.orderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.orderBindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.orderBindingNavigator.Size = new System.Drawing.Size(921, 25);
+            this.orderBindingNavigator.TabIndex = 1;
             // 
-            // marketDBDataSetBindingSource
+            // bindingNavigatorSeparator
             // 
-            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
-            this.marketDBDataSetBindingSource.Position = 0;
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
             // 
-            // marketDBDataSet
+            // bindingNavigatorPositionItem
             // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
-            // btnClose
+            // bindingNavigatorCountItem
             // 
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(883, 1);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(38, 31);
-            this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 22);
+            this.bindingNavigatorCountItem.Text = "для {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
-            // lbTableName
+            // bindingNavigatorSeparator1
             // 
-            this.lbTableName.AutoSize = true;
-            this.lbTableName.Location = new System.Drawing.Point(12, 10);
-            this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(0, 13);
-            this.lbTableName.TabIndex = 7;
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // orderTableAdapter
+            // bindingNavigatorSeparator2
             // 
-            this.orderTableAdapter.ClearBeforeFill = true;
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // statusesTableAdapter
+            // btnDelete
             // 
-            this.statusesTableAdapter.ClearBeforeFill = true;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.RightToLeftAutoMirrorImage = true;
+            this.btnDelete.Size = new System.Drawing.Size(71, 22);
+            this.btnDelete.Text = "Удалить";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.RightToLeftAutoMirrorImage = true;
+            this.btnAdd.Size = new System.Drawing.Size(77, 22);
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 22);
+            this.btnUpdate.Text = "Изменить";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(77, 22);
+            this.btnRefresh.Text = "Обновить";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 488);
-            this.Controls.Add(this.lbTableName);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(921, 470);
+            this.Controls.Add(this.orderBindingNavigator);
             this.Controls.Add(this.ordersDataGridView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.DoubleBuffered = true;
             this.Name = "OrdersForm";
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
@@ -237,6 +363,9 @@ namespace OnlineStore.View
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingNavigator)).EndInit();
+            this.orderBindingNavigator.ResumeLayout(false);
+            this.orderBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,12 +374,11 @@ namespace OnlineStore.View
         #endregion
 
         private System.Windows.Forms.DataGridView ordersDataGridView;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label lbTableName;
         private System.Windows.Forms.BindingSource marketDBDataSetBindingSource;
         private MarketDBDataSet marketDBDataSet;
         private System.Windows.Forms.BindingSource orderBindingSource;
         private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
+        private MarketDBDataSetTableAdapters.StatusesTableAdapter statusesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
@@ -261,6 +389,19 @@ namespace OnlineStore.View
         private System.Windows.Forms.DataGridViewTextBoxColumn totalcostDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
-        private MarketDBDataSetTableAdapters.StatusesTableAdapter statusesTableAdapter;
+        private System.Windows.Forms.BindingNavigator orderBindingNavigator;
+        private System.Windows.Forms.ToolStripButton btnAdd;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton btnUpdate;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
     }
 }
