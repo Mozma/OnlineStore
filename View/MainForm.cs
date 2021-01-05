@@ -11,7 +11,9 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
+
         public SqlConnection Connection { get; set; }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             using (var loginForm = new LoginForm())
@@ -29,13 +31,22 @@ namespace OnlineStore.View
         {
           
         }
-
+        // Вызов формы OrdersForm.
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var ordersForm = new OrdersForm())
+
+            OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
+            if (ordersForm == null)
             {
-                ordersForm.ShowDialog();
+                ordersForm = new OrdersForm();
+                ordersForm.Show();
             }
+            else
+            {
+                ordersForm.WindowState = FormWindowState.Normal;
+                ordersForm.Activate();
+            }
+                
         }
     }
 }

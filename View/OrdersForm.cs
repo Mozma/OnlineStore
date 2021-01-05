@@ -72,20 +72,26 @@ namespace OnlineStore.View
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
 
-            var newRow = marketDBDataSet.Tables["Order"].NewRow();
-            //newRow[0] = ;
-            newRow[1] = 1;
-            newRow[2] = "004523";
-            newRow[3] = "2019-12-05";
-            newRow[4] = "2019-12-08";
-            newRow[5] = "З04";
-            newRow[6] = 18980d;
-            newRow[7] = 18980d;
-            newRow[8] = null;
+            //var newRow = marketDBDataSet.Tables["Order"].NewRow();
 
-            marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+            //newRow[1] = 1;
+            //newRow[2] = "004523";
+            //newRow[3] = "2019-12-05";
+            //newRow[4] = "2019-12-08";
+            //newRow[5] = "З04";
+            //newRow[6] = 18980d;
+            //newRow[7] = 18980d;
+            //newRow[8] = null;
 
-            orderTableAdapter.Update(marketDBDataSet);
+            //marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+
+            //orderTableAdapter.Update(marketDBDataSet);
+
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm()) 
+            {
+                ordersEditForm.Text = "Добавление новой записи";
+                ordersEditForm.ShowDialog();
+            }
 
         }
 
