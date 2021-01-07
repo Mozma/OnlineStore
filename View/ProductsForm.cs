@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
-    public partial class ProductsForm : Form, IEditForm
+    public partial class ProductsForm : Form
     {
         public ProductsForm()
         {

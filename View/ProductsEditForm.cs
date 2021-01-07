@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
-    public partial class ProductsEditForm : Form, IEditForm
+    public partial class ProductsEditForm : Form
     {
         public DataRow WorkRow { get; set; }
 

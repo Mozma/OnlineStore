@@ -32,10 +32,29 @@ namespace OnlineStore.View
 
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var ordersForm = new OrdersForm())
+            OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
+            OpenThisForm(ordersForm);
+        }
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductsForm productsForm = (ProductsForm)Application.OpenForms["productsForm"];
+            OpenThisForm(productsForm);
+        }
+
+        private void OpenThisForm<T>(T form) where T: Form, new() 
+        {
+            if (form == null) 
             {
-                ordersForm.ShowDialog();
+                form = new T();
+                form.Show();
+            }
+            else 
+            {
+                form.WindowState = FormWindowState.Normal;
+                form.Activate();
             }
         }
+
+
     }
 }
