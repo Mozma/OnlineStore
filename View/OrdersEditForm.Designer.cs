@@ -55,17 +55,17 @@ namespace OnlineStore.View
             this.orderDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.completionDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.statuseComboBox = new System.Windows.Forms.ComboBox();
+            this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.userComboBox = new System.Windows.Forms.ComboBox();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.usersTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.UsersTableAdapter();
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label9
@@ -178,6 +178,7 @@ namespace OnlineStore.View
             this.btnCancel.TabIndex = 36;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
@@ -289,6 +290,16 @@ namespace OnlineStore.View
             this.statuseComboBox.TabIndex = 49;
             this.statuseComboBox.ValueMember = "Statuse_code";
             // 
+            // statusesBindingSource
+            // 
+            this.statusesBindingSource.DataMember = "Statuses";
+            this.statusesBindingSource.DataSource = this.marketDBDataSet;
+            // 
+            // marketDBDataSet
+            // 
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // userComboBox
             // 
             this.userComboBox.DataSource = this.usersBindingSource;
@@ -300,6 +311,11 @@ namespace OnlineStore.View
             this.userComboBox.Size = new System.Drawing.Size(172, 21);
             this.userComboBox.TabIndex = 50;
             this.userComboBox.ValueMember = "User_id";
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.marketDBDataSet;
             // 
             // panel1
             // 
@@ -343,21 +359,6 @@ namespace OnlineStore.View
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
             // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.marketDBDataSet;
-            // 
-            // statusesBindingSource
-            // 
-            this.statusesBindingSource.DataMember = "Statuses";
-            this.statusesBindingSource.DataSource = this.marketDBDataSet;
-            // 
             // OrdersEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,11 +369,11 @@ namespace OnlineStore.View
             this.Controls.Add(this.btnCancel);
             this.Name = "OrdersEditForm";
             this.Load += new System.EventHandler(this.OrdersEditForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

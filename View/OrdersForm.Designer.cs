@@ -254,6 +254,7 @@ namespace OnlineStore.View
             this.btnDelete.RightToLeftAutoMirrorImage = true;
             this.btnDelete.Size = new System.Drawing.Size(71, 22);
             this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -330,7 +331,7 @@ namespace OnlineStore.View
             this.btnAdd.RightToLeftAutoMirrorImage = true;
             this.btnAdd.Size = new System.Drawing.Size(77, 22);
             this.btnAdd.Text = "Добавить";
-            this.btnAdd.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 

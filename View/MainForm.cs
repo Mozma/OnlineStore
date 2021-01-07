@@ -54,10 +54,8 @@ namespace OnlineStore.View
             {
                 form.WindowState = FormWindowState.Normal;
                 form.Activate();
+
             }
-                
         }
-
-
     }
 }

@@ -15,7 +15,7 @@ namespace OnlineStore.View
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             SetConnections();
-            FillData();
+            FillDataSet();
 
             this.Text = $"Обзор таблицы \"Заказы\"";
         }
@@ -69,35 +69,11 @@ namespace OnlineStore.View
         #endregion
 
         #region Кнопки
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
-
-            //var newRow = marketDBDataSet.Tables["Order"].NewRow();
-
-            //newRow[1] = 1;
-            //newRow[2] = "004523";
-            //newRow[3] = "2019-12-05";
-            //newRow[4] = "2019-12-08";
-            //newRow[5] = "З04";
-            //newRow[6] = 18980d;
-            //newRow[7] = 18980d;
-            //newRow[8] = null;
-
-            //marketDBDataSet.Tables["Order"].Rows.Add(newRow);
-
-            //orderTableAdapter.Update(marketDBDataSet);
-
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm()) 
-            {
-                ordersEditForm.Text = "Добавление новой записи";
-                ordersEditForm.ShowDialog();
-            }
-
-        }
+  
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            FillDataSet();
         }
         #endregion
 
@@ -108,7 +84,7 @@ namespace OnlineStore.View
             statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
 
-        private void FillData() 
+        private void FillDataSet() 
         {
             this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
             this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
@@ -116,5 +92,34 @@ namespace OnlineStore.View
 
 
         #endregion
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var newRow = marketDBDataSet.Tables["Order"].NewRow();
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
+            {
+                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    newRow = ordersEditForm.WorkRow;
+
+                    marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                    orderTableAdapter.Update(marketDBDataSet);
+
+                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int index = ordersDataGridView.CurrentCell.RowIndex;
+            string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Order"].Rows[index][0]}?";
+
+            if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                marketDBDataSet.Tables["Order"].Rows[index].Delete();
+                orderTableAdapter.Update(marketDBDataSet);
+            }
+        }
     }
 }
