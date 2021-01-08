@@ -50,7 +50,6 @@ namespace OnlineStore.View
             this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -62,8 +61,8 @@ namespace OnlineStore.View
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
@@ -108,7 +107,7 @@ namespace OnlineStore.View
             this.ordersDataGridView.Location = new System.Drawing.Point(15, 42);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
-            this.ordersDataGridView.Size = new System.Drawing.Size(978, 350);
+            this.ordersDataGridView.Size = new System.Drawing.Size(978, 385);
             this.ordersDataGridView.TabIndex = 0;
             this.ordersDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ordersDataGridView_CellFormatting);
             // 
@@ -218,10 +217,10 @@ namespace OnlineStore.View
             // 
             // orderBindingNavigator
             // 
-            this.orderBindingNavigator.AddNewItem = this.btnDelete;
+            this.orderBindingNavigator.AddNewItem = null;
             this.orderBindingNavigator.BindingSource = this.orderBindingSource;
             this.orderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.orderBindingNavigator.DeleteItem = this.btnDelete;
+            this.orderBindingNavigator.DeleteItem = null;
             this.orderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -246,15 +245,6 @@ namespace OnlineStore.View
             this.orderBindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.orderBindingNavigator.Size = new System.Drawing.Size(1005, 25);
             this.orderBindingNavigator.TabIndex = 1;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.RightToLeftAutoMirrorImage = true;
-            this.btnDelete.Size = new System.Drawing.Size(71, 22);
-            this.btnDelete.Text = "Удалить";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -340,6 +330,17 @@ namespace OnlineStore.View
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 22);
             this.btnUpdate.Text = "Изменить";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(71, 22);
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.ToolTipText = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -350,26 +351,15 @@ namespace OnlineStore.View
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(15, 404);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(978, 119);
-            this.panel1.TabIndex = 2;
-            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 535);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1005, 439);
             this.Controls.Add(this.orderBindingNavigator);
             this.Controls.Add(this.ordersDataGridView);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(916, 452);
             this.Name = "OrdersForm";
             this.Text = "OrdersForm";
@@ -397,7 +387,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.BindingNavigator orderBindingNavigator;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -408,7 +397,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnRefresh;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
@@ -419,5 +407,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Statuse_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton btnDelete;
     }
 }

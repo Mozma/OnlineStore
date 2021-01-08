@@ -36,20 +36,15 @@ namespace OnlineStore.View
             }
         }
 
-
         private void OrdersEditForm_Load(object sender, EventArgs e)
         {
-            SetConnections();
-            FillDataSet();
-            ResetItems();
-
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
             if (ValidateItems()) 
             {
-                FillItems();
+                FillResultRow();
                 DialogResult = DialogResult.OK;
             }
         }
@@ -59,7 +54,6 @@ namespace OnlineStore.View
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ResetItems();
-            DialogResult = DialogResult.Cancel;
         }
 
         private void ResetItems()
@@ -68,14 +62,77 @@ namespace OnlineStore.View
             userComboBox.SelectedIndex = -1;
         }
 
+        private void FillResultRow()
+        {
+            WorkRow[1] = userComboBox.SelectedValue;
+            WorkRow[2] = orderNumberTextBox.Text;
+            WorkRow[3] = orderDateDateTimePicker.Value;
+            WorkRow[4] = completionDateDateTimePicker.Value;
+            WorkRow[5] = statuseComboBox.SelectedValue;
+            WorkRow[6] = Convert.ToDouble(totalCostTextBox.Text);
+            WorkRow[7] = Convert.ToDouble(paidTextBox.Text);
+
+            if (!String.IsNullOrWhiteSpace(cancellationSignTextBox.Text)) 
+            {
+                WorkRow[8] = cancellationSignTextBox.Text;
+            }
+        }
         private void FillItems()
         {
-            throw new NotImplementedException();
+            userComboBox.SelectedValue = WorkRow[1];
+            orderNumberTextBox.Text = WorkRow[2].ToString();
+            orderDateDateTimePicker.Value = (DateTime)WorkRow[3];
+            completionDateDateTimePicker.Value = (DateTime)WorkRow[4];
+            statuseComboBox.SelectedValue = WorkRow[5];
+            totalCostTextBox.Text = WorkRow[6].ToString();
+            paidTextBox.Text = WorkRow[7].ToString();
         }
 
         private bool ValidateItems()
         {
-            throw new NotImplementedException();
+            bool flag = true;
+            string error = "Ошибка ввода: \n";
+
+            if(userComboBox.SelectedIndex == -1) 
+            {
+                error += "Пользователь не выбран.\n";
+                flag = false;
+            }
+
+            if (statuseComboBox.SelectedIndex == -1)
+            {
+                error += "Статус не выбран.\n";
+                flag = false;
+            }
+
+            if (String.IsNullOrWhiteSpace(orderNumberTextBox.Text))
+            {
+                error += "Номер заказа не указан.\n";
+                flag = false;
+            }
+
+            try
+            {
+                double tmp;
+
+                tmp = Convert.ToDouble(totalCostTextBox.Text);
+                tmp = Convert.ToDouble(paidTextBox.Text);
+
+            }
+            catch (FormatException)
+            {
+
+                error += "Данные в полях \"Полная стоимость\" или \"Оплачено\" указаны неверно.";
+                flag = false;
+            }
+
+            if (flag == false) 
+            {
+                MessageBox.Show(this,error,"Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+
+            return flag;
+
         }
 
         private void SetConnections()

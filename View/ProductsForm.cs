@@ -15,6 +15,8 @@ namespace OnlineStore.View
         {
             SetConnections();
             FillDataSet();
+
+            this.Text = $"Обзор таблицы \"Товары\"";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -37,11 +39,28 @@ namespace OnlineStore.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            //TODO: Сделать отлов ошибок при изменения строки.
+            int index = productsDataGridView.CurrentCell.RowIndex;
+            var workRow = marketDBDataSet.Tables["Products"].Rows[index];
+            using (ProductsEditForm productsEditForm = new ProductsEditForm(workRow, true))
+            {
+                if (productsEditForm.ShowDialog(this) == DialogResult.OK)
+                {
 
+                    workRow.BeginEdit();
+                    workRow = productsEditForm.WorkRow;
+                    workRow.EndEdit();
+
+                    productsTableAdapter.Update(marketDBDataSet);
+
+                    MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //TODO: Сделать отлов ошибок при удалении строки.
             int index = productsDataGridView.CurrentCell.RowIndex;
             string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Products"].Rows[index][0]}?";
 
@@ -65,16 +84,6 @@ namespace OnlineStore.View
         public void FillDataSet()
         {
             this.productsTableAdapter.Fill(this.marketDBDataSet.Products);
-        }
-
-        public void ResetItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void FillItems()
-        {
-            throw new NotImplementedException();
         }
     }
 }

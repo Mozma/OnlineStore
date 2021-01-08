@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace OnlineStore.View
@@ -13,15 +8,17 @@ namespace OnlineStore.View
     public partial class ProductsEditForm : Form
     {
         public DataRow WorkRow { get; set; }
+        bool editRow;
 
         public ProductsEditForm()
         {
             InitializeComponent();
         }
 
-        public ProductsEditForm(DataRow workRow, bool editRow = false)
+        public ProductsEditForm(DataRow workRow, bool editRow = false) : this()
         {
             this.WorkRow = workRow;
+            this.editRow = editRow;
 
             SetConnections();
             FillDataSet();
@@ -32,7 +29,7 @@ namespace OnlineStore.View
                 this.Text = "Редактирование записи";
                 btnAccept.Text = "Изменить";
 
-                FillItems();
+               FillItems();
             }
             else
             {
@@ -41,24 +38,115 @@ namespace OnlineStore.View
             }
         }
 
+        private void ProductsEditForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            if (ValidateItems())
+            {
+                FillResultRow();
+                DialogResult = DialogResult.OK;
+            }
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ResetItems();
+        }
+
+        private void FillResultRow()
+        {
+            WorkRow[0] = productCodeTextBox.Text;
+            WorkRow[1] = productNameTextBox.Text;
+            WorkRow[2] = Convert.ToDouble(priceTextBox.Text);
+            WorkRow[3] = categoryComboBox.SelectedValue;
+
+            if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text)) 
+            {
+                WorkRow[4] = descriptionTextBox.Text;
+            }
+        }
+
         public void SetConnections()
         {
-            throw new NotImplementedException();
+            categoriesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
 
         public void FillDataSet()
         {
-            throw new NotImplementedException();
+            this.categoriesTableAdapter.Fill(this.marketDBDataSet.Categories);
         }
 
         public void ResetItems()
         {
-            throw new NotImplementedException();
+            if (editRow)
+            {
+                FillItems();
+            }
+            else
+            {
+                categoryComboBox.SelectedIndex = -1;
+                productCodeTextBox.Text = "";
+                productNameTextBox.Text = "";
+                priceTextBox.Text = "";
+                descriptionTextBox.Text = "";
+            }
         }
 
         public void FillItems()
         {
-            throw new NotImplementedException();
+            productCodeTextBox.Text = WorkRow[0].ToString();
+            productNameTextBox.Text = WorkRow[1].ToString();
+            priceTextBox.Text = WorkRow[2].ToString();
+            categoryComboBox.SelectedValue = WorkRow[3];
+
+            if (WorkRow[4] != null)
+                descriptionTextBox.Text = WorkRow[4].ToString();
+
         }
+
+        private bool ValidateItems()
+        {
+            bool flag = true;
+            string error = "Ошибка ввода: \n";
+
+            if (String.IsNullOrWhiteSpace(productCodeTextBox.Text)) 
+            {
+                error += "Код не указан.\n";
+                flag = false;
+            }
+            if (String.IsNullOrWhiteSpace(productNameTextBox.Text))
+            {
+                error += "Название не указано.\n";
+                flag = false;
+            }
+
+
+            if(categoryComboBox.SelectedIndex == -1) 
+            {
+                error += "Категория не выбрана.\n";
+                flag = false;
+            }
+
+            try
+            {
+                double tmp = Convert.ToDouble(priceTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                error += "Цена указана неправильно.";
+                flag = false;
+            }
+
+            if (flag == false) 
+            {
+                MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return flag;
+        }
+
+
     }
 }

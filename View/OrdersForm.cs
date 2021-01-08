@@ -22,7 +22,7 @@ namespace OnlineStore.View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+          //  Close();
         }
 
         #region Обработка Lookup полей.
@@ -69,7 +69,57 @@ namespace OnlineStore.View
         #endregion
 
         #region Кнопки
-  
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var newRow = marketDBDataSet.Tables["Order"].NewRow();
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
+            {
+                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    newRow = ordersEditForm.WorkRow;
+
+                    marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                    orderTableAdapter.Update(marketDBDataSet);
+
+                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //TODO: Сделать отлов ошибок при изменения строки.
+            int index = ordersDataGridView.CurrentCell.RowIndex;
+            var workRow = marketDBDataSet.Tables["Order"].Rows[index];
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(workRow, true))
+            {
+                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                {
+
+                    workRow.BeginEdit();
+                    workRow = ordersEditForm.WorkRow;
+                    workRow.EndEdit();
+
+                    orderTableAdapter.Update(marketDBDataSet);
+
+                    MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //TODO: Сделать отлов ошибок при удалении строки.
+            int index = ordersDataGridView.CurrentCell.RowIndex;
+            string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Order"].Rows[index][0]}?";
+
+            if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                marketDBDataSet.Tables["Order"].Rows[index].Delete();
+                orderTableAdapter.Update(marketDBDataSet);
+            }
+        }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -93,33 +143,7 @@ namespace OnlineStore.View
 
         #endregion
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            var newRow = marketDBDataSet.Tables["Order"].NewRow();
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
-            {
-                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
-                {
-                    newRow = ordersEditForm.WorkRow;
+      
 
-                    marketDBDataSet.Tables["Order"].Rows.Add(newRow);
-                    orderTableAdapter.Update(marketDBDataSet);
-
-                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int index = ordersDataGridView.CurrentCell.RowIndex;
-            string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Order"].Rows[index][0]}?";
-
-            if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                marketDBDataSet.Tables["Order"].Rows[index].Delete();
-                orderTableAdapter.Update(marketDBDataSet);
-            }
-        }
     }
 }

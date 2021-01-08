@@ -30,6 +30,7 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersEditForm));
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -171,7 +172,6 @@ namespace OnlineStore.View
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(378, 202);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(115, 23);
@@ -183,7 +183,6 @@ namespace OnlineStore.View
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAccept.Location = new System.Drawing.Point(499, 202);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(115, 23);
@@ -367,6 +366,12 @@ namespace OnlineStore.View
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(640, 276);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(640, 276);
             this.Name = "OrdersEditForm";
             this.Load += new System.EventHandler(this.OrdersEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();

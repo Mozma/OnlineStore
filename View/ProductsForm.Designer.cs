@@ -30,7 +30,7 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
             this.productsDataGridView = new System.Windows.Forms.DataGridView();
             this.productcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +41,6 @@ namespace OnlineStore.View
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.productsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -55,6 +54,7 @@ namespace OnlineStore.View
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.productsTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.ProductsTableAdapter();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
@@ -65,18 +65,21 @@ namespace OnlineStore.View
             // productsDataGridView
             // 
             this.productsDataGridView.AllowUserToAddRows = false;
+            this.productsDataGridView.AllowUserToDeleteRows = false;
+            this.productsDataGridView.AllowUserToResizeRows = false;
             this.productsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.productsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.productsDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.productsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.productsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productcodeDataGridViewTextBoxColumn,
             this.productnameDataGridViewTextBoxColumn,
@@ -141,10 +144,10 @@ namespace OnlineStore.View
             // 
             // productsBindingNavigator
             // 
-            this.productsBindingNavigator.AddNewItem = this.btnAdd;
+            this.productsBindingNavigator.AddNewItem = null;
             this.productsBindingNavigator.BindingSource = this.productsBindingSource;
             this.productsBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.productsBindingNavigator.DeleteItem = this.btnDelete;
+            this.productsBindingNavigator.DeleteItem = null;
             this.productsBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -168,15 +171,6 @@ namespace OnlineStore.View
             this.productsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
             this.productsBindingNavigator.Size = new System.Drawing.Size(714, 25);
             this.productsBindingNavigator.TabIndex = 1;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.RightToLeftAutoMirrorImage = true;
-            this.btnAdd.Size = new System.Drawing.Size(77, 22);
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -277,6 +271,15 @@ namespace OnlineStore.View
             // 
             this.productsTableAdapter.ClearBeforeFill = true;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(77, 22);
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,7 +307,6 @@ namespace OnlineStore.View
 
         private System.Windows.Forms.DataGridView productsDataGridView;
         private System.Windows.Forms.BindingNavigator productsBindingNavigator;
-        private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -325,5 +327,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripButton btnAdd;
     }
 }
