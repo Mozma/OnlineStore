@@ -31,17 +31,24 @@ namespace OnlineStore.View
         {
           
         }
-        // Вызов формы OrdersForm.
+        
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
             OpenThisForm(ordersForm);
         }
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = (UsersForm)Application.OpenForms["usersForm"];
+            OpenThisForm(usersForm);
+        }
+
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductsForm productsForm = (ProductsForm)Application.OpenForms["productsForm"];
             OpenThisForm(productsForm);
         }
+
 
         private void OpenThisForm<T>(T form) where T: Form, new() 
         {
@@ -57,5 +64,7 @@ namespace OnlineStore.View
 
             }
         }
+
+ 
     }
 }

@@ -29,7 +29,7 @@ namespace OnlineStore.View
                 this.Text = "Редактирование записи";
                 btnAccept.Text = "Изменить";
 
-               FillItems();
+                FillItems();
             }
             else
             {
@@ -52,7 +52,14 @@ namespace OnlineStore.View
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ResetItems();
+            if (editRow)
+            {
+                FillItems();
+            }
+            else
+            {
+                ResetItems();
+            }
         }
 
         private void FillResultRow()

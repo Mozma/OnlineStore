@@ -21,7 +21,6 @@ namespace OnlineStore.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             var newRow = marketDBDataSet.Tables["Products"].NewRow();
             using (ProductsEditForm productsEditForm = new ProductsEditForm(newRow))
             {

@@ -133,6 +133,18 @@
     <Compile Include="View\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UsersEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersEditForm.Designer.cs">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
@@ -164,6 +176,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersEditForm.resx">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MarketDBDataSet1.xsc">
       <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
