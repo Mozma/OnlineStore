@@ -11,7 +11,9 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
+
         public SqlConnection Connection { get; set; }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             using (var loginForm = new LoginForm())
@@ -29,13 +31,68 @@ namespace OnlineStore.View
         {
           
         }
-
+        
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var ordersForm = new OrdersForm())
+            OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
+            OpenThisForm(ordersForm);
+        }
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = (UsersForm)Application.OpenForms["usersForm"];
+            OpenThisForm(usersForm);
+        }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductsForm productsForm = (ProductsForm)Application.OpenForms["productsForm"];
+            
+            OpenThisForm(productsForm);
+        }
+
+
+        private void OpenThisForm<T>(T form) where T: Form, new() 
+        {
+            if (form == null) 
             {
-                ordersForm.ShowDialog();
+                form = new T();
+                form.Show();
+            }
+            else 
+            {
+                form.WindowState = FormWindowState.Normal;
+                form.Activate();
+
             }
         }
+
+        public void PostError(string msg)
+        {
+            int state = 0;
+            string errorMsg = msg;
+            if (msg.Contains("DELETE")  && msg.Contains("REFERENCE")) 
+            {
+                errorMsg = "На данное значение существует ссылка.\n" +
+                           "Удаление отменено.";
+            }
+            if (msg.Contains("DELETE") && msg.Contains("REFERENCE"))
+            {
+                errorMsg = "Нарушение уникальности первичного ключа.\n" +
+                           "Удаление отменено.";
+            }
+            else 
+            
+
+
+
+            /*
+             
+             */
+
+
+            MessageBox.Show(this, errorMsg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+
     }
 }

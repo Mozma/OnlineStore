@@ -121,6 +121,30 @@
     <Compile Include="View\OrdersForm.Designer.cs">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ProductsEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProductsEditForm.Designer.cs">
+      <DependentUpon>ProductsEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProductsForm.Designer.cs">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersEditForm.Designer.cs">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
@@ -146,6 +170,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\OrdersForm.resx">
       <DependentUpon>OrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProductsEditForm.resx">
+      <DependentUpon>ProductsEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProductsForm.resx">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersEditForm.resx">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MarketDBDataSet1.xsc">
       <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
@@ -189,6 +225,13 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\02redo.png" />
+    <Content Include="Resources\10medical.ico" />
+    <Content Include="Resources\187pencil.ico" />
+    <Content Include="Resources\bird.ico" />
+    <Content Include="Resources\empty.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

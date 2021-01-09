@@ -34,34 +34,34 @@ namespace OnlineStore.View
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
-            this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.completiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusecodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Statuse_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Statuse_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationsignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
+            this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
@@ -101,38 +101,15 @@ namespace OnlineStore.View
             this.statusecodeDataGridViewTextBoxColumn,
             this.totalcostDataGridViewTextBoxColumn,
             this.paidDataGridViewTextBoxColumn,
-            this.cancellationsignDataGridViewTextBoxColumn,
-            this.Statuse_name});
+            this.Statuse_name,
+            this.cancellationsignDataGridViewTextBoxColumn});
             this.ordersDataGridView.DataSource = this.orderBindingSource;
             this.ordersDataGridView.Location = new System.Drawing.Point(15, 42);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
-            this.ordersDataGridView.Size = new System.Drawing.Size(894, 416);
+            this.ordersDataGridView.Size = new System.Drawing.Size(978, 385);
             this.ordersDataGridView.TabIndex = 0;
             this.ordersDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ordersDataGridView_CellFormatting);
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataMember = "Order";
-            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
-            // 
-            // marketDBDataSetBindingSource
-            // 
-            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
-            this.marketDBDataSetBindingSource.Position = 0;
-            // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // orderTableAdapter
-            // 
-            this.orderTableAdapter.ClearBeforeFill = true;
-            // 
-            // statusesTableAdapter
-            // 
-            this.statusesTableAdapter.ClearBeforeFill = true;
             // 
             // orderidDataGridViewTextBoxColumn
             // 
@@ -185,12 +162,6 @@ namespace OnlineStore.View
             this.statusecodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.statusecodeDataGridViewTextBoxColumn.Visible = false;
             // 
-            // Statuse_name
-            // 
-            this.Statuse_name.HeaderText = "Статус";
-            this.Statuse_name.Name = "Statuse_name";
-            this.Statuse_name.ReadOnly = true;
-            // 
             // totalcostDataGridViewTextBoxColumn
             // 
             this.totalcostDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -207,6 +178,12 @@ namespace OnlineStore.View
             this.paidDataGridViewTextBoxColumn.Name = "paidDataGridViewTextBoxColumn";
             this.paidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Statuse_name
+            // 
+            this.Statuse_name.HeaderText = "Статус";
+            this.Statuse_name.Name = "Statuse_name";
+            this.Statuse_name.ReadOnly = true;
+            // 
             // cancellationsignDataGridViewTextBoxColumn
             // 
             this.cancellationsignDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -215,12 +192,35 @@ namespace OnlineStore.View
             this.cancellationsignDataGridViewTextBoxColumn.Name = "cancellationsignDataGridViewTextBoxColumn";
             this.cancellationsignDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataMember = "Order";
+            this.orderBindingSource.DataSource = this.marketDBDataSetBindingSource;
+            // 
+            // marketDBDataSetBindingSource
+            // 
+            this.marketDBDataSetBindingSource.DataSource = this.marketDBDataSet;
+            this.marketDBDataSetBindingSource.Position = 0;
+            // 
+            // marketDBDataSet
+            // 
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // orderTableAdapter
+            // 
+            this.orderTableAdapter.ClearBeforeFill = true;
+            // 
+            // statusesTableAdapter
+            // 
+            this.statusesTableAdapter.ClearBeforeFill = true;
+            // 
             // orderBindingNavigator
             // 
-            this.orderBindingNavigator.AddNewItem = this.btnDelete;
+            this.orderBindingNavigator.AddNewItem = null;
             this.orderBindingNavigator.BindingSource = this.orderBindingSource;
             this.orderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.orderBindingNavigator.DeleteItem = this.btnDelete;
+            this.orderBindingNavigator.DeleteItem = null;
             this.orderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -243,23 +243,8 @@ namespace OnlineStore.View
             this.orderBindingNavigator.Name = "orderBindingNavigator";
             this.orderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
             this.orderBindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.orderBindingNavigator.Size = new System.Drawing.Size(921, 25);
+            this.orderBindingNavigator.Size = new System.Drawing.Size(1005, 25);
             this.orderBindingNavigator.TabIndex = 1;
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
             // bindingNavigatorCountItem
             // 
@@ -267,24 +252,6 @@ namespace OnlineStore.View
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 22);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.RightToLeftAutoMirrorImage = true;
-            this.btnDelete.Size = new System.Drawing.Size(71, 22);
-            this.btnDelete.Text = "Удалить";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -304,6 +271,26 @@ namespace OnlineStore.View
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -322,6 +309,11 @@ namespace OnlineStore.View
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // btnAdd
             // 
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
@@ -329,7 +321,7 @@ namespace OnlineStore.View
             this.btnAdd.RightToLeftAutoMirrorImage = true;
             this.btnAdd.Size = new System.Drawing.Size(77, 22);
             this.btnAdd.Text = "Добавить";
-            this.btnAdd.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -338,6 +330,17 @@ namespace OnlineStore.View
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 22);
             this.btnUpdate.Text = "Изменить";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(71, 22);
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.ToolTipText = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -352,11 +355,14 @@ namespace OnlineStore.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 470);
+            this.ClientSize = new System.Drawing.Size(1005, 439);
             this.Controls.Add(this.orderBindingNavigator);
             this.Controls.Add(this.ordersDataGridView);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(916, 452);
             this.Name = "OrdersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
@@ -379,20 +385,9 @@ namespace OnlineStore.View
         private System.Windows.Forms.BindingSource orderBindingSource;
         private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
         private MarketDBDataSetTableAdapters.StatusesTableAdapter statusesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn completiondateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusecodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Statuse_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalcostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingNavigator orderBindingNavigator;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -403,5 +398,16 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ordernumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn completiondateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusecodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalcostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Statuse_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationsignDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton btnDelete;
     }
 }

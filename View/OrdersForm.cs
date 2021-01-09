@@ -15,14 +15,14 @@ namespace OnlineStore.View
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             SetConnections();
-            FillData();
+            FillDataSet();
 
             this.Text = $"Обзор таблицы \"Заказы\"";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+          //  Close();
         }
 
         #region Обработка Lookup полей.
@@ -69,14 +69,87 @@ namespace OnlineStore.View
         #endregion
 
         #region Кнопки
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var newRow = marketDBDataSet.Tables["Order"].NewRow();
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
+            {
+                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    try { 
+                        newRow = ordersEditForm.WorkRow;
+
+                        marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                        orderTableAdapter.Update(marketDBDataSet);
+
+                        MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exp)
+                    {
+                        var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                        mainForm.PostError(exp.Message);
+
+                        FillDataSet();
+                    }
+
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int index = ordersDataGridView.CurrentCell.RowIndex;
+            var workRow = marketDBDataSet.Tables["Order"].Rows[index];
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(workRow, true))
+            {
+                try { 
+                    if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        workRow.BeginEdit();
+                        workRow = ordersEditForm.WorkRow;
+                        workRow.EndEdit();
+                        orderTableAdapter.Update(marketDBDataSet);
+
+                        MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int index = ordersDataGridView.CurrentCell.RowIndex;
+            string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Order"].Rows[index][0]}?";
+
+            if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                try
+                {
+                    marketDBDataSet.Tables["Order"].Rows[index].Delete();
+                    orderTableAdapter.Update(marketDBDataSet);
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            FillDataSet();
         }
         #endregion
 
@@ -87,14 +160,19 @@ namespace OnlineStore.View
             statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
 
-        private void FillData() 
+        private void FillDataSet() 
         {
             this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
             this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
         }
 
+
         #endregion
 
 
+        private void PostError(string msg) 
+        {
+
+        }
     }
 }
