@@ -222,6 +222,7 @@ namespace OnlineStore.View
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProductsEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ProductsEditForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

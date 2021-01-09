@@ -362,6 +362,7 @@ namespace OnlineStore.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(916, 452);
             this.Name = "OrdersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();

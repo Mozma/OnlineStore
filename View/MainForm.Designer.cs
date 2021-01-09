@@ -146,6 +146,7 @@ namespace OnlineStore.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учёт товаров в интернет-магазине";
             this.TransparencyKey = System.Drawing.Color.Lime;
             this.Load += new System.EventHandler(this.MainForm_Load);

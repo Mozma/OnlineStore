@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -26,12 +27,20 @@ namespace OnlineStore.View
             {
                 if (usersEditForm.ShowDialog(this) == DialogResult.OK)
                 {
-                    newRow = usersEditForm.WorkRow;
+                    try { 
+                        newRow = usersEditForm.WorkRow;
+                        marketDBDataSet.Tables["Users"].Rows.Add(newRow);
+                        usersTableAdapter.Update(marketDBDataSet);
 
-                    marketDBDataSet.Tables["Users"].Rows.Add(newRow);
-                    usersTableAdapter.Update(marketDBDataSet);
+                        MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exp)
+                    {
+                        var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                        mainForm.PostError(exp.Message);
 
-                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillDataSet();
+                    }
                 }
             }
         }
@@ -44,30 +53,48 @@ namespace OnlineStore.View
             var workRow = marketDBDataSet.Tables["Users"].Rows[index];
             using (UsersEditForm usersEditForm = new UsersEditForm(workRow, true))
             {
-                if (usersEditForm.ShowDialog(this) == DialogResult.OK)
+                try
                 {
+                    if (usersEditForm.ShowDialog(this) == DialogResult.OK)
+                    {
 
-                    workRow.BeginEdit();
-                    workRow = usersEditForm.WorkRow;
-                    workRow.EndEdit();
+                        workRow.BeginEdit();
+                        workRow = usersEditForm.WorkRow;
+                        workRow.EndEdit();
 
-                    usersTableAdapter.Update(marketDBDataSet);
+                        usersTableAdapter.Update(marketDBDataSet);
 
-                    MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }                    
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
                 }
-            }
+        }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //TODO: Сделать отлов ошибок при удалении строки.
             int index = usersDataGridView.CurrentCell.RowIndex;
             string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Users"].Rows[index][0]}?";
 
             if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                marketDBDataSet.Tables["Users"].Rows[index].Delete();
-                usersTableAdapter.Update(marketDBDataSet);
+                try { 
+                    marketDBDataSet.Tables["Users"].Rows[index].Delete();
+                    usersTableAdapter.Update(marketDBDataSet);
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
             }
         }
 
@@ -75,7 +102,6 @@ namespace OnlineStore.View
         {
             FillDataSet();
         }
-
 
         public void SetConnections()
         {
@@ -88,5 +114,7 @@ namespace OnlineStore.View
         }
 
         
+
+
     }
 }

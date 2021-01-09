@@ -373,6 +373,7 @@ namespace OnlineStore.View
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 276);
             this.Name = "OrdersEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrdersEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();

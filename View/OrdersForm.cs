@@ -77,47 +77,73 @@ namespace OnlineStore.View
             {
                 if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
                 {
-                    newRow = ordersEditForm.WorkRow;
+                    try { 
+                        newRow = ordersEditForm.WorkRow;
 
-                    marketDBDataSet.Tables["Order"].Rows.Add(newRow);
-                    orderTableAdapter.Update(marketDBDataSet);
+                        marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                        orderTableAdapter.Update(marketDBDataSet);
 
-                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exp)
+                    {
+                        var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                        mainForm.PostError(exp.Message);
+
+                        FillDataSet();
+                    }
+
                 }
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //TODO: Сделать отлов ошибок при изменения строки.
             int index = ordersDataGridView.CurrentCell.RowIndex;
             var workRow = marketDBDataSet.Tables["Order"].Rows[index];
             using (OrdersEditForm ordersEditForm = new OrdersEditForm(workRow, true))
             {
-                if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                try { 
+                    if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        workRow.BeginEdit();
+                        workRow = ordersEditForm.WorkRow;
+                        workRow.EndEdit();
+                        orderTableAdapter.Update(marketDBDataSet);
+
+                        MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception exp)
                 {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
 
-                    workRow.BeginEdit();
-                    workRow = ordersEditForm.WorkRow;
-                    workRow.EndEdit();
-
-                    orderTableAdapter.Update(marketDBDataSet);
-
-                    MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FillDataSet();
                 }
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //TODO: Сделать отлов ошибок при удалении строки.
             int index = ordersDataGridView.CurrentCell.RowIndex;
             string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Order"].Rows[index][0]}?";
 
             if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                marketDBDataSet.Tables["Order"].Rows[index].Delete();
-                orderTableAdapter.Update(marketDBDataSet);
+                try
+                {
+                    marketDBDataSet.Tables["Order"].Rows[index].Delete();
+                    orderTableAdapter.Update(marketDBDataSet);
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+
             }
         }
 
@@ -143,7 +169,10 @@ namespace OnlineStore.View
 
         #endregion
 
-      
 
+        private void PostError(string msg) 
+        {
+
+        }
     }
 }

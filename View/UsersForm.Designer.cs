@@ -30,26 +30,25 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.usersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.usersDataGridView = new System.Windows.Forms.DataGridView();
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.UsersTableAdapter();
+            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.usersDataGridView = new System.Windows.Forms.DataGridView();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,11 +58,12 @@ namespace OnlineStore.View
             this.adressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountcardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registrationdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usersTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.UsersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingNavigator)).BeginInit();
             this.usersBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // usersBindingNavigator
@@ -96,20 +96,15 @@ namespace OnlineStore.View
             this.usersBindingNavigator.Size = new System.Drawing.Size(1003, 25);
             this.usersBindingNavigator.TabIndex = 0;
             // 
-            // bindingNavigatorSeparator
+            // usersBindingSource
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.marketDBDataSet;
             // 
-            // bindingNavigatorPositionItem
+            // marketDBDataSet
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
+            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
+            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -117,64 +112,6 @@ namespace OnlineStore.View
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 22);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // usersDataGridView
-            // 
-            this.usersDataGridView.AllowUserToAddRows = false;
-            this.usersDataGridView.AllowUserToDeleteRows = false;
-            this.usersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.usersDataGridView.AutoGenerateColumns = false;
-            this.usersDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.useridDataGridViewTextBoxColumn,
-            this.loginDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.fullnameDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn,
-            this.adressDataGridViewTextBoxColumn,
-            this.discountcardDataGridViewTextBoxColumn,
-            this.registrationdateDataGridViewTextBoxColumn});
-            this.usersDataGridView.DataSource = this.usersBindingSource;
-            this.usersDataGridView.Location = new System.Drawing.Point(12, 28);
-            this.usersDataGridView.Name = "usersDataGridView";
-            this.usersDataGridView.Size = new System.Drawing.Size(979, 410);
-            this.usersDataGridView.TabIndex = 1;
-            // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.marketDBDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -194,6 +131,26 @@ namespace OnlineStore.View
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -211,6 +168,11 @@ namespace OnlineStore.View
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // btnAdd
             // 
@@ -247,6 +209,40 @@ namespace OnlineStore.View
             this.btnRefresh.Size = new System.Drawing.Size(77, 22);
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // usersDataGridView
+            // 
+            this.usersDataGridView.AllowUserToAddRows = false;
+            this.usersDataGridView.AllowUserToDeleteRows = false;
+            this.usersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.usersDataGridView.AutoGenerateColumns = false;
+            this.usersDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.usersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.useridDataGridViewTextBoxColumn,
+            this.loginDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.fullnameDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.adressDataGridViewTextBoxColumn,
+            this.discountcardDataGridViewTextBoxColumn,
+            this.registrationdateDataGridViewTextBoxColumn});
+            this.usersDataGridView.DataSource = this.usersBindingSource;
+            this.usersDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.usersDataGridView.Name = "usersDataGridView";
+            this.usersDataGridView.Size = new System.Drawing.Size(979, 410);
+            this.usersDataGridView.TabIndex = 1;
             // 
             // useridDataGridViewTextBoxColumn
             // 
@@ -312,6 +308,10 @@ namespace OnlineStore.View
             this.registrationdateDataGridViewTextBoxColumn.HeaderText = "Дата регистрации";
             this.registrationdateDataGridViewTextBoxColumn.Name = "registrationdateDataGridViewTextBoxColumn";
             // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
             // UsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,13 +321,14 @@ namespace OnlineStore.View
             this.Controls.Add(this.usersBindingNavigator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UsersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.UsersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingNavigator)).EndInit();
             this.usersBindingNavigator.ResumeLayout(false);
             this.usersBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
