@@ -7,6 +7,8 @@ namespace OnlineStore.View
 {
     public partial class OrdersForm : BorderlessWinForm
     {
+        // Флаг для блокировки события SelectedChange во время заполнения таблицы данными.
+        bool blockFlag;
         public OrdersForm()
         {
             InitializeComponent();
@@ -16,6 +18,7 @@ namespace OnlineStore.View
         {
             SetConnections();
             FillDataSet();
+            ordersDataGridView.Rows[0].Selected = true;
 
             this.Text = $"Обзор таблицы \"Заказы\"";
         }
@@ -158,21 +161,32 @@ namespace OnlineStore.View
         {
             orderTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
             statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            cartTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
 
         private void FillDataSet() 
         {
+            blockFlag = true;
             this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
             this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
+            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
+            blockFlag = false;
         }
 
 
         #endregion
 
-
-        private void PostError(string msg) 
+        private void ordersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            if (!blockFlag)
+            {
+                string orderId = ordersDataGridView.Rows[ordersDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                DataView dv = marketDBDataSet.Tables["Cart"].DefaultView;
+                dv.RowFilter = string.Format("Order_id = '{0}'", orderId);
 
+                cartDataGridView.DataSource = dv.ToTable();
+                cartDataGridView.ClearSelection();
+            }
         }
     }
 }
