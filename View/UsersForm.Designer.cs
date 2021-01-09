@@ -185,7 +185,7 @@ namespace OnlineStore.View
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = global::OnlineStore.Properties.Resources._187pencil;
+            this.btnUpdate.Image = global::OnlineStore.Properties.Resources.updatel;
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 22);
@@ -203,7 +203,7 @@ namespace OnlineStore.View
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::OnlineStore.Properties.Resources._02redo;
+            this.btnRefresh.Image = global::OnlineStore.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(77, 22);

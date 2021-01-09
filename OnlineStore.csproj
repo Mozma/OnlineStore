@@ -89,6 +89,11 @@
       <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseConnection.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\BorderlessWinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,14 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,9 +212,6 @@
     <Folder Include="DataSet\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\67-674186_dank-memes-no-background-clipart.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
@@ -227,11 +224,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\02redo.png" />
-    <Content Include="Resources\10medical.ico" />
-    <Content Include="Resources\187pencil.ico" />
-    <Content Include="Resources\bird.ico" />
-    <Content Include="Resources\empty.ico" />
+    <None Include="Resources\empty.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\updatel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

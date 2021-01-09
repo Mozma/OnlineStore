@@ -49,7 +49,7 @@ namespace OnlineStore.View
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::OnlineStore.Properties.Resources._67_674186_dank_memes_no_background_clipart;
+            this.pictureBox1.Image = global::OnlineStore.Properties.Resources.back;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 24);
             this.pictureBox1.Name = "pictureBox1";

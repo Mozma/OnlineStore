@@ -75,20 +75,11 @@ namespace OnlineStore.View
                 errorMsg = "На данное значение существует ссылка.\n" +
                            "Удаление отменено.";
             }
-            if (msg.Contains("DELETE") && msg.Contains("REFERENCE"))
-            {
-                errorMsg = "Нарушение уникальности первичного ключа.\n" +
-                           "Удаление отменено.";
-            }
-            else 
-            
-
-
-
-            /*
-             
-             */
-
+            //if (msg.Contains("DELETE") && msg.Contains("REFERENCE"))
+            //{
+            //    errorMsg = "Нарушение уникальности первичного ключа.\n" +
+            //               "Удаление отменено.";
+            //}
 
             MessageBox.Show(this, errorMsg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
