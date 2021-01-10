@@ -41,6 +41,7 @@ namespace OnlineStore.View
             this.viewOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.представленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@ namespace OnlineStore.View
             this.ordersToolStripMenuItem,
             this.usersToolStripMenuItem,
             this.productsToolStripMenuItem,
+            this.cartToolStripMenuItem,
             this.категорииToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
@@ -83,28 +85,28 @@ namespace OnlineStore.View
             // ordersToolStripMenuItem
             // 
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ordersToolStripMenuItem.Text = "Заказы";
             this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usersToolStripMenuItem.Text = "Пользователи";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // productsToolStripMenuItem
             // 
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productsToolStripMenuItem.Text = "Товары";
             this.productsToolStripMenuItem.Click += new System.EventHandler(this.productsToolStripMenuItem_Click);
             // 
             // категорииToolStripMenuItem
             // 
             this.категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            this.категорииToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.категорииToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.категорииToolStripMenuItem.Text = "Категории";
             // 
             // functionToolStripMenuItem
@@ -134,6 +136,13 @@ namespace OnlineStore.View
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.ExitToolStripMenuItem.Text = "Выход";
+            // 
+            // cartToolStripMenuItem
+            // 
+            this.cartToolStripMenuItem.Name = "cartToolStripMenuItem";
+            this.cartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cartToolStripMenuItem.Text = "Корзина";
+            this.cartToolStripMenuItem.Click += new System.EventHandler(this.cartToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -171,5 +180,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem категорииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem представленияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cartToolStripMenuItem;
     }
 }

@@ -37,6 +37,12 @@ namespace OnlineStore.View
             OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
             OpenThisForm(ordersForm);
         }
+        private void cartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CartForm cartForm = (CartForm)Application.OpenForms["cartForm"];
+            OpenThisForm(cartForm);
+        }
+
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UsersForm usersForm = (UsersForm)Application.OpenForms["usersForm"];

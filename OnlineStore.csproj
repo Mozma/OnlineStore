@@ -100,6 +100,18 @@
     <Compile Include="View\BorderlessWinForm.Designer.cs">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CartEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CartEditForm.Designer.cs">
+      <DependentUpon>CartEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CartForm.Designer.cs">
+      <DependentUpon>CartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +165,12 @@
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CartEditForm.resx">
+      <DependentUpon>CartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CartForm.resx">
+      <DependentUpon>CartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
