@@ -76,15 +76,15 @@ namespace OnlineStore.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var newRow = marketDBDataSet.Tables["Order"].NewRow();
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(this, newRow))
             {
                 if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
                 {
                     try { 
                         newRow = ordersEditForm.WorkRow;
 
-                        marketDBDataSet.Tables["Order"].Rows.Add(newRow);
-                        orderTableAdapter.Update(marketDBDataSet);
+                        //marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                        //orderTableAdapter.Update(marketDBDataSet);
 
                         MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -104,15 +104,15 @@ namespace OnlineStore.View
         {
             int index = ordersDataGridView.CurrentCell.RowIndex;
             var workRow = marketDBDataSet.Tables["Order"].Rows[index];
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm(workRow, true))
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(this,workRow, true))
             {
                 try { 
                     if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
                     {
-                        workRow.BeginEdit();
-                        workRow = ordersEditForm.WorkRow;
-                        workRow.EndEdit();
-                        orderTableAdapter.Update(marketDBDataSet);
+                        //workRow.BeginEdit();
+                        //workRow = ordersEditForm.WorkRow;
+                        //workRow.EndEdit();
+                        //orderTableAdapter.Update(marketDBDataSet);
 
                         MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

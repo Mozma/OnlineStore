@@ -34,31 +34,28 @@ namespace OnlineStore.View
         
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OrdersForm ordersForm = (OrdersForm)Application.OpenForms["ordersForm"];
-            OpenThisForm(ordersForm);
+            OpenThisForm<OrdersForm>("ordersForm");
         }
         private void cartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CartForm cartForm = (CartForm)Application.OpenForms["cartForm"];
-            OpenThisForm(cartForm);
+            OpenThisForm<CartForm>("cartForm");
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsersForm usersForm = (UsersForm)Application.OpenForms["usersForm"];
-            OpenThisForm(usersForm);
+            
+           OpenThisForm<UsersForm>("usersForm");
         }
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProductsForm productsForm = (ProductsForm)Application.OpenForms["productsForm"];
-            
-            OpenThisForm(productsForm);
+            OpenThisForm<ProductsForm>("productsForm");
         }
 
 
-        private void OpenThisForm<T>(T form) where T: Form, new() 
+        private void OpenThisForm<T>(string formName) where T: Form, new() 
         {
+            T form = (T)Application.OpenForms[formName];
             if (form == null) 
             {
                 form = new T();
@@ -68,7 +65,6 @@ namespace OnlineStore.View
             {
                 form.WindowState = FormWindowState.Normal;
                 form.Activate();
-
             }
         }
 

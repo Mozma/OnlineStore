@@ -8,16 +8,24 @@ namespace OnlineStore.View
     public partial class OrdersEditForm : Form
     {
         public DataRow WorkRow { get; set; }
+        private bool editRow;
+        private DialogResult dResult = DialogResult.Cancel;
 
+        private OrdersForm ordersForm;
         public OrdersEditForm()
         {
             InitializeComponent();
         }
 
-        public OrdersEditForm(DataRow workRow, bool editRow = false) : this()
+        public OrdersEditForm(OrdersForm ordersForm, DataRow workRow, bool editRow = false) : this()
         {
+            this.ordersForm = ordersForm;
             this.WorkRow = workRow;
+            this.editRow = editRow;
+        }
 
+        private void OrdersEditForm_Load(object sender, EventArgs e)
+        {
             SetConnections();
             FillDataSet();
             ResetItems();
@@ -36,20 +44,21 @@ namespace OnlineStore.View
             }
         }
 
-        private void OrdersEditForm_Load(object sender, EventArgs e)
-        {
-        }
-
         private void btnAccept_Click(object sender, EventArgs e)
         {
             if (ValidateItems()) 
             {
                 FillResultRow();
+
+                
+                    ordersForm.marketDBDataSet.Tables["Order"].Rows.Add(WorkRow);
+                    ordersForm.orderTableAdapter.Update(ordersForm.marketDBDataSet);
+                    
+                    
+
                 DialogResult = DialogResult.OK;
             }
         }
-
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -58,8 +67,23 @@ namespace OnlineStore.View
 
         private void ResetItems()
         {
-            statuseComboBox.SelectedIndex = -1;
-            userComboBox.SelectedIndex = -1;
+            if (editRow) 
+            {
+                FillItems();
+            }
+            else 
+            {
+                statuseComboBox.SelectedIndex = -1;
+                userComboBox.SelectedIndex = -1;
+                orderNumberTextBox.Text = "";
+                orderDateDateTimePicker.Value = DateTime.Now;
+                completionDateDateTimePicker.Value = DateTime.Now;
+                totalCostTextBox.Text = "";
+                paidTextBox.Text = "";
+                cancellationSignTextBox.Text = "";
+
+              //  FillCartView("-1");
+            }
         }
 
         private void FillResultRow()
@@ -86,8 +110,17 @@ namespace OnlineStore.View
             statuseComboBox.SelectedValue = WorkRow[5];
             totalCostTextBox.Text = WorkRow[6].ToString();
             paidTextBox.Text = WorkRow[7].ToString();
-        }
 
+            FillCartView(WorkRow[0].ToString());
+        }
+        private void FillCartView(string orderId) 
+        {
+            DataView dv = marketDBDataSet.Tables["Cart"].DefaultView;
+            dv.RowFilter = string.Format("Order_id = '{0}'", orderId);
+
+            cartDataGridView.DataSource = dv.ToTable();
+            cartDataGridView.ClearSelection();
+        }
         private bool ValidateItems()
         {
             bool flag = true;
@@ -134,19 +167,18 @@ namespace OnlineStore.View
             return flag;
 
         }
-
         private void SetConnections()
         {
             usersTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
             statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            cartTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
-
         private void FillDataSet()
         {
             this.usersTableAdapter.Fill(this.marketDBDataSet.Users);
             this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
+            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
         }
-
 
     }
 }
