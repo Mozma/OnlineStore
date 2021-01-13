@@ -214,7 +214,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox productCodeComboBox;
-        private System.Windows.Forms.ComboBox orderIdComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox priceTextBox;
         private MarketDBDataSet marketDBDataSet;
@@ -222,5 +221,6 @@ namespace OnlineStore.View
         private MarketDBDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.BindingSource orderBindingSource;
         private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
+        public System.Windows.Forms.ComboBox orderIdComboBox;
     }
 }

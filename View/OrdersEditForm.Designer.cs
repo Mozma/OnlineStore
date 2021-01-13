@@ -55,68 +55,47 @@ namespace OnlineStore.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
             this.usersTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.UsersTableAdapter();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cartDataGridView = new System.Windows.Forms.DataGridView();
-            this.cartBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cartBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cartTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.CartTableAdapter();
-            this.cartidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cartDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cartBindingNavigator)).BeginInit();
-            this.cartBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // paidTextBox
             // 
-            this.paidTextBox.Location = new System.Drawing.Point(432, 96);
+            this.paidTextBox.Location = new System.Drawing.Point(131, 174);
             this.paidTextBox.Name = "paidTextBox";
             this.paidTextBox.Size = new System.Drawing.Size(172, 20);
             this.paidTextBox.TabIndex = 26;
             // 
             // cancellationSignTextBox
             // 
-            this.cancellationSignTextBox.Location = new System.Drawing.Point(432, 43);
+            this.cancellationSignTextBox.Location = new System.Drawing.Point(131, 200);
             this.cancellationSignTextBox.Name = "cancellationSignTextBox";
             this.cancellationSignTextBox.Size = new System.Drawing.Size(172, 20);
             this.cancellationSignTextBox.TabIndex = 25;
             // 
             // totalCostTextBox
             // 
-            this.totalCostTextBox.Location = new System.Drawing.Point(131, 96);
+            this.totalCostTextBox.Location = new System.Drawing.Point(131, 148);
             this.totalCostTextBox.Name = "totalCostTextBox";
             this.totalCostTextBox.Size = new System.Drawing.Size(172, 20);
             this.totalCostTextBox.TabIndex = 24;
             // 
             // orderNumberTextBox
             // 
-            this.orderNumberTextBox.Location = new System.Drawing.Point(432, 16);
+            this.orderNumberTextBox.Location = new System.Drawing.Point(131, 43);
             this.orderNumberTextBox.Name = "orderNumberTextBox";
             this.orderNumberTextBox.Size = new System.Drawing.Size(172, 20);
             this.orderNumberTextBox.TabIndex = 20;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(396, 151);
+            this.btnCancel.Location = new System.Drawing.Point(106, 256);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(115, 23);
             this.btnCancel.TabIndex = 36;
@@ -126,7 +105,7 @@ namespace OnlineStore.View
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(517, 151);
+            this.btnAccept.Location = new System.Drawing.Point(227, 256);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(115, 23);
             this.btnAccept.TabIndex = 37;
@@ -146,7 +125,7 @@ namespace OnlineStore.View
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 46);
+            this.label11.Location = new System.Drawing.Point(20, 72);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 40;
@@ -155,7 +134,7 @@ namespace OnlineStore.View
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 72);
+            this.label12.Location = new System.Drawing.Point(20, 98);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 41;
@@ -164,7 +143,7 @@ namespace OnlineStore.View
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 99);
+            this.label13.Location = new System.Drawing.Point(20, 151);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(105, 13);
             this.label13.TabIndex = 42;
@@ -173,7 +152,7 @@ namespace OnlineStore.View
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(321, 99);
+            this.label14.Location = new System.Drawing.Point(20, 177);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 13);
             this.label14.TabIndex = 46;
@@ -182,7 +161,7 @@ namespace OnlineStore.View
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(321, 73);
+            this.label15.Location = new System.Drawing.Point(20, 125);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(101, 13);
             this.label15.TabIndex = 45;
@@ -191,7 +170,7 @@ namespace OnlineStore.View
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(321, 46);
+            this.label16.Location = new System.Drawing.Point(20, 203);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(95, 13);
             this.label16.TabIndex = 44;
@@ -200,7 +179,7 @@ namespace OnlineStore.View
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(321, 19);
+            this.label17.Location = new System.Drawing.Point(20, 46);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 13);
             this.label17.TabIndex = 43;
@@ -208,14 +187,14 @@ namespace OnlineStore.View
             // 
             // orderDateDateTimePicker
             // 
-            this.orderDateDateTimePicker.Location = new System.Drawing.Point(131, 70);
+            this.orderDateDateTimePicker.Location = new System.Drawing.Point(131, 96);
             this.orderDateDateTimePicker.Name = "orderDateDateTimePicker";
             this.orderDateDateTimePicker.Size = new System.Drawing.Size(172, 20);
             this.orderDateDateTimePicker.TabIndex = 47;
             // 
             // completionDateDateTimePicker
             // 
-            this.completionDateDateTimePicker.Location = new System.Drawing.Point(432, 70);
+            this.completionDateDateTimePicker.Location = new System.Drawing.Point(131, 122);
             this.completionDateDateTimePicker.Name = "completionDateDateTimePicker";
             this.completionDateDateTimePicker.Size = new System.Drawing.Size(172, 20);
             this.completionDateDateTimePicker.TabIndex = 48;
@@ -226,7 +205,7 @@ namespace OnlineStore.View
             this.statuseComboBox.DisplayMember = "Statuse_name";
             this.statuseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statuseComboBox.FormattingEnabled = true;
-            this.statuseComboBox.Location = new System.Drawing.Point(131, 43);
+            this.statuseComboBox.Location = new System.Drawing.Point(131, 69);
             this.statuseComboBox.Name = "statuseComboBox";
             this.statuseComboBox.Size = new System.Drawing.Size(172, 21);
             this.statuseComboBox.TabIndex = 49;
@@ -280,7 +259,7 @@ namespace OnlineStore.View
             this.panel1.Controls.Add(this.label10);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 133);
+            this.panel1.Size = new System.Drawing.Size(330, 238);
             this.panel1.TabIndex = 51;
             // 
             // statusesTableAdapter
@@ -291,131 +270,6 @@ namespace OnlineStore.View
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.cartDataGridView);
-            this.panel2.Controls.Add(this.cartBindingNavigator);
-            this.panel2.Location = new System.Drawing.Point(12, 180);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(620, 240);
-            this.panel2.TabIndex = 52;
-            // 
-            // cartDataGridView
-            // 
-            this.cartDataGridView.AllowUserToAddRows = false;
-            this.cartDataGridView.AllowUserToDeleteRows = false;
-            this.cartDataGridView.AutoGenerateColumns = false;
-            this.cartDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.cartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cartDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cartidDataGridViewTextBoxColumn,
-            this.productcodeDataGridViewTextBoxColumn,
-            this.amountDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.orderidDataGridViewTextBoxColumn});
-            this.cartDataGridView.DataSource = this.cartBindingSource;
-            this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartDataGridView.Location = new System.Drawing.Point(0, 25);
-            this.cartDataGridView.MultiSelect = false;
-            this.cartDataGridView.Name = "cartDataGridView";
-            this.cartDataGridView.ReadOnly = true;
-            this.cartDataGridView.Size = new System.Drawing.Size(618, 213);
-            this.cartDataGridView.TabIndex = 1;
-            // 
-            // cartBindingNavigator
-            // 
-            this.cartBindingNavigator.AddNewItem = null;
-            this.cartBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.cartBindingNavigator.DeleteItem = null;
-            this.cartBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2});
-            this.cartBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.cartBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.cartBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.cartBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.cartBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.cartBindingNavigator.Name = "cartBindingNavigator";
-            this.cartBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cartBindingNavigator.Size = new System.Drawing.Size(618, 25);
-            this.cartBindingNavigator.TabIndex = 0;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 22);
-            this.bindingNavigatorCountItem.Text = "для {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // cartBindingSource
             // 
             this.cartBindingSource.DataMember = "Cart";
@@ -425,41 +279,6 @@ namespace OnlineStore.View
             // 
             this.cartTableAdapter.ClearBeforeFill = true;
             // 
-            // cartidDataGridViewTextBoxColumn
-            // 
-            this.cartidDataGridViewTextBoxColumn.DataPropertyName = "Cart_id";
-            this.cartidDataGridViewTextBoxColumn.HeaderText = "Cart_id";
-            this.cartidDataGridViewTextBoxColumn.Name = "cartidDataGridViewTextBoxColumn";
-            this.cartidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productcodeDataGridViewTextBoxColumn
-            // 
-            this.productcodeDataGridViewTextBoxColumn.DataPropertyName = "Product_code";
-            this.productcodeDataGridViewTextBoxColumn.HeaderText = "Product_code";
-            this.productcodeDataGridViewTextBoxColumn.Name = "productcodeDataGridViewTextBoxColumn";
-            this.productcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orderidDataGridViewTextBoxColumn
-            // 
-            this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
-            this.orderidDataGridViewTextBoxColumn.HeaderText = "Order_id";
-            this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
-            this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // orderTableAdapter
             // 
             this.orderTableAdapter.ClearBeforeFill = true;
@@ -468,8 +287,7 @@ namespace OnlineStore.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 432);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(354, 286);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
@@ -477,7 +295,6 @@ namespace OnlineStore.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 276);
             this.Name = "OrdersEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrdersEditForm_Load);
@@ -486,12 +303,6 @@ namespace OnlineStore.View
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cartDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cartBindingNavigator)).EndInit();
-            this.cartBindingNavigator.ResumeLayout(false);
-            this.cartBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -522,25 +333,8 @@ namespace OnlineStore.View
         private MarketDBDataSet marketDBDataSet;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private System.Windows.Forms.BindingSource statusesBindingSource;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView cartDataGridView;
-        private System.Windows.Forms.BindingNavigator cartBindingNavigator;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource cartBindingSource;
         private MarketDBDataSetTableAdapters.CartTableAdapter cartTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cartidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderidDataGridViewTextBoxColumn;
         private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
     }
 }

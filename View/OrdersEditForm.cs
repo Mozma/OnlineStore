@@ -9,17 +9,13 @@ namespace OnlineStore.View
     {
         public DataRow WorkRow { get; set; }
         private bool editRow;
-        private DialogResult dResult = DialogResult.Cancel;
-
-        private OrdersForm ordersForm;
         public OrdersEditForm()
         {
             InitializeComponent();
         }
 
-        public OrdersEditForm(OrdersForm ordersForm, DataRow workRow, bool editRow = false) : this()
+        public OrdersEditForm(DataRow workRow, bool editRow = false) : this()
         {
-            this.ordersForm = ordersForm;
             this.WorkRow = workRow;
             this.editRow = editRow;
         }
@@ -49,12 +45,6 @@ namespace OnlineStore.View
             if (ValidateItems()) 
             {
                 FillResultRow();
-
-                
-                    ordersForm.marketDBDataSet.Tables["Order"].Rows.Add(WorkRow);
-                    ordersForm.orderTableAdapter.Update(ordersForm.marketDBDataSet);
-                    
-                    
 
                 DialogResult = DialogResult.OK;
             }
@@ -111,15 +101,6 @@ namespace OnlineStore.View
             totalCostTextBox.Text = WorkRow[6].ToString();
             paidTextBox.Text = WorkRow[7].ToString();
 
-            FillCartView(WorkRow[0].ToString());
-        }
-        private void FillCartView(string orderId) 
-        {
-            DataView dv = marketDBDataSet.Tables["Cart"].DefaultView;
-            dv.RowFilter = string.Format("Order_id = '{0}'", orderId);
-
-            cartDataGridView.DataSource = dv.ToTable();
-            cartDataGridView.ClearSelection();
         }
         private bool ValidateItems()
         {

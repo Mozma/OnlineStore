@@ -95,7 +95,10 @@ namespace OnlineStore.View
             productCodeComboBox.SelectedIndex = -1;
             amountTextBox.Text = "";
             priceTextBox.Text = "";
-            orderIdComboBox.SelectedIndex = -1;
+            if (orderIdComboBox.Enabled == true)
+            {
+                orderIdComboBox.SelectedIndex = -1;
+            }
         }
 
         private bool ValidateItems()

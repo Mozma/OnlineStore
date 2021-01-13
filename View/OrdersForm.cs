@@ -76,15 +76,15 @@ namespace OnlineStore.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var newRow = marketDBDataSet.Tables["Order"].NewRow();
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm(this, newRow))
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(newRow))
             {
                 if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
                 {
                     try { 
                         newRow = ordersEditForm.WorkRow;
 
-                        //marketDBDataSet.Tables["Order"].Rows.Add(newRow);
-                        //orderTableAdapter.Update(marketDBDataSet);
+                        marketDBDataSet.Tables["Order"].Rows.Add(newRow);
+                        orderTableAdapter.Update(marketDBDataSet);
 
                         MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -104,15 +104,15 @@ namespace OnlineStore.View
         {
             int index = ordersDataGridView.CurrentCell.RowIndex;
             var workRow = marketDBDataSet.Tables["Order"].Rows[index];
-            using (OrdersEditForm ordersEditForm = new OrdersEditForm(this,workRow, true))
+            using (OrdersEditForm ordersEditForm = new OrdersEditForm(workRow, true))
             {
                 try { 
                     if (ordersEditForm.ShowDialog(this) == DialogResult.OK)
                     {
-                        //workRow.BeginEdit();
-                        //workRow = ordersEditForm.WorkRow;
-                        //workRow.EndEdit();
-                        //orderTableAdapter.Update(marketDBDataSet);
+                        workRow.BeginEdit();
+                        workRow = ordersEditForm.WorkRow;
+                        workRow.EndEdit();
+                        orderTableAdapter.Update(marketDBDataSet);
 
                         MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -174,19 +174,103 @@ namespace OnlineStore.View
         }
 
 
-        #endregion
+       
 
         private void ordersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (!blockFlag)
             {
+                
                 string orderId = ordersDataGridView.Rows[ordersDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                DataView dv = marketDBDataSet.Tables["Cart"].DefaultView;
-                dv.RowFilter = string.Format("Order_id = '{0}'", orderId);
+                string queryString = "Select Cart_id, Product_code, Amount, Price, Order_id FROM Admin.Cart WHERE Order_id = " + orderId;
+                cartTableAdapter.Adapter.SelectCommand.CommandText = queryString;
 
-                cartDataGridView.DataSource = dv.ToTable();
+                cartTableAdapter.Fill(marketDBDataSet.Cart);
+
                 cartDataGridView.ClearSelection();
+
             }
+        }
+        #endregion
+        private void btnCartAdd_Click(object sender, EventArgs e)
+        {
+            CartForm cartForm = (CartForm)Application.OpenForms["cartForm"];
+            if (cartForm == null)
+            {
+                cartForm = new CartForm();
+            }
+
+            string orderId = ordersDataGridView.Rows[ordersDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            cartForm.AddRow(orderId);
+                                 
+        }
+
+        private void btnCartUpdate_Click(object sender, EventArgs e)
+        {
+            CartForm cartForm = (CartForm)Application.OpenForms["cartForm"];
+            if (cartForm == null)
+            {
+                cartForm = new CartForm();
+            }
+
+            int index = cartDataGridView.CurrentCell.RowIndex;
+            var workRow = marketDBDataSet.Tables["Cart"].Rows[index];
+            using (CartEditForm cartEditForm = new CartEditForm(workRow, true))
+            {
+
+                cartEditForm.orderIdComboBox.Enabled = false;
+
+                try
+                {
+                    if (cartEditForm.ShowDialog(this) == DialogResult.OK)
+                    {
+
+                        workRow.BeginEdit();
+                        workRow = cartEditForm.WorkRow;
+                        workRow.EndEdit();
+
+                        cartTableAdapter.Update(marketDBDataSet);
+
+                        MessageBox.Show(this, "Строка изменена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+            }
+        }
+
+        private void btnCartDelete_Click(object sender, EventArgs e)
+        {
+            int index = cartDataGridView.CurrentCell.RowIndex;
+
+
+            string msg = $"Вы действительно хотите удалить строку с Ид = {marketDBDataSet.Tables["Cart"].Rows[index][0]}?";
+
+            if (MessageBox.Show(msg, "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                try
+                {
+                    marketDBDataSet.Tables["Cart"].Rows[index].Delete();
+                    cartTableAdapter.Update(marketDBDataSet);
+                }
+                catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+            }
+        }
+
+        private void btnCartRefresh_Click(object sender, EventArgs e)
+        {
+            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
         }
     }
 }

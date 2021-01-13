@@ -30,10 +30,10 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
             this.orderidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +73,21 @@ namespace OnlineStore.View
             this.cartBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cartTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.CartTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cartBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem1 = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCartAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnCartUpdate = new System.Windows.Forms.ToolStripButton();
+            this.btnCartDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnCartRefresh = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSetBindingSource)).BeginInit();
@@ -81,6 +96,9 @@ namespace OnlineStore.View
             this.orderBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartBindingNavigator)).BeginInit();
+            this.cartBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // ordersDataGridView
@@ -95,14 +113,14 @@ namespace OnlineStore.View
             this.ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordersDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.ordersDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.ordersDataGridView.ColumnHeadersHeight = 50;
             this.ordersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orderidDataGridViewTextBoxColumn,
@@ -119,7 +137,7 @@ namespace OnlineStore.View
             this.ordersDataGridView.Location = new System.Drawing.Point(15, 28);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
-            this.ordersDataGridView.Size = new System.Drawing.Size(978, 339);
+            this.ordersDataGridView.Size = new System.Drawing.Size(978, 365);
             this.ordersDataGridView.TabIndex = 0;
             this.ordersDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ordersDataGridView_CellFormatting);
             this.ordersDataGridView.SelectionChanged += new System.EventHandler(this.ordersDataGridView_SelectionChanged);
@@ -128,8 +146,8 @@ namespace OnlineStore.View
             // 
             this.orderidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.orderidDataGridViewTextBoxColumn.DataPropertyName = "Order_id";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.orderidDataGridViewTextBoxColumn.HeaderText = "Ид заказа";
             this.orderidDataGridViewTextBoxColumn.Name = "orderidDataGridViewTextBoxColumn";
             this.orderidDataGridViewTextBoxColumn.ReadOnly = true;
@@ -368,19 +386,17 @@ namespace OnlineStore.View
             // 
             this.cartDataGridView.AllowUserToAddRows = false;
             this.cartDataGridView.AllowUserToDeleteRows = false;
-            this.cartDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cartDataGridView.AutoGenerateColumns = false;
             this.cartDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.cartDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.cartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cartDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cartidDataGridViewTextBoxColumn,
@@ -389,10 +405,11 @@ namespace OnlineStore.View
             this.priceDataGridViewTextBoxColumn,
             this.orderidDataGridViewTextBoxColumn1});
             this.cartDataGridView.DataSource = this.cartBindingSource;
-            this.cartDataGridView.Location = new System.Drawing.Point(15, 403);
+            this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cartDataGridView.Location = new System.Drawing.Point(0, 28);
             this.cartDataGridView.Name = "cartDataGridView";
             this.cartDataGridView.ReadOnly = true;
-            this.cartDataGridView.Size = new System.Drawing.Size(978, 199);
+            this.cartDataGridView.Size = new System.Drawing.Size(976, 216);
             this.cartDataGridView.TabIndex = 2;
             // 
             // cartidDataGridViewTextBoxColumn
@@ -455,19 +472,164 @@ namespace OnlineStore.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 375);
+            this.label1.Location = new System.Drawing.Point(12, 396);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Корзина заказа";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cartBindingNavigator);
+            this.panel1.Controls.Add(this.cartDataGridView);
+            this.panel1.Location = new System.Drawing.Point(15, 415);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(978, 246);
+            this.panel1.TabIndex = 4;
+            // 
+            // cartBindingNavigator
+            // 
+            this.cartBindingNavigator.AddNewItem = null;
+            this.cartBindingNavigator.BindingSource = this.cartBindingSource;
+            this.cartBindingNavigator.CountItem = this.bindingNavigatorCountItem1;
+            this.cartBindingNavigator.DeleteItem = null;
+            this.cartBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem1,
+            this.bindingNavigatorMovePreviousItem1,
+            this.bindingNavigatorSeparator3,
+            this.bindingNavigatorPositionItem1,
+            this.bindingNavigatorCountItem1,
+            this.bindingNavigatorSeparator4,
+            this.bindingNavigatorMoveNextItem1,
+            this.bindingNavigatorMoveLastItem1,
+            this.bindingNavigatorSeparator5,
+            this.btnCartAdd,
+            this.btnCartUpdate,
+            this.btnCartDelete,
+            this.btnCartRefresh});
+            this.cartBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.cartBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
+            this.cartBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem1;
+            this.cartBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem1;
+            this.cartBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
+            this.cartBindingNavigator.Name = "cartBindingNavigator";
+            this.cartBindingNavigator.PositionItem = this.bindingNavigatorPositionItem1;
+            this.cartBindingNavigator.Size = new System.Drawing.Size(976, 25);
+            this.cartBindingNavigator.TabIndex = 3;
+            this.cartBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem1
+            // 
+            this.bindingNavigatorCountItem1.Name = "bindingNavigatorCountItem1";
+            this.bindingNavigatorCountItem1.Size = new System.Drawing.Size(45, 22);
+            this.bindingNavigatorCountItem1.Text = "для {0}";
+            this.bindingNavigatorCountItem1.ToolTipText = "Общее число элементов";
+            // 
+            // bindingNavigatorMoveFirstItem1
+            // 
+            this.bindingNavigatorMoveFirstItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem1.Image")));
+            this.bindingNavigatorMoveFirstItem1.Name = "bindingNavigatorMoveFirstItem1";
+            this.bindingNavigatorMoveFirstItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem1.Text = "Переместить в начало";
+            // 
+            // bindingNavigatorMovePreviousItem1
+            // 
+            this.bindingNavigatorMovePreviousItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem1.Image")));
+            this.bindingNavigatorMovePreviousItem1.Name = "bindingNavigatorMovePreviousItem1";
+            this.bindingNavigatorMovePreviousItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem1.Text = "Переместить назад";
+            // 
+            // bindingNavigatorSeparator3
+            // 
+            this.bindingNavigatorSeparator3.Name = "bindingNavigatorSeparator3";
+            this.bindingNavigatorSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem1
+            // 
+            this.bindingNavigatorPositionItem1.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem1.AutoSize = false;
+            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
+            this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 21);
+            this.bindingNavigatorPositionItem1.Text = "0";
+            this.bindingNavigatorPositionItem1.ToolTipText = "Текущее положение";
+            // 
+            // bindingNavigatorSeparator4
+            // 
+            this.bindingNavigatorSeparator4.Name = "bindingNavigatorSeparator4";
+            this.bindingNavigatorSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem1
+            // 
+            this.bindingNavigatorMoveNextItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem1.Image")));
+            this.bindingNavigatorMoveNextItem1.Name = "bindingNavigatorMoveNextItem1";
+            this.bindingNavigatorMoveNextItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem1.Text = "Переместить вперед";
+            // 
+            // bindingNavigatorMoveLastItem1
+            // 
+            this.bindingNavigatorMoveLastItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem1.Image")));
+            this.bindingNavigatorMoveLastItem1.Name = "bindingNavigatorMoveLastItem1";
+            this.bindingNavigatorMoveLastItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem1.Text = "Переместить в конец";
+            // 
+            // bindingNavigatorSeparator5
+            // 
+            this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
+            this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnCartAdd
+            // 
+            this.btnCartAdd.Image = global::OnlineStore.Properties.Resources.add;
+            this.btnCartAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCartAdd.Name = "btnCartAdd";
+            this.btnCartAdd.Size = new System.Drawing.Size(77, 22);
+            this.btnCartAdd.Text = "Добавить";
+            this.btnCartAdd.Click += new System.EventHandler(this.btnCartAdd_Click);
+            // 
+            // btnCartUpdate
+            // 
+            this.btnCartUpdate.Image = global::OnlineStore.Properties.Resources.updatel;
+            this.btnCartUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCartUpdate.Name = "btnCartUpdate";
+            this.btnCartUpdate.Size = new System.Drawing.Size(75, 22);
+            this.btnCartUpdate.Text = "Изменить";
+            this.btnCartUpdate.Click += new System.EventHandler(this.btnCartUpdate_Click);
+            // 
+            // btnCartDelete
+            // 
+            this.btnCartDelete.Image = global::OnlineStore.Properties.Resources.empty;
+            this.btnCartDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCartDelete.Name = "btnCartDelete";
+            this.btnCartDelete.Size = new System.Drawing.Size(71, 22);
+            this.btnCartDelete.Text = "Удалить";
+            this.btnCartDelete.Click += new System.EventHandler(this.btnCartDelete_Click);
+            // 
+            // btnCartRefresh
+            // 
+            this.btnCartRefresh.Image = global::OnlineStore.Properties.Resources.refresh;
+            this.btnCartRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCartRefresh.Name = "btnCartRefresh";
+            this.btnCartRefresh.Size = new System.Drawing.Size(77, 22);
+            this.btnCartRefresh.Text = "Обновить";
+            this.btnCartRefresh.Click += new System.EventHandler(this.btnCartRefresh_Click);
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 614);
+            this.ClientSize = new System.Drawing.Size(1005, 673);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cartDataGridView);
             this.Controls.Add(this.orderBindingNavigator);
             this.Controls.Add(this.ordersDataGridView);
             this.DoubleBuffered = true;
@@ -486,6 +648,11 @@ namespace OnlineStore.View
             this.orderBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartBindingNavigator)).EndInit();
+            this.cartBindingNavigator.ResumeLayout(false);
+            this.cartBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +699,20 @@ namespace OnlineStore.View
         private System.Windows.Forms.Label label1;
         public MarketDBDataSet marketDBDataSet;
         public MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingNavigator cartBindingNavigator;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator3;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator4;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator5;
+        private System.Windows.Forms.ToolStripButton btnCartAdd;
+        private System.Windows.Forms.ToolStripButton btnCartUpdate;
+        private System.Windows.Forms.ToolStripButton btnCartDelete;
+        private System.Windows.Forms.ToolStripButton btnCartRefresh;
     }
 }

@@ -9,21 +9,61 @@ namespace OnlineStore.View
         public CartForm()
         {
             InitializeComponent();
-        }
-
-        private void CartForm_Load(object sender, EventArgs e)
-        {
             SetConnections();
             FillDataSet();
 
             this.Text = $"Обзор таблицы \"Корзина\"";
         }
 
+        private void CartForm_Load(object sender, EventArgs e)
+        {
+        
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            AddRow();
+        }
+
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateRow();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteRow();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            FillDataSet();
+        }
+
+        public void SetConnections()
+        {
+            cartTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+        }
+
+        public void FillDataSet()
+        {
+            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
+        }
+
+
+        public void AddRow(string orderId = "-1") 
+        {
+
             var newRow = marketDBDataSet.Tables["Cart"].NewRow();
             using (CartEditForm cartEditForm = new CartEditForm(newRow))
             {
+
+                if (!orderId.Equals("-1")) {
+                    cartEditForm.orderIdComboBox.SelectedValue = orderId;
+                    cartEditForm.orderIdComboBox.Enabled = false;
+                }
+                    
                 if (cartEditForm.ShowDialog(this) == DialogResult.OK)
                 {
                     try
@@ -45,10 +85,8 @@ namespace OnlineStore.View
             }
         }
 
-
-        private void btnUpdate_Click(object sender, EventArgs e)
+        public void UpdateRow() 
         {
-            //TODO: Сделать отлов ошибок при изменения строки.
             int index = cartDataGridView.CurrentCell.RowIndex;
             var workRow = marketDBDataSet.Tables["Cart"].Rows[index];
             using (CartEditForm cartEditForm = new CartEditForm(workRow, true))
@@ -77,7 +115,7 @@ namespace OnlineStore.View
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        public void DeleteRow() 
         {
             int index = cartDataGridView.CurrentCell.RowIndex;
             string msg = $"Вы действительно хотите удалить строку с Кодом = {marketDBDataSet.Tables["Users"].Rows[index][0]}?";
@@ -98,23 +136,6 @@ namespace OnlineStore.View
                 }
             }
         }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            FillDataSet();
-        }
-
-        public void SetConnections()
-        {
-            cartTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
-        }
-
-        public void FillDataSet()
-        {
-            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
-        }
-
-
 
     }
 }
