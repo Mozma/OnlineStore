@@ -10,21 +10,35 @@ namespace OnlineStore.View
         {
             InitializeComponent();
         }
+        DBManager manager;
+        public MainForm(DBManager manager):this()
+        {
+            this.manager = manager;
+        }
+
 
 
         public SqlConnection Connection { get; set; }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            using (var loginForm = new LoginForm())
-            {
 
-                loginForm.ShowDialog();
+            //var loadingForm = new LoadingForm();
+            //loadingForm.Show();
 
-                if (loginForm.DialogResult == DialogResult.Cancel) {
-                    Close();
-                }
-            }
+
+            //using (var loginForm = new LoginForm())
+            //{
+                
+            //    loginForm.ShowDialog();
+
+            //    if (loginForm.DialogResult == DialogResult.Cancel) {
+            //        Close();
+            //    }
+            //}
+
+
+
         }
 
         private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
