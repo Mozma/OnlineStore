@@ -13,13 +13,7 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
-        private DBManager manager;
         private SqlConnection connection;
-
-        public LoginForm(DBManager manager) : this()
-        {
-            this.manager = manager;
-        }
 
         // Обработка кнопки "Вход"
         private void btnAccept_Click(object sender, EventArgs e)
@@ -28,35 +22,21 @@ namespace OnlineStore.View
             {
                 DialogResult = DialogResult.OK;
             }
-
-
-            //if (String.IsNullOrWhiteSpace(tbUsername.Text) ||
-            //   String.IsNullOrWhiteSpace(tbPassword.Text))
-            //{
-            //    MessageBox.Show(this, "Поля не заполнены", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else
-            //{
-            //    // Создание подключения.
-            //    try
-            //    {
-            //        Values.Connection = ConnectionController.MakeConnection(tbUsername.Text, tbPassword.Text);
-            //        DialogResult = DialogResult.OK;
-            //    }
-            //    catch (Exception exp)
-            //    {
-
-            //       MessageBox.Show(this, "Неправильный логин или пароль:\n" + exp.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-
-
-       
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        
+        /// <summary>
+        /// Метод для аутентификации пользователя.
+        /// </summary>
+        /// <returns>Возвращает true, если данные введены верно.</returns>
         private bool Authenticate()
         {
-            String login = null;
-            String password = null;
-            // Получение логина и пароля.
+            String login, password;    
+
             try
             {
                 login = tbUsername.Text.Trim();
@@ -69,36 +49,32 @@ namespace OnlineStore.View
             }
             catch (Exception e)
             {
-                MessageBox.Show(this, e.Message, "Ошибка ввода данных", 
+                MessageBox.Show(this, e.Message, "Ошибка ввода данных",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbPassword.Text = null;
                 return false;
             }
-        
+
             // Попытка авторизации.
-            try 
+            try
             {
-               connection = ConnectionController.MakeConnection(login,password);
-                if(connection == null) 
+                connection = ConnectionController.MakeConnection(login, password);
+                if (connection == null)
                 {
                     throw new Exception("Логин, пароли или имя БД указаны не верно.");
                 }
-                manager.Connection = connection;
+                
+                DataBaseConnection.Connection = connection;
             }
             catch (Exception e)
             {
-                MessageBox.Show(this, e.Message, "Ошибка ввхода в систему",
+                MessageBox.Show(this, e.Message, "Ошибка входа в систему",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbPassword.Text = null;
                 return false;
             }
 
             return true;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

@@ -19,13 +19,33 @@ namespace OnlineStore.Controller
             builder.UserID = username;
             builder.Password = password;
             builder.Pooling = true;
-           
-            //TODO: Убрать присвоение из логин формы.
-           
-            //DataBaseConnection.Connection = new SqlConnection(builder.ToString());
 
+            //TODO: Убрать присвоение из логин формы.
+
+            DataBaseConnection.Connection = new SqlConnection(builder.ToString());
+            if (!Connect()) 
+            {
+                return null;
+            }
             return new SqlConnection(builder.ToString());
         }
+
+        public static bool Connect() 
+        {
+            try
+            {
+                DataBaseConnection.Connection.Open();
+                return true;
+            }
+            catch (SqlException )
+            { 
+                return false;
+            }finally
+            {
+                DataBaseConnection.Connection.Close();
+            }
+        }
+
 
         /// <summary>
         /// Проверка работы подключения.

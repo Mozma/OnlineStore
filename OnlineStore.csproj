@@ -83,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ConnectionController.cs" />
-    <Compile Include="DBManager.cs" />
     <Compile Include="MarketDBDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,7 +156,6 @@
     <Compile Include="View\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Start.cs" />
     <Compile Include="View\UsersEditForm.cs">
       <SubType>Form</SubType>
     </Compile>

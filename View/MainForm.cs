@@ -8,36 +8,14 @@ namespace OnlineStore.View
     {
         public MainForm()
         {
+
             InitializeComponent();
         }
-        DBManager manager;
-        public MainForm(DBManager manager):this()
-        {
-            this.manager = manager;
-        }
-
-
 
         public SqlConnection Connection { get; set; }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            //var loadingForm = new LoadingForm();
-            //loadingForm.Show();
-
-
-            //using (var loginForm = new LoginForm())
-            //{
-                
-            //    loginForm.ShowDialog();
-
-            //    if (loginForm.DialogResult == DialogResult.Cancel) {
-            //        Close();
-            //    }
-            //}
-
-
 
         }
 

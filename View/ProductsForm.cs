@@ -105,7 +105,7 @@ namespace OnlineStore.View
 
         public void SetConnections()
         {
-            productsTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            productsTableAdapter.Connection = DataBaseConnection.Connection;
         }
 
         public void FillDataSet()

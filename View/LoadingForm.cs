@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace OnlineStore.View
 {
@@ -21,5 +22,20 @@ namespace OnlineStore.View
         {
 
         }
+
+        static public Thread State = new Thread(ShowLoadingForm)
+        {
+            Name = "LoadingForm",
+            Priority = ThreadPriority.Lowest,
+            IsBackground = true
+        };
+        static void ShowLoadingForm()
+        {
+            using (LoadingForm loadingForm = new LoadingForm())
+            {
+                loadingForm.ShowDialog();
+            }
+        }
+
     }
 }
