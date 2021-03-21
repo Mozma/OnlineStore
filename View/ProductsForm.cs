@@ -112,5 +112,34 @@ namespace OnlineStore.View
         {
             this.productsTableAdapter.Fill(this.marketDBDataSet.Products);
         }
+
+        /// <summary>
+        /// Метод вызова формы для добавления элемента.
+        /// </summary>
+        public void AddProudct() 
+        {
+            var dlg = new ProductsEditForm(null);
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var newRow = dlg.WorkRow;
+
+                    marketDBDataSet.Tables["Products"].Rows.Add(newRow);
+                    productsTableAdapter.Update(marketDBDataSet);
+
+                    MessageBox.Show(this, "Строка добавлена успешно!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } catch (Exception exp)
+                {
+                    var mainForm = (MainForm)Application.OpenForms["mainForm"];
+                    mainForm.PostError(exp.Message);
+
+                    FillDataSet();
+                }
+            }
+
+
+        }
+
     }
 }

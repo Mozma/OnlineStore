@@ -14,7 +14,8 @@ namespace OnlineStore.View
         {
             InitializeComponent();
         }
-
+        //TODO: Сделать конструктор без параметров, который инициализирует WorkRow, 
+        // а в конструкторе с параметрами оставить только DataRow
         public ProductsEditForm(DataRow workRow, bool editRow = false) : this()
         {
             this.WorkRow = workRow;
@@ -77,7 +78,7 @@ namespace OnlineStore.View
 
         public void SetConnections()
         {
-            categoriesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+            categoriesTableAdapter.Connection = DataBaseConnection.Connection;
         }
 
         public void FillDataSet()
@@ -103,6 +104,8 @@ namespace OnlineStore.View
 
         public void FillItems()
         {
+            WorkRow = marketDBDataSet.Tables["Products"].NewRow();
+
             productCodeTextBox.Text = WorkRow[0].ToString();
             productNameTextBox.Text = WorkRow[1].ToString();
             priceTextBox.Text = WorkRow[2].ToString();
@@ -154,6 +157,9 @@ namespace OnlineStore.View
             return flag;
         }
 
-
+        public DataRow GetRow() 
+        {
+            return WorkRow;
+        }
     }
 }
