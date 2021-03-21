@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +28,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,9 +51,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -58,6 +68,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -82,17 +93,69 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controller\ConnectionController.cs" />
-    <Compile Include="MarketDBDataSet1.Designer.cs">
+    <Compile Include="Customer.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryView.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="marketModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
+      <DependentUpon>marketModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="marketModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="marketModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>marketModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseConnection.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersView.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductView.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellsView.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
     <Compile Include="View\BorderlessWinForm.cs">
       <SubType>Form</SubType>
@@ -105,12 +168,6 @@
     </Compile>
     <Compile Include="View\CartEditForm.Designer.cs">
       <DependentUpon>CartEditForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\CartForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\CartForm.Designer.cs">
-      <DependentUpon>CartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoadingForm.cs">
       <SubType>Form</SubType>
@@ -138,12 +195,6 @@
     <Compile Include="View\OrdersEditForm.Designer.cs">
       <DependentUpon>OrdersEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OrdersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\OrdersForm.Designer.cs">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\ProductsEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,21 +213,12 @@
     <Compile Include="View\UsersEditForm.Designer.cs">
       <DependentUpon>UsersEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\UsersForm.Designer.cs">
-      <DependentUpon>UsersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CartEditForm.resx">
       <DependentUpon>CartEditForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\CartForm.resx">
-      <DependentUpon>CartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
@@ -195,9 +237,6 @@
     <EmbeddedResource Include="View\OrdersEditForm.resx">
       <DependentUpon>OrdersEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OrdersForm.resx">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\ProductsEditForm.resx">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,21 +246,30 @@
     <EmbeddedResource Include="View\UsersEditForm.resx">
       <DependentUpon>UsersEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UsersForm.resx">
-      <DependentUpon>UsersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="MarketDBDataSet1.xsc">
-      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="MarketDBDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MarketDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MarketDBDataSet1.xss">
-      <DependentUpon>MarketDBDataSet1.xsd</DependentUpon>
+    <EntityDeploy Include="marketModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>marketModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="marketModel.edmx.diagram">
+      <DependentUpon>marketModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Cart.datasource" />
+    <None Include="Properties\DataSources\Category.datasource" />
+    <None Include="Properties\DataSources\Customer.datasource" />
+    <None Include="Properties\DataSources\Delivery.datasource" />
+    <None Include="Properties\DataSources\DeliveryView.datasource" />
+    <None Include="Properties\DataSources\Employee.datasource" />
+    <None Include="Properties\DataSources\MarketDBEntities.datasource" />
+    <None Include="Properties\DataSources\Order.datasource" />
+    <None Include="Properties\DataSources\OrdersView.datasource" />
+    <None Include="Properties\DataSources\Product.datasource" />
+    <None Include="Properties\DataSources\ProductView.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\Role.datasource" />
+    <None Include="Properties\DataSources\SellsView.datasource" />
+    <None Include="Properties\DataSources\Status.datasource" />
+    <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -272,5 +320,28 @@
   <ItemGroup>
     <None Include="Resources\back.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="marketModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>marketModel.Context.cs</LastGenOutput>
+      <DependentUpon>marketModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="marketModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>marketModel.edmx</DependentUpon>
+      <LastGenOutput>marketModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

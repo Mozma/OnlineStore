@@ -78,12 +78,10 @@ namespace OnlineStore.View
 
         public void SetConnections()
         {
-            categoriesTableAdapter.Connection = DataBaseConnection.Connection;
         }
 
         public void FillDataSet()
         {
-            this.categoriesTableAdapter.Fill(this.marketDBDataSet.Categories);
         }
 
         public void ResetItems()
@@ -104,7 +102,6 @@ namespace OnlineStore.View
 
         public void FillItems()
         {
-            WorkRow = marketDBDataSet.Tables["Products"].NewRow();
 
             productCodeTextBox.Text = WorkRow[0].ToString();
             productNameTextBox.Text = WorkRow[1].ToString();

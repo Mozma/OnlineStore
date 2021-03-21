@@ -29,7 +29,6 @@ namespace OnlineStore.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersEditForm));
             this.paidTextBox = new System.Windows.Forms.TextBox();
             this.cancellationSignTextBox = new System.Windows.Forms.TextBox();
@@ -48,21 +47,9 @@ namespace OnlineStore.View
             this.orderDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.completionDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.statuseComboBox = new System.Windows.Forms.ComboBox();
-            this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.userComboBox = new System.Windows.Forms.ComboBox();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.statusesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.StatusesTableAdapter();
-            this.usersTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.UsersTableAdapter();
-            this.cartBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cartTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.CartTableAdapter();
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // paidTextBox
@@ -201,8 +188,6 @@ namespace OnlineStore.View
             // 
             // statuseComboBox
             // 
-            this.statuseComboBox.DataSource = this.statusesBindingSource;
-            this.statuseComboBox.DisplayMember = "Statuse_name";
             this.statuseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statuseComboBox.FormattingEnabled = true;
             this.statuseComboBox.Location = new System.Drawing.Point(131, 69);
@@ -211,20 +196,8 @@ namespace OnlineStore.View
             this.statuseComboBox.TabIndex = 49;
             this.statuseComboBox.ValueMember = "Statuse_code";
             // 
-            // statusesBindingSource
-            // 
-            this.statusesBindingSource.DataMember = "Statuses";
-            this.statusesBindingSource.DataSource = this.marketDBDataSet;
-            // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // userComboBox
             // 
-            this.userComboBox.DataSource = this.usersBindingSource;
-            this.userComboBox.DisplayMember = "Login";
             this.userComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userComboBox.FormattingEnabled = true;
             this.userComboBox.Location = new System.Drawing.Point(131, 16);
@@ -232,11 +205,6 @@ namespace OnlineStore.View
             this.userComboBox.Size = new System.Drawing.Size(172, 21);
             this.userComboBox.TabIndex = 50;
             this.userComboBox.ValueMember = "User_id";
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.marketDBDataSet;
             // 
             // panel1
             // 
@@ -262,27 +230,6 @@ namespace OnlineStore.View
             this.panel1.Size = new System.Drawing.Size(330, 238);
             this.panel1.TabIndex = 51;
             // 
-            // statusesTableAdapter
-            // 
-            this.statusesTableAdapter.ClearBeforeFill = true;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // cartBindingSource
-            // 
-            this.cartBindingSource.DataMember = "Cart";
-            this.cartBindingSource.DataSource = this.marketDBDataSet;
-            // 
-            // cartTableAdapter
-            // 
-            this.cartTableAdapter.ClearBeforeFill = true;
-            // 
-            // orderTableAdapter
-            // 
-            this.orderTableAdapter.ClearBeforeFill = true;
-            // 
             // OrdersEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,12 +245,8 @@ namespace OnlineStore.View
             this.Name = "OrdersEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrdersEditForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,13 +271,5 @@ namespace OnlineStore.View
         private System.Windows.Forms.ComboBox statuseComboBox;
         private System.Windows.Forms.ComboBox userComboBox;
         private System.Windows.Forms.Panel panel1;
-        private MarketDBDataSetTableAdapters.StatusesTableAdapter statusesTableAdapter;
-        private MarketDBDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
-        private MarketDBDataSet marketDBDataSet;
-        private System.Windows.Forms.BindingSource usersBindingSource;
-        private System.Windows.Forms.BindingSource statusesBindingSource;
-        private System.Windows.Forms.BindingSource cartBindingSource;
-        private MarketDBDataSetTableAdapters.CartTableAdapter cartTableAdapter;
-        private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
     }
 }

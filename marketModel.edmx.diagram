@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bcec0f35ba44c20b468dcb79738444a" Name="Diagram1">
+        <EntityTypeShape EntityType="MarketDBModel.Cart" Width="1.5" PointX="4.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Category" Width="1.5" PointX="6.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Customer" Width="1.5" PointX="0.875" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Delivery" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Employee" Width="1.5" PointX="6.875" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Order" Width="2" PointX="3.625" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Product" Width="1.5" PointX="6.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Role" Width="1.5" PointX="1" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.Status" Width="1.5" PointX="0.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.User" Width="1.5" PointX="3.875" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.DeliveryView" Width="1.5" PointX="11.125" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.OrdersView" Width="1.5" PointX="13" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.ProductView" Width="1.5" PointX="11" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketDBModel.SellsView" Width="1.5" PointX="11.125" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="MarketDBModel.FK_Перечень_Заказ" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Перечень_Товары" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Категории_Категории" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Товары_Категории" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Customer_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Delivery_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Delivery_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Employee_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Order_Employee" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="MarketDBModel.FK_Заказ_Статусы" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketDBModel.FK_Users_Users_roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

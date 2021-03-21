@@ -26,17 +26,17 @@ namespace OnlineStore.View
         
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenThisForm<OrdersForm>("ordersForm");
+         //   OpenThisForm<OrdersForm>("ordersForm");
         }
         private void cartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenThisForm<CartForm>("cartForm");
+          //  OpenThisForm<CartForm>("cartForm");
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-           OpenThisForm<UsersForm>("usersForm");
+         //  OpenThisForm<UsersForm>("usersForm");
         }
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)

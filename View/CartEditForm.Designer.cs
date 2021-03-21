@@ -35,7 +35,6 @@ namespace OnlineStore.View
             this.label3 = new System.Windows.Forms.Label();
             this.productCodeComboBox = new System.Windows.Forms.ComboBox();
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.orderIdComboBox = new System.Windows.Forms.ComboBox();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -44,11 +43,8 @@ namespace OnlineStore.View
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.productsTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.ProductsTableAdapter();
-            this.orderTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.OrderTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,16 +94,6 @@ namespace OnlineStore.View
             this.productCodeComboBox.TabIndex = 5;
             this.productCodeComboBox.ValueMember = "Product_code";
             // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataMember = "Products";
-            this.productsBindingSource.DataSource = this.marketDBDataSet;
-            // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // orderIdComboBox
             // 
             this.orderIdComboBox.DataSource = this.orderBindingSource;
@@ -119,11 +105,6 @@ namespace OnlineStore.View
             this.orderIdComboBox.Size = new System.Drawing.Size(159, 21);
             this.orderIdComboBox.TabIndex = 4;
             this.orderIdComboBox.ValueMember = "Order_id";
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataMember = "Order";
-            this.orderBindingSource.DataSource = this.marketDBDataSet;
             // 
             // label2
             // 
@@ -179,11 +160,9 @@ namespace OnlineStore.View
             // 
             // productsTableAdapter
             // 
-            this.productsTableAdapter.ClearBeforeFill = true;
             // 
             // orderTableAdapter
             // 
-            this.orderTableAdapter.ClearBeforeFill = true;
             // 
             // CartEditForm
             // 
@@ -198,7 +177,6 @@ namespace OnlineStore.View
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -216,11 +194,8 @@ namespace OnlineStore.View
         private System.Windows.Forms.ComboBox productCodeComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox priceTextBox;
-        private MarketDBDataSet marketDBDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
-        private MarketDBDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.BindingSource orderBindingSource;
-        private MarketDBDataSetTableAdapters.OrderTableAdapter orderTableAdapter;
         public System.Windows.Forms.ComboBox orderIdComboBox;
     }
 }

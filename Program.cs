@@ -17,10 +17,16 @@ namespace OnlineStore
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (ShowLoginForm())
+            ProductsForm productsForm = new ProductsForm();
+            productsForm.ShowDialog();
+
+
+
+            /*if (ShowLoginForm())
             {
                 ShowMainForm();
             }
+            */
 
         }
 

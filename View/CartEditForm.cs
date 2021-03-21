@@ -64,14 +64,10 @@ namespace OnlineStore.View
 
         public void SetConnections()
         {
-            productsTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
-            orderTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
         }
 
         public void FillDataSet()
         {
-            this.orderTableAdapter.Fill(this.marketDBDataSet.Order);
-            this.productsTableAdapter.Fill(this.marketDBDataSet.Products);
         }
 
         private void FillResultRow()

@@ -150,15 +150,11 @@ namespace OnlineStore.View
         }
         private void SetConnections()
         {
-            usersTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
-            statusesTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
-            cartTableAdapter.Connection = new SqlConnection(Values.Connection.ConnectionString);
+
         }
         private void FillDataSet()
         {
-            this.usersTableAdapter.Fill(this.marketDBDataSet.Users);
-            this.statusesTableAdapter.Fill(this.marketDBDataSet.Statuses);
-            this.cartTableAdapter.Fill(this.marketDBDataSet.Cart);
+
         }
 
     }

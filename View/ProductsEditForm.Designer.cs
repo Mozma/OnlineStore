@@ -39,17 +39,14 @@ namespace OnlineStore.View
             this.label1 = new System.Windows.Forms.Label();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marketDBDataSet = new OnlineStore.MarketDBDataSet();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.productCodeTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.categoriesTableAdapter = new OnlineStore.MarketDBDataSetTableAdapters.CategoriesTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -143,13 +140,7 @@ namespace OnlineStore.View
             // 
             // categoriesBindingSource
             // 
-            this.categoriesBindingSource.DataMember = "Categories";
-            this.categoriesBindingSource.DataSource = this.marketDBDataSet;
             // 
-            // marketDBDataSet
-            // 
-            this.marketDBDataSet.DataSetName = "MarketDBDataSet";
-            this.marketDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // priceTextBox
             // 
@@ -210,7 +201,6 @@ namespace OnlineStore.View
             // 
             // categoriesTableAdapter
             // 
-            this.categoriesTableAdapter.ClearBeforeFill = true;
             // 
             // ProductsEditForm
             // 
@@ -227,7 +217,6 @@ namespace OnlineStore.View
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marketDBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -247,8 +236,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
-        private MarketDBDataSet marketDBDataSet;
         private System.Windows.Forms.BindingSource categoriesBindingSource;
-        private MarketDBDataSetTableAdapters.CategoriesTableAdapter categoriesTableAdapter;
     }
 }
