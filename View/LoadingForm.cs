@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
-    public partial class LoadingForm : BorderlessWinForm
+    public partial class LoadingForm :Form//: BorderlessWinForm
     {
         public LoadingForm()
         {
@@ -12,10 +13,6 @@ namespace OnlineStore.View
 
         private void LoadingForm_Load(object sender, EventArgs e)
         {
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //this.AllowTransparency = true;
-            //this.BackColor = Color.AliceBlue;
-            //this.TransparencyKey = this.BackColor;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -23,7 +20,7 @@ namespace OnlineStore.View
 
         }
 
-        static public Thread State = new Thread(ShowLoadingForm)
+/*        public Thread State = new Thread(ShowLoadingForm)
         {
             Name = "LoadingForm",
             Priority = ThreadPriority.Lowest,
@@ -36,6 +33,6 @@ namespace OnlineStore.View
                 loadingForm.ShowDialog();
             }
         }
-
+*/
     }
 }

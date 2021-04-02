@@ -16,17 +16,17 @@ namespace OnlineStore
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            /*
             ProductsForm productsForm = new ProductsForm();
             productsForm.ShowDialog();
+            */
 
 
-
-            /*if (ShowLoginForm())
+            if (ShowLoginForm())
             {
                 ShowMainForm();
             }
-            */
+            
 
         }
 
@@ -47,14 +47,16 @@ namespace OnlineStore
         /// </summary>
         static private void ShowMainForm()
         {
+            //var lf = new LoadingForm();
             try 
             {
-                LoadingForm.State.Start();
+                
+                //lf.State.Start();
 
                 MainForm mainForm = new MainForm();
                 Thread.Sleep(500); 
 
-                LoadingForm.State.Abort();
+              //  lf.State.Abort();
    
                 mainForm.ShowDialog();
                 
@@ -63,7 +65,7 @@ namespace OnlineStore
             {
                 MessageBox.Show(e.Message, "Ошибка",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadingForm.State.Abort();
+                //lf.State.Abort();
             }
         }
     }

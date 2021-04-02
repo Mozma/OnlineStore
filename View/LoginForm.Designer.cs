@@ -74,6 +74,7 @@ namespace OnlineStore.View
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(177, 20);
             this.tbUsername.TabIndex = 1;
+            this.tbUsername.Text = "Admin";
             // 
             // label2
             // 
@@ -91,6 +92,7 @@ namespace OnlineStore.View
             this.tbPassword.PasswordChar = '•';
             this.tbPassword.Size = new System.Drawing.Size(177, 20);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.Text = "1234";
             // 
             // btnClose
             // 
@@ -122,6 +124,8 @@ namespace OnlineStore.View
             this.Controls.Add(this.btnAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "";

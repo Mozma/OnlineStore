@@ -37,11 +37,11 @@ namespace OnlineStore.View
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label1.Font = new System.Drawing.Font("Cascadia Mono PL", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Cascadia Mono PL", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(73, 19);
+            this.label1.Location = new System.Drawing.Point(14, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 46);
+            this.label1.Size = new System.Drawing.Size(204, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Загрузка...";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,9 +52,11 @@ namespace OnlineStore.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(363, 90);
+            this.ClientSize = new System.Drawing.Size(218, 41);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoadingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadingForm";

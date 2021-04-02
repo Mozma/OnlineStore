@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
     public partial class MainForm : BorderlessWinForm
     {
+        private static Thread th;
         public MainForm()
         {
 
@@ -45,20 +47,38 @@ namespace OnlineStore.View
         }
 
 
-        private void OpenThisForm<T>(string formName) where T: Form, new() 
+        private void OpenThisForm<T>(string formName) where T: Form, new()
         {
-            T form = (T)Application.OpenForms[formName];
+            try
+            {
+
+                T form = (T)Application.OpenForms[formName];
             if (form == null) 
             {
-                form = new T();
-                form.Show();
+              
+                    th = new Thread(new ThreadStart(splash));
+                    th.Start();
+
+                    form = new T();
+
+                    form.Show();
+
+                    th.Abort();
+
             }
             else 
             {
                 form.WindowState = FormWindowState.Normal;
                 form.Activate();
             }
+            }
+                catch (Exception) { }
         }
+
+
+
+
+
 
         public void PostError(string msg)
         {
@@ -79,5 +99,9 @@ namespace OnlineStore.View
         }
 
 
+        public void splash()
+        {
+            Application.Run(new LoadingForm());
+        }
     }
 }
