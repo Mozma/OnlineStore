@@ -1,124 +1,170 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OnlineStore.View
 {
     public partial class ProductsEditForm : Form
     {
-        public DataRow WorkRow { get; set; }
-        bool editRow;
+        private String titleAdd = "Добавление новой записи";
+        private String titleEdit = "Редактирование записи";
+
+        private String oldKey;
+        private Product product;
+        private bool isNewRow = false;
 
         public ProductsEditForm()
         {
             InitializeComponent();
         }
-        //TODO: Сделать конструктор без параметров, который инициализирует WorkRow, 
-        // а в конструкторе с параметрами оставить только DataRow
-        public ProductsEditForm(DataRow workRow, bool editRow = false) : this()
+
+
+        public ProductsEditForm(Product product):this()
         {
-            this.WorkRow = workRow;
-            this.editRow = editRow;
+            isNewRow = product == null ? true : false;
+            this.Text = isNewRow ? titleAdd : titleEdit;
 
-            SetConnections();
-            FillDataSet();
-            ResetItems();
-
-            if (editRow)
+            if (isNewRow)
             {
-                this.Text = "Редактирование записи";
-                btnAccept.Text = "Изменить";
-
-                FillItems();
+                this.product = new Product();
             }
-            else
+            else 
             {
-                this.Text = "Добавление новой записи";
-                btnAccept.Text = "Добавить";
+                this.product = product;
+                oldKey = product.Product_code;
             }
-        }
-
-        private void ProductsEditForm_Load(object sender, EventArgs e)
-        {
+            LoadData();
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            if (ValidateItems())
+            
+            if (!ConstructItem())
+                return;
+
+            using (var context = new MarketDBEntities())
             {
-                FillResultRow();
-                DialogResult = DialogResult.OK;
+
+                if (isNewRow)
+                {
+                    context.Products.Add(product);
+                    context.SaveChanges();
+                }
+                else 
+                {
+                    var result = context.Products.SingleOrDefault(p => p.Product_code == oldKey);
+                    if (result != null)
+                    {
+                        result = product;
+                        context.SaveChanges();
+                    }
+                }
             }
+
+            DialogResult = DialogResult.OK;
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (editRow)
+          /*  if (editRow)
             {
                 FillItems();
             }
             else
             {
                 ResetItems();
-            }
+            }*/
         }
 
         private void FillResultRow()
         {
-            WorkRow[0] = productCodeTextBox.Text;
-            WorkRow[1] = productNameTextBox.Text;
-            WorkRow[2] = Convert.ToDouble(priceTextBox.Text);
-            WorkRow[3] = categoryComboBox.SelectedValue;
+            //WorkRow[0] = productCodeTextBox.Text;
+            //WorkRow[1] = productNameTextBox.Text;
+            //WorkRow[2] = Convert.ToDouble(priceTextBox.Text);
+            //WorkRow[3] = categoryComboBox.SelectedValue;
 
-            if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text)) 
-            {
-                WorkRow[4] = descriptionTextBox.Text;
-            }
+            //if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text)) 
+            //{
+            //    WorkRow[4] = descriptionTextBox.Text;
+            //}
         }
 
         public void SetConnections()
         {
         }
 
-        public void FillDataSet()
+        public void LoadData()
         {
+            MarketDBEntities entities = new MarketDBEntities();
+
+            List<Category> categories = (from Category in entities.Categories select Category).ToList();
+
+            categoryComboBox.DataSource = categories;
+            categoryComboBox.SelectedIndex = -1;
+            categoryComboBox.DisplayMember = "Category_name";
+            categoryComboBox.ValueMember = "Category_Code";
         }
 
         public void ResetItems()
         {
-            if (editRow)
-            {
-                FillItems();
-            }
-            else
-            {
-                categoryComboBox.SelectedIndex = -1;
-                productCodeTextBox.Text = "";
-                productNameTextBox.Text = "";
-                priceTextBox.Text = "";
-                descriptionTextBox.Text = "";
-            }
+            //if (editRow)
+            //{
+            //    FillItems();
+            //}
+            //else
+            //{
+            //    categoryComboBox.SelectedIndex = -1;
+            //    productCodeTextBox.Text = "";
+            //    productNameTextBox.Text = "";
+            //    priceTextBox.Text = "";
+            //    descriptionTextBox.Text = "";
+            //}
         }
 
         public void FillItems()
         {
 
-            productCodeTextBox.Text = WorkRow[0].ToString();
-            productNameTextBox.Text = WorkRow[1].ToString();
-            priceTextBox.Text = WorkRow[2].ToString();
-            categoryComboBox.SelectedValue = WorkRow[3];
+            //productCodeTextBox.Text = WorkRow[0].ToString();
+            //productNameTextBox.Text = WorkRow[1].ToString();
+            //priceTextBox.Text = WorkRow[2].ToString();
+            //categoryComboBox.SelectedValue = WorkRow[3];
 
-            if (WorkRow[4] != null)
-                descriptionTextBox.Text = WorkRow[4].ToString();
+            //if (WorkRow[4] != null)
+            //    descriptionTextBox.Text = WorkRow[4].ToString();
 
         }
 
-        private bool ValidateItems()
+        private bool ConstructItem()
+        {
+            if (ValidateItems())
+            {
+                product.Product_code = productCodeTextBox.Text;
+                product.Product_name = productNameTextBox.Text;
+                product.Price = Convert.ToDecimal(priceTextBox.Text);
+                product.Category_code = categoryComboBox.SelectedValue.ToString();
+
+                if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text)) 
+                {
+                    product.Description = descriptionTextBox.Text;
+                }
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+
+        private bool ValidateItems() 
         {
             bool flag = true;
             string error = "Ошибка ввода: \n";
 
-            if (String.IsNullOrWhiteSpace(productCodeTextBox.Text)) 
+            if (String.IsNullOrWhiteSpace(productCodeTextBox.Text))
             {
                 error += "Код не указан.\n";
                 flag = false;
@@ -130,7 +176,7 @@ namespace OnlineStore.View
             }
 
 
-            if(categoryComboBox.SelectedIndex == -1) 
+            if (categoryComboBox.SelectedIndex == -1)
             {
                 error += "Категория не выбрана.\n";
                 flag = false;
@@ -146,7 +192,7 @@ namespace OnlineStore.View
                 flag = false;
             }
 
-            if (flag == false) 
+            if (flag == false)
             {
                 MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -154,9 +200,9 @@ namespace OnlineStore.View
             return flag;
         }
 
-        public DataRow GetRow() 
+        public Product getProduct() 
         {
-            return WorkRow;
+            return product;
         }
     }
 }

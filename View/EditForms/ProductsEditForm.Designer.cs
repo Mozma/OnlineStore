@@ -138,10 +138,6 @@ namespace OnlineStore.View
             this.categoryComboBox.TabIndex = 4;
             this.categoryComboBox.ValueMember = "Category_Code";
             // 
-            // categoriesBindingSource
-            // 
-            // 
-            // 
             // priceTextBox
             // 
             this.priceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -199,9 +195,6 @@ namespace OnlineStore.View
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // categoriesTableAdapter
-            // 
-            // 
             // ProductsEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,8 +205,7 @@ namespace OnlineStore.View
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProductsEditForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.ProductsEditForm_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).EndInit();

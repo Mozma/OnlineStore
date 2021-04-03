@@ -47,16 +47,10 @@ namespace OnlineStore
         /// </summary>
         static private void ShowMainForm()
         {
-            //var lf = new LoadingForm();
             try 
             {
-                
-                //lf.State.Start();
 
                 MainForm mainForm = new MainForm();
-                Thread.Sleep(500); 
-
-              //  lf.State.Abort();
    
                 mainForm.ShowDialog();
                 
@@ -65,7 +59,6 @@ namespace OnlineStore
             {
                 MessageBox.Show(e.Message, "Ошибка",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //lf.State.Abort();
             }
         }
     }

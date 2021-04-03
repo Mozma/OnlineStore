@@ -29,14 +29,14 @@ namespace OnlineStore.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
             this.productsDataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -50,14 +50,14 @@ namespace OnlineStore.View
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.productsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.productsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.productsDataGridView.Location = new System.Drawing.Point(12, 28);
             this.productsDataGridView.MultiSelect = false;
             this.productsDataGridView.Name = "productsDataGridView";
@@ -78,14 +78,6 @@ namespace OnlineStore.View
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(77, 22);
-            this.btnRefresh.Text = "Обновить";
-            // 
             // btnAdd
             // 
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
@@ -93,6 +85,7 @@ namespace OnlineStore.View
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(77, 22);
             this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -101,6 +94,7 @@ namespace OnlineStore.View
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 22);
             this.btnUpdate.Text = "Изменить";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -109,6 +103,16 @@ namespace OnlineStore.View
             this.btnDelete.RightToLeftAutoMirrorImage = true;
             this.btnDelete.Size = new System.Drawing.Size(71, 22);
             this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(77, 22);
+            this.btnRefresh.Text = "Обновить";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ProductsForm
             // 
