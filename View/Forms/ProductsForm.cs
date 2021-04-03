@@ -11,7 +11,6 @@ namespace OnlineStore.View
     public partial class ProductsForm : Form
     {
 
-        BindingSource bindingSource = new BindingSource();
 
         public ProductsForm()
         {
@@ -20,7 +19,7 @@ namespace OnlineStore.View
 
         private void ProductsForm_Load(object sender, EventArgs e)
         {
-            loadData();
+            LoadData();
 
             productsDataGridView.Columns[0].HeaderText = "Код товара";
             productsDataGridView.Columns[1].HeaderText = "Название товара";
@@ -37,15 +36,31 @@ namespace OnlineStore.View
             var editForm = new ProductsEditForm(null);
             if (editForm.ShowDialog() == DialogResult.OK) 
             {
-                loadData();
+                LoadData();
                 productsDataGridView.Refresh();
             }
         }
 
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-           
+
+            if (productsDataGridView.CurrentCell == null)
+                return;
+
+            if (productsDataGridView.SelectedRows.Count > 0)
+            {
+                var marketDBEntities = new MarketDBEntities();
+                int index = productsDataGridView.SelectedRows[0].Index;
+                Product selectedProduct = marketDBEntities.Products.Find(productsDataGridView[0, index].Value.ToString());
+            //    MessageBox.Show(selectedProduct.Product_name);
+
+                var editForm = new ProductsEditForm(selectedProduct);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                    productsDataGridView.Refresh();
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -54,7 +69,7 @@ namespace OnlineStore.View
 
         public void btnRefresh_Click(object sender, EventArgs e)
         {
-            loadData();
+            LoadData();
         }
 
         public void SetConnections()
@@ -62,7 +77,7 @@ namespace OnlineStore.View
 
         }
 
-        public void loadData()
+        public void LoadData()
         {
             using (MarketDBEntities context = new MarketDBEntities())
             {
@@ -79,17 +94,5 @@ namespace OnlineStore.View
                 productsDataGridView.DataSource = query.ToList();
             }
         }
-
-        /// <summary>
-        /// Метод вызова формы для добавления элемента.
-        /// </summary>
-        public void AddProudct() 
-        {
-
-
-        }
-
-
-        
     }
 }

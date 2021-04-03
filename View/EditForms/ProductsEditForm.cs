@@ -27,17 +27,23 @@ namespace OnlineStore.View
         {
             isNewRow = product == null ? true : false;
             this.Text = isNewRow ? titleAdd : titleEdit;
-
+            
+            LoadData();
+            
             if (isNewRow)
             {
                 this.product = new Product();
             }
             else 
             {
+                
                 this.product = product;
                 oldKey = product.Product_code;
+                FillItems();
             }
-            LoadData();
+
+            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -56,10 +62,14 @@ namespace OnlineStore.View
                 }
                 else 
                 {
-                    var result = context.Products.SingleOrDefault(p => p.Product_code == oldKey);
+                    Product result = context.Products.Where(p => p.Product_code == oldKey).First();
                     if (result != null)
                     {
-                        result = product;
+                    //    result.Product_code = product.Product_name;
+                        result.Product_name = product.Product_code;
+                        result.Price = product.Price;
+                        result.Category_code = product.Category_code;
+                        result.Description = product.Description;
                         context.SaveChanges();
                     }
                 }
@@ -69,31 +79,14 @@ namespace OnlineStore.View
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-          /*  if (editRow)
+           if (isNewRow)
             {
-                FillItems();
+                ResetItems();
             }
             else
             {
-                ResetItems();
-            }*/
-        }
-
-        private void FillResultRow()
-        {
-            //WorkRow[0] = productCodeTextBox.Text;
-            //WorkRow[1] = productNameTextBox.Text;
-            //WorkRow[2] = Convert.ToDouble(priceTextBox.Text);
-            //WorkRow[3] = categoryComboBox.SelectedValue;
-
-            //if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text)) 
-            //{
-            //    WorkRow[4] = descriptionTextBox.Text;
-            //}
-        }
-
-        public void SetConnections()
-        {
+                FillItems();
+            }
         }
 
         public void LoadData()
@@ -110,30 +103,25 @@ namespace OnlineStore.View
 
         public void ResetItems()
         {
-            //if (editRow)
-            //{
-            //    FillItems();
-            //}
-            //else
-            //{
-            //    categoryComboBox.SelectedIndex = -1;
-            //    productCodeTextBox.Text = "";
-            //    productNameTextBox.Text = "";
-            //    priceTextBox.Text = "";
-            //    descriptionTextBox.Text = "";
-            //}
+            
+                categoryComboBox.SelectedIndex = -1;
+                productCodeTextBox.Text = "";
+                productNameTextBox.Text = "";
+                priceTextBox.Text = "";
+                descriptionTextBox.Text = "";
+            
         }
 
         public void FillItems()
         {
 
-            //productCodeTextBox.Text = WorkRow[0].ToString();
-            //productNameTextBox.Text = WorkRow[1].ToString();
-            //priceTextBox.Text = WorkRow[2].ToString();
-            //categoryComboBox.SelectedValue = WorkRow[3];
+            productCodeTextBox.Text = product.Product_code;
+            productNameTextBox.Text = product.Product_name;
+            priceTextBox.Text = product.Price.ToString();
+            categoryComboBox.SelectedValue = product.Category_code;
 
-            //if (WorkRow[4] != null)
-            //    descriptionTextBox.Text = WorkRow[4].ToString();
+            if (product.Description != null)
+                descriptionTextBox.Text = product.Description;
 
         }
 
