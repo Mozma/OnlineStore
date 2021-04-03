@@ -65,11 +65,10 @@ namespace OnlineStore.Controller
                         return false;
                 }
 
-                //MessageBox.Show(connection.State.ToString());   // Для отладки.
+
             }
 
         }
-
 
     }
 }

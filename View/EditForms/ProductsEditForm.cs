@@ -1,6 +1,8 @@
-﻿using System;
+﻿using OnlineStore.Controller;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -54,29 +56,66 @@ namespace OnlineStore.View
 
             using (var context = new MarketDBEntities())
             {
-
-                if (isNewRow)
+                try
                 {
-                    context.Products.Add(product);
-                    context.SaveChanges();
-                }
-                else 
-                {
-                    Product result = context.Products.Where(p => p.Product_code == oldKey).First();
-                    if (result != null)
+                    if (isNewRow)
                     {
-                    //    result.Product_code = product.Product_name;
-                        result.Product_name = product.Product_code;
-                        result.Price = product.Price;
-                        result.Category_code = product.Category_code;
-                        result.Description = product.Description;
+                        context.Products.Add(product);
                         context.SaveChanges();
                     }
+                    else
+                    {
+                        UpdateProduct();
+                    }
                 }
+                catch (DbUpdateException ex) 
+                {
+                    Helper.PostError(ex.InnerException.InnerException.Message);
+                }
+                catch (Exception ex)
+                {
+                    Helper.PostError(ex.Message);
+                }
+                
             }
 
             DialogResult = DialogResult.OK;
         }
+
+
+        private void UpdateProduct() 
+        {
+            using (SqlConnection connection = new SqlConnection(DataBaseConnection.Connection.ConnectionString))
+            {
+                string sql = $"Update Admin.Products SET " +
+                        $"Product_code='{product.Product_code}'" +
+                        $", Product_name='{product.Product_name}'" +
+                        $", Price={Convert.ToDouble(product.Price)}" +
+                        $", Category_code='{product.Category_code}'" +
+                        $", Description={(product.Description == null ? "NULL" : '\'' + product.Description+ '\'') }" +
+                        $" Where Product_code='{oldKey}'";
+                
+                
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+                    finally 
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
            if (isNewRow)
@@ -138,6 +177,11 @@ namespace OnlineStore.View
                 {
                     product.Description = descriptionTextBox.Text;
                 }
+                else 
+                {
+                    product.Description = null;
+                }
+
                 return true;
             }
             else 

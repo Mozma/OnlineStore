@@ -79,23 +79,7 @@ namespace OnlineStore.View
 
 
 
-        public void PostError(string msg)
-        {
-            int state = 0;
-            string errorMsg = msg;
-            if (msg.Contains("DELETE")  && msg.Contains("REFERENCE")) 
-            {
-                errorMsg = "На данное значение существует ссылка.\n" +
-                           "Удаление отменено.";
-            }
-            //if (msg.Contains("DELETE") && msg.Contains("REFERENCE"))
-            //{
-            //    errorMsg = "Нарушение уникальности первичного ключа.\n" +
-            //               "Удаление отменено.";
-            //}
 
-            MessageBox.Show(this, errorMsg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
 
 
         public void splash()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.Controller;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
@@ -49,34 +50,50 @@ namespace OnlineStore.View
 
             if (productsDataGridView.SelectedRows.Count > 0)
             {
-                var marketDBEntities = new MarketDBEntities();
-                int index = productsDataGridView.SelectedRows[0].Index;
-                Product selectedProduct = marketDBEntities.Products.Find(productsDataGridView[0, index].Value.ToString());
-            //    MessageBox.Show(selectedProduct.Product_name);
-
-                var editForm = new ProductsEditForm(selectedProduct);
-                if (editForm.ShowDialog() == DialogResult.OK)
+                using (var marketDBEntities = new MarketDBEntities())
                 {
-                    LoadData();
-                    productsDataGridView.Refresh();
+                    int index = productsDataGridView.SelectedRows[0].Index;
+                    Product selectedProduct = marketDBEntities.Products.Find(productsDataGridView[0, index].Value.ToString());
+
+                    var editForm = new ProductsEditForm(selectedProduct);
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadData();            
+                    }
                 }
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (var marketDBEntities = new MarketDBEntities())
+                {
+                    try
+                    {
+                        int index = productsDataGridView.SelectedRows[0].Index;
+                        Product selectedProduct = marketDBEntities.Products.Find(productsDataGridView[0, index].Value.ToString());
+
+                        marketDBEntities.Products.Remove(selectedProduct);
+                        marketDBEntities.SaveChanges();
+                        LoadData();
+                    }
+                    catch (Exception ex) 
+                    {
+                        Helper.PostError(ex.Message);
+                    }
+                }
+            }
         }
 
         public void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
         }
-
-        public void SetConnections()
-        {
-
-        }
-
+        
         public void LoadData()
         {
             using (MarketDBEntities context = new MarketDBEntities())
@@ -93,6 +110,7 @@ namespace OnlineStore.View
 
                 productsDataGridView.DataSource = query.ToList();
             }
+            productsDataGridView.Refresh();
         }
     }
 }
