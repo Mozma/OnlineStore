@@ -53,26 +53,25 @@ namespace OnlineStore.View
             {
 
                 T form = (T)Application.OpenForms[formName];
-            if (form == null) 
-            {
-              
+                if (form == null) 
+                {
                     th = new Thread(new ThreadStart(splash));
                     th.Start();
 
                     form = new T();
 
                     form.Show();
-
+                  
+                    Application.OpenForms["LoadingForm"].Hide();
                     th.Abort();
-
+                }
+                else 
+                {
+                    form.WindowState = FormWindowState.Normal;
+                    form.Activate();
+                }
             }
-            else 
-            {
-                form.WindowState = FormWindowState.Normal;
-                form.Activate();
-            }
-            }
-                catch (Exception) { }
+            catch (Exception) { }
         }
 
 

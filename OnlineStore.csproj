@@ -157,73 +157,73 @@
     <Compile Include="User.cs">
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\BorderlessWinForm.cs">
+    <Compile Include="View\Forms\BorderlessWinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\BorderlessWinForm.Designer.cs">
+    <Compile Include="View\Forms\BorderlessWinForm.Designer.cs">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CartEditForm.cs">
+    <Compile Include="View\EditForms\CartEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CartEditForm.Designer.cs">
+    <Compile Include="View\EditForms\CartEditForm.Designer.cs">
       <DependentUpon>CartEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoadingForm.cs">
+    <Compile Include="View\Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\LoadingForm.Designer.cs">
+    <Compile Include="View\Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginForm.cs">
+    <Compile Include="View\Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\LoginForm.Designer.cs">
+    <Compile Include="View\Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\MainForm.cs">
+    <Compile Include="View\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainForm.Designer.cs">
+    <Compile Include="View\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OrdersEditForm.cs">
+    <Compile Include="View\EditForms\OrdersEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\OrdersEditForm.Designer.cs">
+    <Compile Include="View\EditForms\OrdersEditForm.Designer.cs">
       <DependentUpon>OrdersEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductsEditForm.cs">
+    <Compile Include="View\EditForms\ProductsEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ProductsEditForm.Designer.cs">
+    <Compile Include="View\EditForms\ProductsEditForm.Designer.cs">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductsForm.cs">
+    <Compile Include="View\Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ProductsForm.Designer.cs">
+    <Compile Include="View\Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersEditForm.cs">
+    <Compile Include="View\EditForms\UsersEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\UsersEditForm.Designer.cs">
+    <Compile Include="View\EditForms\UsersEditForm.Designer.cs">
       <DependentUpon>UsersEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Values.cs" />
-    <EmbeddedResource Include="View\BorderlessWinForm.resx">
+    <EmbeddedResource Include="View\Forms\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CartEditForm.resx">
+    <EmbeddedResource Include="View\EditForms\CartEditForm.resx">
       <DependentUpon>CartEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\LoadingForm.resx">
+    <EmbeddedResource Include="View\Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\LoginForm.resx">
+    <EmbeddedResource Include="View\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,19 +231,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainForm.resx">
+    <EmbeddedResource Include="View\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OrdersEditForm.resx">
+    <EmbeddedResource Include="View\EditForms\OrdersEditForm.resx">
       <DependentUpon>OrdersEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ProductsEditForm.resx">
+    <EmbeddedResource Include="View\EditForms\ProductsEditForm.resx">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ProductsForm.resx">
+    <EmbeddedResource Include="View\Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UsersEditForm.resx">
+    <EmbeddedResource Include="View\EditForms\UsersEditForm.resx">
       <DependentUpon>UsersEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="marketModel.edmx">
