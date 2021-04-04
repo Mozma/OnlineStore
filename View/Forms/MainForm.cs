@@ -46,6 +46,10 @@ namespace OnlineStore.View
             OpenThisForm<ProductsForm>("productsForm");
         }
 
+        private void categoriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenThisForm<CategoriesForm>("categoriesForm");
+        }
 
         private void OpenThisForm<T>(string formName) where T: Form, new()
         {
@@ -74,17 +78,11 @@ namespace OnlineStore.View
             catch (Exception) { }
         }
 
-
-
-
-
-
-
-
-
         public void splash()
         {
             Application.Run(new LoadingForm());
         }
+
+
     }
 }

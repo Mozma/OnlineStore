@@ -158,6 +158,12 @@
     <Compile Include="User.cs">
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\EditForms\CategoriesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditForms\CategoriesEditForm.Designer.cs">
+      <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\BorderlessWinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,12 @@
     <Compile Include="View\EditForms\ProductsEditForm.Designer.cs">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\CategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\CategoriesForm.Designer.cs">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +227,9 @@
       <DependentUpon>UsersEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Values.cs" />
+    <EmbeddedResource Include="View\EditForms\CategoriesEditForm.resx">
+      <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditForms\ProductsEditForm.resx">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\CategoriesForm.resx">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
