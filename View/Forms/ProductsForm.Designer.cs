@@ -127,7 +127,7 @@ namespace OnlineStore.View
             this.MinimumSize = new System.Drawing.Size(667, 362);
             this.Name = "ProductsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProductsForm";
+            this.Text = "Обзор справочника  \"Товары\"";
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).EndInit();
             this.toolStrip.ResumeLayout(false);

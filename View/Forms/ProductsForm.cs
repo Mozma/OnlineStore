@@ -49,8 +49,6 @@ namespace OnlineStore.View
             productsDataGridView.Columns[3].HeaderText = "Код категории";
             productsDataGridView.Columns[3].HeaderText = "Название категории";
             productsDataGridView.Columns[4].HeaderText = "Описание";
-
-            this.Text = $"Обзор таблицы \"Товары\"";
         }  
 
 
