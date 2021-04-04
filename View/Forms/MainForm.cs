@@ -51,6 +51,11 @@ namespace OnlineStore.View
             OpenThisForm<CategoriesForm>("categoriesForm");
         }
 
+        private void ordersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            OpenThisForm<OrdersForm>("ordersForm");
+        }
+
         private void OpenThisForm<T>(string formName) where T: Form, new()
         {
             try
@@ -65,9 +70,12 @@ namespace OnlineStore.View
                     form = new T();
 
                     form.Show();
-                  
+
                     Application.OpenForms["LoadingForm"].Hide();
+                    
                     th.Abort();
+
+                    form.Activate();
                 }
                 else 
                 {

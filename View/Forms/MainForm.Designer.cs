@@ -44,7 +44,7 @@ namespace OnlineStore.View
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.statusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.functionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.доставкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.viewOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,7 +160,7 @@ namespace OnlineStore.View
             // functionToolStripMenuItem
             // 
             this.functionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.заказыToolStripMenuItem,
+            this.ordersToolStripMenuItem,
             this.доставкаToolStripMenuItem,
             this.toolStripSeparator2,
             this.viewOrdersToolStripMenuItem,
@@ -169,34 +169,35 @@ namespace OnlineStore.View
             this.functionToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.functionToolStripMenuItem.Text = "Функции";
             // 
-            // заказыToolStripMenuItem
+            // ordersToolStripMenuItem
             // 
-            this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
-            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.заказыToolStripMenuItem.Text = "Заказы";
+            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordersToolStripMenuItem.Text = "Заказы";
+            this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click_1);
             // 
             // доставкаToolStripMenuItem
             // 
             this.доставкаToolStripMenuItem.Name = "доставкаToolStripMenuItem";
-            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.доставкаToolStripMenuItem.Text = "Доставка";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // viewOrdersToolStripMenuItem
             // 
             this.viewOrdersToolStripMenuItem.Name = "viewOrdersToolStripMenuItem";
-            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewOrdersToolStripMenuItem.Text = "Статистика заказов";
             this.viewOrdersToolStripMenuItem.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem_Click);
             // 
             // представленияToolStripMenuItem
             // 
             this.представленияToolStripMenuItem.Name = "представленияToolStripMenuItem";
-            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.представленияToolStripMenuItem.Text = "Статистика продаж";
             // 
             // отчётToolStripMenuItem
@@ -254,7 +255,7 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem statusesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem доставкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчётToolStripMenuItem;
     }
