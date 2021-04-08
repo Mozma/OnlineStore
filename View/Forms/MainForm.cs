@@ -40,6 +40,10 @@ namespace OnlineStore.View
             
          //  OpenThisForm<UsersForm>("usersForm");
         }
+        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenThisForm<RolesForm>("rolesForm");
+        }
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {

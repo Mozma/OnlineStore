@@ -164,6 +164,12 @@
     <Compile Include="View\EditForms\CategoriesEditForm.Designer.cs">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditForms\RolesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditForms\RolesEditForm.Designer.cs">
+      <DependentUpon>RolesEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\BorderlessWinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,12 @@
     <Compile Include="View\Forms\OrdersForm.Designer.cs">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\RolesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\RolesForm.Designer.cs">
+      <DependentUpon>RolesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +247,9 @@
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\EditForms\CategoriesEditForm.resx">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditForms\RolesEditForm.resx">
+      <DependentUpon>RolesEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\BorderlessWinForm.resx">
       <DependentUpon>BorderlessWinForm.cs</DependentUpon>
@@ -267,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\OrdersForm.resx">
       <DependentUpon>OrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\RolesForm.resx">
+      <DependentUpon>RolesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
