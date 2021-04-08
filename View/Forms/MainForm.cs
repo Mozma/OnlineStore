@@ -37,8 +37,7 @@ namespace OnlineStore.View
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-         //  OpenThisForm<UsersForm>("usersForm");
+            OpenThisForm<UsersForm>("usersForm");
         }
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {

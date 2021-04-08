@@ -164,6 +164,12 @@
     <Compile Include="View\EditForms\CategoriesEditForm.Designer.cs">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditForms\UsersEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditForms\UsersEditForm.Designer.cs">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditForms\StatusesEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,12 @@
     <Compile Include="View\Forms\OrdersForm.Designer.cs">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\StatusesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,15 +262,12 @@
     <Compile Include="View\Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EditForms\UsersEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\EditForms\UsersEditForm.Designer.cs">
-      <DependentUpon>UsersEditForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Values.cs" />
     <EmbeddedResource Include="View\EditForms\CategoriesEditForm.resx">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditForms\UsersEditForm.resx">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditForms\StatusesEditForm.resx">
       <DependentUpon>StatusesEditForm.cs</DependentUpon>
@@ -298,6 +307,9 @@
     <EmbeddedResource Include="View\Forms\OrdersForm.resx">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\StatusesForm.resx">
       <DependentUpon>StatusesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,9 +318,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\EditForms\UsersEditForm.resx">
-      <DependentUpon>UsersEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="marketModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

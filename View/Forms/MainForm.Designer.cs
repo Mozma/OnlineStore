@@ -139,6 +139,7 @@ namespace OnlineStore.View
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usersToolStripMenuItem.Text = "Пользователи";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // rolesToolStripMenuItem
             // 
@@ -174,32 +175,32 @@ namespace OnlineStore.View
             // ordersToolStripMenuItem
             // 
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.ordersToolStripMenuItem.Text = "Заказы";
             this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
             // доставкаToolStripMenuItem
             // 
             this.доставкаToolStripMenuItem.Name = "доставкаToolStripMenuItem";
-            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.доставкаToolStripMenuItem.Text = "Доставка";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
             // 
             // viewOrdersToolStripMenuItem
             // 
             this.viewOrdersToolStripMenuItem.Name = "viewOrdersToolStripMenuItem";
-            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.viewOrdersToolStripMenuItem.Text = "Статистика заказов";
             this.viewOrdersToolStripMenuItem.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem_Click);
             // 
             // представленияToolStripMenuItem
             // 
             this.представленияToolStripMenuItem.Name = "представленияToolStripMenuItem";
-            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.представленияToolStripMenuItem.Text = "Статистика продаж";
             // 
             // отчётToolStripMenuItem
