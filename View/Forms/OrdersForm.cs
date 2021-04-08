@@ -12,7 +12,7 @@ namespace OnlineStore.View
             InitializeComponent();
         }
 
-        private void ProductsForm_Load(object sender, EventArgs e)
+        private void OrdersForm_Load(object sender, EventArgs e)
         {
             LoadData();
             SetUpGUI();   

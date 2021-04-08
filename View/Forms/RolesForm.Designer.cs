@@ -127,7 +127,7 @@ namespace OnlineStore.View
             this.Name = "RolesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Обзор справочника  \"Роли\"";
-            this.Load += new System.EventHandler(this.ProductsForm_Load);
+            this.Load += new System.EventHandler(this.RolesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rolesDataGridView)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

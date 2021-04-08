@@ -130,7 +130,7 @@ namespace OnlineStore.View
             this.Name = "OrdersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Книга заказов";
-            this.Load += new System.EventHandler(this.ProductsForm_Load);
+            this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
