@@ -46,9 +46,6 @@ namespace OnlineStore.View
             rolesDataGridView.Columns[0].HeaderText = "Код роли";
             rolesDataGridView.Columns[1].HeaderText = "Название роли";
             rolesDataGridView.Columns[2].HeaderText = "Уровень доступа";
-            //productsDataGridView.Columns[3].HeaderText = "Код категории";
-            //productsDataGridView.Columns[3].HeaderText = "Название категории";
-            //productsDataGridView.Columns[4].HeaderText = "Описание";
         }  
 
 
