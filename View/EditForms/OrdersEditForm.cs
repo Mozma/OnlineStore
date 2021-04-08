@@ -45,7 +45,8 @@ namespace OnlineStore.View
                 FillItems();
             }
 
-            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            SetUpGUI();
+
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -62,6 +63,9 @@ namespace OnlineStore.View
                     {
                         context.Orders.Add(order);
                         context.SaveChanges();
+                        
+                        isNewRow = false;
+                        ResetItems();
                     }
                     else
                     {
@@ -84,35 +88,40 @@ namespace OnlineStore.View
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (isNewRow)
-            {
+            if (btnCancel.Text.Equals("Выход"))
+                DialogResult = DialogResult.OK;
+
                 ResetItems();
-            }
-            else
-            {
-                FillItems();
-            }
+ 
+        }
+
+        private void SetUpGUI() 
+        {
+            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            cancellationSignTextBox.Enabled = isNewRow ? false : true;
         }
 
         private void ChangeWindowState() 
         {
-            if (btnAccept.Text.Equals("Сохранить") || btnAccept.Text.Equals("Изменить"))
+            if (btnAccept.Text.Equals("Добавить") || btnAccept.Text.Equals("Изменить"))
             {
-                btnCancel.Text = "Отмена";
+                btnAccept.Enabled = false;
                 orderPanel.Enabled = false;
                 cartPanel.Enabled = true;
+                
             }
             else
             {
-                btnCancel.Text = "Выход";
                 orderPanel.Enabled = true;
                 cartPanel.Enabled = false;
             }
+            SetUpGUI();
+            btnCancel.Text = "Выход";
         }
 
 
         /// <summary>
-        /// Отправка запроса на изменение данных. Используется ADO т.к. было необходимо изменять код продукта.
+        /// Отправка запроса на изменение данных. 
         /// </summary>
         private void UpdateItem()
         {
@@ -171,17 +180,23 @@ namespace OnlineStore.View
         /// </summary>
         private void ResetItems()
         {
-            customerComboBox.SelectedValue = -1;
-            employeeComboBox.SelectedValue = -1;
-            statusComboBox.SelectedValue = 1;
-            
-            orderNumberTextBox.Text = "";
-            orderDateDateTimePicker.Value = DateTime.Now;
-            completionDateDateTimePicker.Value = DateTime.Now;
-            totalCostTextBox.Text = "";
-            paidTextBox.Text = "";
-            cancellationSignTextBox.Text = "";
+            if (isNewRow)
+            {
+                customerComboBox.SelectedValue = -1;
+                employeeComboBox.SelectedValue = -1;
+                statusComboBox.SelectedValue = 1;
 
+                orderNumberTextBox.Text = "";
+                orderDateDateTimePicker.Value = DateTime.Now;
+                completionDateDateTimePicker.Value = DateTime.Now;
+                totalCostTextBox.Text = "";
+                paidTextBox.Text = "";
+                cancellationSignTextBox.Text = "";
+            }
+            else
+            {
+                FillItems();
+            }
 
         }
 
@@ -230,8 +245,9 @@ namespace OnlineStore.View
                 order.Order_number = orderNumberTextBox.Text;
                 order.Order_date = orderDateDateTimePicker.Value;
                 order.Completion_date = completionDateDateTimePicker.Value;
-                order.Total_cost = Convert.ToDecimal(totalCostTextBox.Text);
-                order.Paid = Convert.ToDecimal(totalCostTextBox.Text);
+                
+                order.Total_cost = totalCostTextBox.Text.Equals("")? 0 : Convert.ToDecimal(totalCostTextBox.Text);
+                order.Paid = paidTextBox.Text.Equals("") ? 0 : Convert.ToDecimal(paidTextBox.Text);
                 order.Statuse_code = statusComboBox.SelectedValue.ToString();
 
                 if (!String.IsNullOrWhiteSpace(cancellationSignTextBox.Text))
@@ -278,20 +294,20 @@ namespace OnlineStore.View
                 flag = false;
             }
 
-            try
-            {
-                double tmp;
+            //try
+            //{
+            //    double tmp;
 
-                tmp = Convert.ToDouble(totalCostTextBox.Text);
-                tmp = Convert.ToDouble(paidTextBox.Text);
+            //    tmp = Convert.ToDouble(totalCostTextBox.Text);
+            //    tmp = Convert.ToDouble(paidTextBox.Text);
 
-            }
-            catch (FormatException)
-            {
+            //}
+            //catch (FormatException)
+            //{
 
-                error += "Данные в полях \"Полная стоимость\" или \"Оплачено\" указаны неверно.";
-                flag = false;
-            }
+            //    error += "Данные в полях \"Полная стоимость\" или \"Оплачено\" указаны неверно.";
+            //    flag = false;
+            //}
 
             if (flag == false)
             {

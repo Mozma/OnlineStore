@@ -30,7 +30,7 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersEditForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.paidTextBox = new System.Windows.Forms.TextBox();
             this.cancellationSignTextBox = new System.Windows.Forms.TextBox();
             this.totalCostTextBox = new System.Windows.Forms.TextBox();
@@ -69,6 +69,7 @@ namespace OnlineStore.View
             // 
             this.paidTextBox.Location = new System.Drawing.Point(136, 198);
             this.paidTextBox.Name = "paidTextBox";
+            this.paidTextBox.ReadOnly = true;
             this.paidTextBox.Size = new System.Drawing.Size(242, 20);
             this.paidTextBox.TabIndex = 26;
             // 
@@ -83,6 +84,7 @@ namespace OnlineStore.View
             // 
             this.totalCostTextBox.Location = new System.Drawing.Point(136, 172);
             this.totalCostTextBox.Name = "totalCostTextBox";
+            this.totalCostTextBox.ReadOnly = true;
             this.totalCostTextBox.Size = new System.Drawing.Size(242, 20);
             this.totalCostTextBox.TabIndex = 24;
             // 
@@ -330,14 +332,14 @@ namespace OnlineStore.View
             this.cartDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.cartDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.cartDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.cartDataGridView.ColumnHeadersHeight = 46;
             this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cartDataGridView.Location = new System.Drawing.Point(0, 28);
