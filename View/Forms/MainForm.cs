@@ -28,7 +28,7 @@ namespace OnlineStore.View
         
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         //   OpenThisForm<OrdersForm>("ordersForm");
+            OpenThisForm<OrdersForm>("ordersForm");
         }
         private void cartToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -55,9 +55,9 @@ namespace OnlineStore.View
             OpenThisForm<CategoriesForm>("categoriesForm");
         }
 
-        private void ordersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void statusesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenThisForm<OrdersForm>("ordersForm");
+            OpenThisForm<StatusesForm>("statusesForm");
         }
 
         private void OpenThisForm<T>(string formName) where T: Form, new()
