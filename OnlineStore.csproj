@@ -164,6 +164,12 @@
     <Compile Include="View\EditForms\CategoriesEditForm.Designer.cs">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditForms\DeliveriesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditForms\DeliveriesEditForm.Designer.cs">
+      <DependentUpon>DeliveriesEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditForms\EmployeesEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     </Compile>
     <Compile Include="View\EditForms\CartEditForm.Designer.cs">
       <DependentUpon>CartEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Forms\DeliveriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\DeliveriesForm.Designer.cs">
+      <DependentUpon>DeliveriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\EmployeesForm.cs">
       <SubType>Form</SubType>
@@ -290,6 +302,9 @@
     <EmbeddedResource Include="View\EditForms\CategoriesEditForm.resx">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EditForms\DeliveriesEditForm.resx">
+      <DependentUpon>DeliveriesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EditForms\EmployeesEditForm.resx">
       <DependentUpon>EmployeesEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditForms\CartEditForm.resx">
       <DependentUpon>CartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\DeliveriesForm.resx">
+      <DependentUpon>DeliveriesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
