@@ -37,7 +37,7 @@ namespace OnlineStore.View
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +87,7 @@ namespace OnlineStore.View
             this.productsToolStripMenuItem,
             this.toolStripSeparator1,
             this.customersToolStripMenuItem,
-            this.employeeToolStripMenuItem,
+            this.employeesToolStripMenuItem,
             this.toolStripSeparator3,
             this.usersToolStripMenuItem,
             this.rolesToolStripMenuItem,
@@ -123,11 +123,12 @@ namespace OnlineStore.View
             this.customersToolStripMenuItem.Text = "Клиенты";
             this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
             // 
-            // employeeToolStripMenuItem
+            // employeesToolStripMenuItem
             // 
-            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.employeeToolStripMenuItem.Text = "Сотрудники";
+            this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.employeesToolStripMenuItem.Text = "Сотрудники";
+            this.employeesToolStripMenuItem.Click += new System.EventHandler(this.employeesToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -251,7 +252,7 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripMenuItem categoriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem представленияToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
