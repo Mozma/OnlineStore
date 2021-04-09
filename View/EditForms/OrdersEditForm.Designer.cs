@@ -69,7 +69,6 @@ namespace OnlineStore.View
             // 
             this.paidTextBox.Location = new System.Drawing.Point(136, 198);
             this.paidTextBox.Name = "paidTextBox";
-            this.paidTextBox.ReadOnly = true;
             this.paidTextBox.Size = new System.Drawing.Size(242, 20);
             this.paidTextBox.TabIndex = 26;
             // 
@@ -274,6 +273,7 @@ namespace OnlineStore.View
             this.cartPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cartPanel.Controls.Add(this.toolStrip);
             this.cartPanel.Controls.Add(this.cartDataGridView);
+            this.cartPanel.Enabled = false;
             this.cartPanel.Location = new System.Drawing.Point(12, 306);
             this.cartPanel.Name = "cartPanel";
             this.cartPanel.Size = new System.Drawing.Size(494, 238);
@@ -299,6 +299,7 @@ namespace OnlineStore.View
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(77, 22);
             this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -307,6 +308,7 @@ namespace OnlineStore.View
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 22);
             this.btnUpdate.Text = "Изменить";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -315,6 +317,7 @@ namespace OnlineStore.View
             this.btnDelete.RightToLeftAutoMirrorImage = true;
             this.btnDelete.Size = new System.Drawing.Size(71, 22);
             this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -323,6 +326,7 @@ namespace OnlineStore.View
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(77, 22);
             this.btnRefresh.Text = "Обновить";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // cartDataGridView
             // 
@@ -340,7 +344,6 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cartDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.cartDataGridView.ColumnHeadersHeight = 46;
             this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cartDataGridView.Location = new System.Drawing.Point(0, 28);
             this.cartDataGridView.MultiSelect = false;

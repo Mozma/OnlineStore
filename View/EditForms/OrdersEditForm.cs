@@ -18,7 +18,7 @@ namespace OnlineStore.View
 
         private int oldKey;
         private int newID;
-        private Order order ;
+        private Order order;
         private bool isNewRow = false;
         //private bool isItemAdded = false;
 
@@ -46,7 +46,6 @@ namespace OnlineStore.View
             }
 
             SetUpGUI();
-
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -63,7 +62,7 @@ namespace OnlineStore.View
                     {
                         context.Orders.Add(order);
                         context.SaveChanges();
-                        
+
                         isNewRow = false;
                         ResetItems();
                     }
@@ -91,24 +90,57 @@ namespace OnlineStore.View
             if (btnCancel.Text.Equals("Выход"))
                 DialogResult = DialogResult.OK;
 
-                ResetItems();
- 
+            ResetItems();
         }
 
-        private void SetUpGUI() 
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddCartItem(); 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateCartItem();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteCartItem();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadCartData();
+        }
+
+
+        private void SetUpGUI()
         {
             btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
             cancellationSignTextBox.Enabled = isNewRow ? false : true;
+            paidTextBox.Enabled = isNewRow ? false : true;
+
+            if (!isNewRow)
+            {
+                SetUpCart();
+            }
+        }
+        private void SetUpCart() 
+        {
+            cartDataGridView.Columns[0].HeaderText = "Ид";
+            cartDataGridView.Columns[1].HeaderText = "Название товара";
+            cartDataGridView.Columns[2].HeaderText = "Количество";
+            cartDataGridView.Columns[3].HeaderText = "Цена";
         }
 
-        private void ChangeWindowState() 
+        private void ChangeWindowState()
         {
             if (btnAccept.Text.Equals("Добавить") || btnAccept.Text.Equals("Изменить"))
             {
                 btnAccept.Enabled = false;
                 orderPanel.Enabled = false;
                 cartPanel.Enabled = true;
-                
             }
             else
             {
@@ -207,15 +239,19 @@ namespace OnlineStore.View
         {
             customerComboBox.SelectedValue = order.Customer_id;
             employeeComboBox.SelectedValue = order.Employee_id;
+            statusComboBox.SelectedValue = order.Statuse_code;
+
             orderNumberTextBox.Text = order.Order_number;
             orderDateDateTimePicker.Value = order.Order_date;
             completionDateDateTimePicker.Value = order.Completion_date;
-            statusComboBox.SelectedValue = order.Statuse_code;
+
             totalCostTextBox.Text = order.Total_cost.ToString();
             paidTextBox.Text = order.Paid.ToString();
-           
+
             if (order.Cancellation_sign != null)
                 cancellationSignTextBox.Text = order.Cancellation_sign;
+
+            LoadCartData();
         }
 
         /// <summary>
@@ -233,9 +269,9 @@ namespace OnlineStore.View
                     {
                         newID = (from order in entities.Orders select order.Order_id).Max() + 1;
                         order.Order_id = newID;
-                    }                  
+                    }
                 }
-                else 
+                else
                 {
                     order.Order_id = oldKey;
                 }
@@ -245,8 +281,8 @@ namespace OnlineStore.View
                 order.Order_number = orderNumberTextBox.Text;
                 order.Order_date = orderDateDateTimePicker.Value;
                 order.Completion_date = completionDateDateTimePicker.Value;
-                
-                order.Total_cost = totalCostTextBox.Text.Equals("")? 0 : Convert.ToDecimal(totalCostTextBox.Text);
+
+                order.Total_cost = totalCostTextBox.Text.Equals("") ? 0 : Convert.ToDecimal(totalCostTextBox.Text);
                 order.Paid = paidTextBox.Text.Equals("") ? 0 : Convert.ToDecimal(paidTextBox.Text);
                 order.Statuse_code = statusComboBox.SelectedValue.ToString();
 
@@ -294,21 +330,6 @@ namespace OnlineStore.View
                 flag = false;
             }
 
-            //try
-            //{
-            //    double tmp;
-
-            //    tmp = Convert.ToDouble(totalCostTextBox.Text);
-            //    tmp = Convert.ToDouble(paidTextBox.Text);
-
-            //}
-            //catch (FormatException)
-            //{
-
-            //    error += "Данные в полях \"Полная стоимость\" или \"Оплачено\" указаны неверно.";
-            //    flag = false;
-            //}
-
             if (flag == false)
             {
                 MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -318,6 +339,90 @@ namespace OnlineStore.View
 
         }
 
+        /// <summary>
+        /// Загрузка данных в контекст.
+        /// </summary>
+        void LoadCartData()
+        {
+            using (MarketDBEntities context = new MarketDBEntities())
+            {
+                var query = from cart in context.Carts
+                            where cart.Order_id == order.Order_id
+                            select new
+                            {
+                                CartID = cart.Cart_id,
+                                ProductName = cart.Product.Product_name,
+                                Amount = cart.Amount,
+                                Price = cart.Price
+                            };
 
+                cartDataGridView.DataSource = query.ToList();
+            }
+            cartDataGridView.Refresh();
+        }
+
+        /// <summary>
+        /// Вызов формы для добавления записи с контролем ошибок.
+        /// </summary>
+        void AddCartItem()
+        {
+            var editForm = new CartEditForm(null, order.Order_id);
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadCartData();
+                cartDataGridView.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Вызов формы для обновление выбранной записи с контролем ошибок.
+        /// </summary>
+        void UpdateCartItem()
+        {
+            if (cartDataGridView.CurrentCell == null)
+                return;
+
+            if (cartDataGridView.SelectedRows.Count > 0)
+            {
+                using (var marketDBEntities = new MarketDBEntities())
+                {
+                    int index = cartDataGridView.SelectedRows[0].Index;
+                    Cart selectedItem = marketDBEntities.Carts.Find(cartDataGridView[0, index].Value);
+
+                    var editForm = new CartEditForm(selectedItem, selectedItem.Order_id);
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadCartData();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Удаление выбранной строки с подтверждением удаления и контролем ошибок.
+        /// </summary>
+        void DeleteCartItem()
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (var marketDBEntities = new MarketDBEntities())
+                {
+                    try
+                    {
+                        int index = cartDataGridView.SelectedRows[0].Index;
+                        Cart selectedItem = marketDBEntities.Carts.Find(cartDataGridView[0, index].Value);
+
+                        marketDBEntities.Carts.Remove(selectedItem);
+                        marketDBEntities.SaveChanges();
+                        LoadCartData();
+                    }
+                    catch (Exception ex)
+                    {
+                        Helper.PostError(ex.Message);
+                    }
+                }
+            }
+        }
     }
 }
