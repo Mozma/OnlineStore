@@ -229,7 +229,7 @@ namespace OnlineStore.View
                 flag = false;
             }
 
-            if (String.IsNullOrWhiteSpace(phoneTextBox.Text))
+            if (String.IsNullOrWhiteSpace(dicountCardTextBox.Text))
             {
                 error += "Номер карты не указан.\n";
                 flag = false;
