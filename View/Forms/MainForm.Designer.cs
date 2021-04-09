@@ -121,7 +121,7 @@ namespace OnlineStore.View
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
             this.customersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customersToolStripMenuItem.Text = "Клиенты";
-            this.customersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
+            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
             // 
             // employeeToolStripMenuItem
             // 

@@ -59,6 +59,11 @@ namespace OnlineStore.View
             OpenThisForm<StatusesForm>("statusesForm");
         }
 
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenThisForm<CustomersForm>("customersForm");
+        }
+
         private void OpenThisForm<T>(string formName) where T: Form, new()
         {
             try
