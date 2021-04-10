@@ -12,6 +12,8 @@ namespace OnlineStore
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MarketDBEntities : DbContext
     {
@@ -19,13 +21,7 @@ namespace OnlineStore
             : base("name=MarketDBEntities")
         {
         }
-
-        public MarketDBEntities(string conn)
-          : base(conn)
-        {
-        }
-
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -45,5 +41,18 @@ namespace OnlineStore
         public virtual DbSet<OrdersView> OrdersViews { get; set; }
         public virtual DbSet<ProductView> ProductViews { get; set; }
         public virtual DbSet<SellsView> SellsViews { get; set; }
+    
+        public virtual ObjectResult<GetProductReport_Result> GetProductReport(Nullable<System.DateTime> beg_date, Nullable<System.DateTime> end_date)
+        {
+            var beg_dateParameter = beg_date.HasValue ?
+                new ObjectParameter("beg_date", beg_date) :
+                new ObjectParameter("beg_date", typeof(System.DateTime));
+    
+            var end_dateParameter = end_date.HasValue ?
+                new ObjectParameter("end_date", end_date) :
+                new ObjectParameter("end_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductReport_Result>("GetProductReport", beg_dateParameter, end_dateParameter);
+        }
     }
 }

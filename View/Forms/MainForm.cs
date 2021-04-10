@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.View.Report;
+using System;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
@@ -30,18 +31,10 @@ namespace OnlineStore.View
             this.Text += $" ({DataBaseConnection.Username})";
         }
 
-        private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          
-        }
         
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenThisForm<OrdersForm>("ordersForm");
-        }
-        private void cartToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          //  OpenThisForm<CartForm>("cartForm");
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,6 +76,10 @@ namespace OnlineStore.View
             OpenThisForm<DeliveriesForm>("deliveriesForm");
         }
 
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenThisForm<ReportForm>("reportForm");
+        }
 
         private void OpenThisForm<T>(string formName) where T: Form, new()
         {
