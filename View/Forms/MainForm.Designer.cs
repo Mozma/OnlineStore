@@ -38,7 +38,7 @@ namespace OnlineStore.View
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.adminToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -88,7 +88,7 @@ namespace OnlineStore.View
             this.toolStripSeparator1,
             this.customersToolStripMenuItem,
             this.employeesToolStripMenuItem,
-            this.toolStripSeparator3,
+            this.adminToolStripSeparator,
             this.usersToolStripMenuItem,
             this.rolesToolStripMenuItem,
             this.toolStripSeparator4,
@@ -130,10 +130,10 @@ namespace OnlineStore.View
             this.employeesToolStripMenuItem.Text = "Сотрудники";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.employeesToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
+            // adminToolStripSeparator
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.adminToolStripSeparator.Name = "adminToolStripSeparator";
+            this.adminToolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // usersToolStripMenuItem
             // 
@@ -176,33 +176,33 @@ namespace OnlineStore.View
             // ordersToolStripMenuItem
             // 
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.ordersToolStripMenuItem.Text = "Заказы";
             this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
             // deliveryToolStripMenuItem
             // 
             this.deliveryToolStripMenuItem.Name = "deliveryToolStripMenuItem";
-            this.deliveryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deliveryToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.deliveryToolStripMenuItem.Text = "Доставка";
             this.deliveryToolStripMenuItem.Click += new System.EventHandler(this.deliveryToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
             // 
             // viewOrdersToolStripMenuItem
             // 
             this.viewOrdersToolStripMenuItem.Name = "viewOrdersToolStripMenuItem";
-            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewOrdersToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.viewOrdersToolStripMenuItem.Text = "Статистика заказов";
             this.viewOrdersToolStripMenuItem.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem_Click);
             // 
             // представленияToolStripMenuItem
             // 
             this.представленияToolStripMenuItem.Name = "представленияToolStripMenuItem";
-            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.представленияToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.представленияToolStripMenuItem.Text = "Статистика продаж";
             // 
             // отчётToolStripMenuItem
@@ -254,7 +254,7 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripMenuItem представленияToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator adminToolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;

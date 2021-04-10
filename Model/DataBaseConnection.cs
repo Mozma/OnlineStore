@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace OnlineStore.View
@@ -8,15 +9,8 @@ namespace OnlineStore.View
     static class DataBaseConnection
     {
         public static SqlConnection Connection { get; set; }
-        //public static string InitialCatalog { get; set; }
-        //public static string DataSource { get; set; }
-
-
-        //static DataBaseConnection() 
-        //{
-        //    InitialCatalog = "MarketDB";
-        //    DataSource = @"USERPC";
-        //}
+        public static string EFConnection { get; set; }
+        public static string Username { get; set; }
 
     }
 }

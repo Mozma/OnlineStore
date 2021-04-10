@@ -19,7 +19,13 @@ namespace OnlineStore
             : base("name=MarketDBEntities")
         {
         }
-    
+
+        public MarketDBEntities(string conn)
+          : base(conn)
+        {
+        }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

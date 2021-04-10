@@ -18,7 +18,16 @@ namespace OnlineStore.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            switch (DataBaseConnection.Username) 
+            {
+                case "Manager":
+                    rolesToolStripMenuItem.Visible = false;
+                    usersToolStripMenuItem.Visible = false;
+                    adminToolStripSeparator.Visible = false;
+                    
+                    break;
+            }
+            this.Text += $" ({DataBaseConnection.Username})";
         }
 
         private void viewOrdersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +111,9 @@ namespace OnlineStore.View
                     form.Activate();
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void splash()

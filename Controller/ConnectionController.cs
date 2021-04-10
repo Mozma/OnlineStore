@@ -1,6 +1,7 @@
 ﻿using OnlineStore.View;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Entity.Core.EntityClient;
 
 namespace OnlineStore.Controller
 {
@@ -22,7 +23,22 @@ namespace OnlineStore.Controller
 
             //TODO: Убрать присвоение из логин формы.
 
+            //  var context = new MarketDBEntities();
+            // context.ChangeDatabase(userId: username, password: password);
+
+            
+
+
             DataBaseConnection.Connection = new SqlConnection(builder.ToString());
+            DataBaseConnection.Username = username;
+            
+            var entityConnectionStringBuilder = new EntityConnectionStringBuilder();
+            entityConnectionStringBuilder.Provider = "System.Data.SqlClient";
+            entityConnectionStringBuilder.ProviderConnectionString = builder.ToString();
+            entityConnectionStringBuilder.Metadata = "res://*/marketModel.csdl|res://*/marketModel.ssdl|res://*/marketModel.msl";
+
+            DataBaseConnection.EFConnection = entityConnectionStringBuilder.ToString();
+
             if (!Connect()) 
             {
                 return null;
