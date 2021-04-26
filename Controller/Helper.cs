@@ -52,7 +52,7 @@ namespace OnlineStore.Controller
             }
             catch (Exception ex)
             {
-                // set log item if required
+                MessageBox.Show(ex.Message);
             }
         }
 

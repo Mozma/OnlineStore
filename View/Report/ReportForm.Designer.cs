@@ -32,13 +32,17 @@ namespace OnlineStore.View.Report
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
+            this.GetProductReport_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnAccept = new System.Windows.Forms.Button();
-            this.GetProductReport_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GetProductReport_ResultBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // GetProductReport_ResultBindingSource
+            // 
+            this.GetProductReport_ResultBindingSource.DataSource = typeof(OnlineStore.GetProductReport_Result);
             // 
             // productReportViewer
             // 
@@ -74,17 +78,13 @@ namespace OnlineStore.View.Report
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(342, 9);
+            this.btnAccept.Location = new System.Drawing.Point(296, 8);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(115, 23);
             this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Получить отчёт";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
-            // 
-            // GetProductReport_ResultBindingSource
-            // 
-            this.GetProductReport_ResultBindingSource.DataSource = typeof(OnlineStore.GetProductReport_Result);
             // 
             // ReportForm
             // 
@@ -98,7 +98,6 @@ namespace OnlineStore.View.Report
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportForm";
             this.Text = "Отчёт по продажам";
-            this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GetProductReport_ResultBindingSource)).EndInit();
             this.ResumeLayout(false);
 

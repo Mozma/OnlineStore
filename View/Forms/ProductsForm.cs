@@ -124,6 +124,7 @@ namespace OnlineStore.View
                     try
                     {
                         int index = productsDataGridView.SelectedRows[0].Index;
+                       // Product product = productsDataGridView.DataSource.
                         Product selectedProduct = marketDBEntities.Products.Find(productsDataGridView[0, index].Value.ToString());
 
                         marketDBEntities.Products.Remove(selectedProduct);

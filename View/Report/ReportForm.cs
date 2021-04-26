@@ -11,11 +11,6 @@ namespace OnlineStore.View.Report
             InitializeComponent();
         }
 
-        private void ReportForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnAccept_Click(object sender, EventArgs e)
         {
             productReportViewer.Enabled = true;
@@ -36,8 +31,5 @@ namespace OnlineStore.View.Report
             productReportViewer.ZoomMode = ZoomMode.PageWidth; 
             
         }
-
-
-
     }
 }

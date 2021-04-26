@@ -194,29 +194,35 @@ namespace OnlineStore.View
             bool flag = true;
             string error = "Ошибка ввода: \n";
 
+            cart.Cart_id = this.cart.Cart_id;
+            cart.Product_code = this.cart.Product_code;
+            cart.Amount = this.cart.Amount;
+            cart.Price = this.cart.Price;
+            cart.Order_id = this.cart.Order_id;
 
-            //if (String.IsNullOrWhiteSpace(loginTextBox.Text))
-            //{
-            //    error += "Логин не указан.\n";
-            //    flag = false;
-            //}
 
-            //if (String.IsNullOrWhiteSpace(passwordTextBox.Text))
-            //{
-            //    error += "Пароль не указан.\n";
-            //    flag = false;
-            //}
+            if (String.IsNullOrWhiteSpace(amountTextBox.Text))
+            {
+                error += "Количество не указано.\n";
+                flag = false;
+            }
 
-            //if (roleComboBox.SelectedIndex == -1)
-            //{
-            //    error += "Роль не выбрана.\n";
-            //    flag = false;
-            //}
+            if (String.IsNullOrWhiteSpace(priceTextBox.Text))
+            {
+                error += "Цена не указана.\n";
+                flag = false;
+            }
 
-            //if (flag == false)
-            //{
-            //    MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            if (productCodeComboBox.SelectedIndex == -1)
+            {
+                error += "Продукт не выбран.\n";
+                flag = false;
+            }
+
+            if (flag == false)
+            {
+                MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             return flag;
         }
