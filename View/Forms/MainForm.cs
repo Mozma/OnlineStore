@@ -1,4 +1,5 @@
-﻿using OnlineStore.View.Report;
+﻿using OnlineStore.View.Chart;
+using OnlineStore.View.Report;
 using System;
 using System.Data.SqlClient;
 using System.Threading;
@@ -79,6 +80,11 @@ namespace OnlineStore.View
         private void reportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenThisForm<ReportForm>("reportForm");
+        }
+
+        private void sellsChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenThisForm<ChartForm>("chartForm");
         }
 
         private void OpenThisForm<T>(string formName) where T: Form, new()
