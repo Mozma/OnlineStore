@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace OnlineStore.View.Chart
 {
@@ -17,12 +18,22 @@ namespace OnlineStore.View.Chart
 
         private void ChartForm_Load(object sender, EventArgs e)
         {
-            LoadData();
+            using (MarketDBEntities entities = new MarketDBEntities())
+            {
+                List<Category> category = (from Category in entities.Categories select Category).ToList();
+                
+                categoriesComboBox.DataSource = category;
+                categoriesComboBox.DisplayMember = "Category_name";
+                categoriesComboBox.ValueMember = "Category_Code";
+                categoriesComboBox.SelectedIndex = 1;
+            }
+            
+            LoadData(categoriesComboBox.Text);
         }
 
-        private void LoadData() {
+        private void LoadData(string paramValue) {
 
-            String paramValue = "Cмартфоны";
+            
 
             SqlConnection connection = new SqlConnection(DataBaseConnection.Connection.ConnectionString);
 
@@ -38,16 +49,28 @@ namespace OnlineStore.View.Chart
             command.Connection.Open();
 
             SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            chart1.DataSource = reader;
+            sellsChart.DataSource = reader;
 
 
-            chart1.Series[0].Name = paramValue;
-            chart1.Series[0].XValueMember = "Per";
-            chart1.Series[0].YValueMembers = "Amount";
-            chart1.Series[0].BorderWidth = 2;
+            sellsChart.Series[0].Name = paramValue;
+            sellsChart.Series[0].XValueMember = "Per";
+            sellsChart.Series[0].YValueMembers = "Amount";
+            sellsChart.Series[0].BorderWidth = 2;
 
-            chart1.DataBind();
+            sellsChart.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
 
+            sellsChart.DataBind();
+
+        }
+
+        private void ShowButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void categoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData(categoriesComboBox.Text);
         }
     }
 }

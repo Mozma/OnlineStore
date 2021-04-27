@@ -32,11 +32,17 @@ namespace OnlineStore.View.Chart
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
+            this.sellsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.categoriesComboBox = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.sellsChart)).BeginInit();
+            this.chartPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // chart1
+            // sellsChart
             // 
             chartArea1.AxisX.Interval = 1D;
             chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
@@ -45,35 +51,72 @@ namespace OnlineStore.View.Chart
             chartArea1.AxisY.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             chartArea1.AxisY.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.sellsChart.ChartAreas.Add(chartArea1);
+            this.sellsChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
+            this.sellsChart.Legends.Add(legend1);
+            this.sellsChart.Location = new System.Drawing.Point(0, 0);
+            this.sellsChart.Name = "sellsChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(776, 426);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.sellsChart.Series.Add(series1);
+            this.sellsChart.Size = new System.Drawing.Size(800, 416);
+            this.sellsChart.TabIndex = 0;
+            // 
+            // chartPanel
+            // 
+            this.chartPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartPanel.Controls.Add(this.sellsChart);
+            this.chartPanel.Location = new System.Drawing.Point(0, 34);
+            this.chartPanel.Name = "chartPanel";
+            this.chartPanel.Size = new System.Drawing.Size(800, 416);
+            this.chartPanel.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.categoriesComboBox);
+            this.panel2.Location = new System.Drawing.Point(0, -3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 40);
+            this.panel2.TabIndex = 2;
+            // 
+            // categoriesComboBox
+            // 
+            this.categoriesComboBox.FormattingEnabled = true;
+            this.categoriesComboBox.Location = new System.Drawing.Point(9, 11);
+            this.categoriesComboBox.Name = "categoriesComboBox";
+            this.categoriesComboBox.Size = new System.Drawing.Size(217, 21);
+            this.categoriesComboBox.TabIndex = 1;
+            this.categoriesComboBox.SelectedIndexChanged += new System.EventHandler(this.categoriesComboBox_SelectedIndexChanged);
             // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.chartPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChartForm";
-            this.Text = "ChartForm";
+            this.Text = "Статистика продаж";
             this.Load += new System.EventHandler(this.ChartForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sellsChart)).EndInit();
+            this.chartPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart sellsChart;
+        private System.Windows.Forms.Panel chartPanel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox categoriesComboBox;
     }
 }
