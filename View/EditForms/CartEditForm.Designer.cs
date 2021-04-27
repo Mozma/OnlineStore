@@ -67,6 +67,7 @@ namespace OnlineStore.View
             // 
             // productCodeComboBox
             // 
+            this.productCodeComboBox.DisplayMember = "Product_code";
             this.productCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.productCodeComboBox.FormattingEnabled = true;
             this.productCodeComboBox.Location = new System.Drawing.Point(80, 15);
@@ -137,6 +138,7 @@ namespace OnlineStore.View
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CartEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
