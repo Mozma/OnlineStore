@@ -925,7 +925,6 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet</DataSetName>
             <Top>1.5875cm</Top>
-            <Left>0cm</Left>
             <Height>3.67cm</Height>
             <Width>18.3cm</Width>
             <Style>
@@ -957,7 +956,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>0.03528cm</Top>
-            <Left>0cm</Left>
             <Height>0.65292cm</Height>
             <Width>18.3cm</Width>
             <ZIndex>1</ZIndex>
@@ -993,7 +991,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
             <Top>0.68819cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>18.3cm</Width>
             <ZIndex>2</ZIndex>
@@ -1033,13 +1030,15 @@
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
-              <Left>14.08021cm</Left>
-              <Height>0.6cm</Height>
-              <Width>4.21979cm</Width>
+              <Left>12.04292cm</Left>
+              <Height>0.67055cm</Height>
+              <Width>6.25708cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>

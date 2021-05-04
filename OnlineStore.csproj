@@ -114,6 +114,9 @@
     <Compile Include="Cart.cs">
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CartView.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
@@ -326,6 +329,12 @@
     <Compile Include="View\Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Report\InoiceReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Report\InoiceReportForm.Designer.cs">
+      <DependentUpon>InoiceReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Report\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,7 +419,11 @@
     <EmbeddedResource Include="View\Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\InvoiceReport.rdlc" />
     <EmbeddedResource Include="View\Report\ProductReport.rdlc" />
+    <EmbeddedResource Include="View\Report\InoiceReportForm.resx">
+      <DependentUpon>InoiceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Report\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -423,13 +436,13 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Cart.datasource" />
+    <None Include="Properties\DataSources\CartView.datasource" />
     <None Include="Properties\DataSources\Category.datasource" />
     <None Include="Properties\DataSources\Customer.datasource" />
     <None Include="Properties\DataSources\Delivery.datasource" />
     <None Include="Properties\DataSources\DeliveryView.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\GetProductReport_Result.datasource" />
-    <None Include="Properties\DataSources\MarketDBEntities.datasource" />
     <None Include="Properties\DataSources\Order.datasource" />
     <None Include="Properties\DataSources\OrdersView.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />

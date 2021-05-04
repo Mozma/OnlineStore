@@ -41,6 +41,7 @@ namespace OnlineStore
         public virtual DbSet<OrdersView> OrdersViews { get; set; }
         public virtual DbSet<ProductView> ProductViews { get; set; }
         public virtual DbSet<SellsView> SellsViews { get; set; }
+        public virtual DbSet<CartView> CartViews { get; set; }
     
         public virtual ObjectResult<GetProductReport_Result> GetProductReport(Nullable<System.DateTime> beg_date, Nullable<System.DateTime> end_date)
         {

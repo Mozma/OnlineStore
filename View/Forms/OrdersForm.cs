@@ -1,5 +1,7 @@
 ﻿using OnlineStore.Controller;
+using OnlineStore.View.Report;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -147,6 +149,32 @@ namespace OnlineStore.View
                     {
                         Helper.PostError(ex.Message);
                     }
+                }
+            }
+        }
+
+        private void InvoiceToolStripButton_Click(object sender, EventArgs e)
+        {
+            using (var context = new MarketDBEntities())
+            {
+                try
+                {
+                    int index = ordersDataGridView.SelectedRows[0].Index;
+                    Order order = context.Orders.Find(ordersDataGridView[0, index].Value);
+
+                    if (order.Statuse_code == "З04") 
+                    {
+                        var query = from cart in context.CartViews
+                                    where cart.Order_id == order.Order_id
+                                    select cart;
+
+                        InoiceReportForm rptForm = new InoiceReportForm(order,query.ToList());
+                        rptForm.ShowDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Helper.PostError(ex.Message);
                 }
             }
         }

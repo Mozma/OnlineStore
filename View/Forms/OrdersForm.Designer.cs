@@ -37,6 +37,7 @@ namespace OnlineStore.View
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.InvoiceToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +75,8 @@ namespace OnlineStore.View
             this.btnAdd,
             this.btnUpdate,
             this.btnDelete,
-            this.btnRefresh});
+            this.btnRefresh,
+            this.InvoiceToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1182, 25);
@@ -117,6 +119,15 @@ namespace OnlineStore.View
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // InvoiceToolStripButton
+            // 
+            this.InvoiceToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceToolStripButton.Image")));
+            this.InvoiceToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InvoiceToolStripButton.Name = "InvoiceToolStripButton";
+            this.InvoiceToolStripButton.Size = new System.Drawing.Size(64, 22);
+            this.InvoiceToolStripButton.Text = "Печать";
+            this.InvoiceToolStripButton.Click += new System.EventHandler(this.InvoiceToolStripButton_Click);
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,5 +157,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripButton InvoiceToolStripButton;
     }
 }
