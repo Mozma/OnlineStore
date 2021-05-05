@@ -58,7 +58,8 @@ namespace OnlineStore.View.Report
             this.Controls.Add(this.reportViewer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InoiceReportForm";
-            this.Text = "Товарный чек";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Счёт на оплату";
             this.Load += new System.EventHandler(this.InoiceReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CartViewBindingSource)).EndInit();
             this.ResumeLayout(false);
