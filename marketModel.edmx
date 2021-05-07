@@ -34,7 +34,7 @@
           <Property Name="Full_name" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Adress" Type="varchar" MaxLength="90" />
-          <Property Name="Discount_card" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Discount_card" Type="varchar" MaxLength="20" />
           <Property Name="Registration_date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Delivery">
@@ -498,7 +498,7 @@
           <Property Name="Full_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Adress" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
-          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Registration_date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_Customer_Users" FromRole="Customer" ToRole="Users" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />

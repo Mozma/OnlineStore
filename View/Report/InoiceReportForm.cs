@@ -48,12 +48,13 @@ namespace OnlineStore.View.Report
                 {
                     new ReportParameter("pOrderID", order.Order_id.ToString()),
                     new ReportParameter("pOrderNumber", order.Order_number),
-                    new ReportParameter("pDiscountCard", order.Customer.Discount_card),
+                    new ReportParameter("pDiscountCard", order.Customer.Discount_card ),
                     new ReportParameter("pCustomerName", order.Customer.Full_name),
                     new ReportParameter("pEmployeeName", order.Employee.Full_name),
                     new ReportParameter("pOrderDate", order.Order_date.ToShortDateString()),
                     new ReportParameter("pOrderCompletionDate", order.Completion_date.ToShortDateString()),
-                    new ReportParameter("pReportDate", DateTime.Now.ToShortDateString())
+                    new ReportParameter("pReportDate", DateTime.Now.ToShortDateString()),
+                    new ReportParameter("pTotal", order.Total_cost.ToString())
 
                 };
 

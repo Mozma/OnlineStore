@@ -197,7 +197,10 @@
                                 <TextRun>
                                   <Value>=Fields!Price.Value</Value>
                                   <Style>
+                                    <FontFamily>Times new roman</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0.00</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -233,6 +236,8 @@
                                 <TextRun>
                                   <Value>=Fields!Amount.Value</Value>
                                   <Style>
+                                    <FontFamily>Times new roman</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
@@ -269,7 +274,10 @@
                                 <TextRun>
                                   <Value>=Fields!Price.Value * Fields!Amount.Value</Value>
                                   <Style>
+                                    <FontFamily>Times new roman</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0.00</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -472,6 +480,8 @@
                               <TextRun>
                                 <Value>=Fields!Product_name.Value</Value>
                                 <Style>
+                                  <FontFamily>Times new roman</FontFamily>
+                                  <FontSize>12pt</FontSize>
                                   <FontWeight>Normal</FontWeight>
                                   <Color>#333333</Color>
                                 </Style>
@@ -879,7 +889,9 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!pDiscountCard.Value</Value>
+                    <Value>=IIf(IsNothing(Parameters!pDiscountCard.Value)
+,"Нет"
+,Parameters!pDiscountCard.Value)</Value>
                     <Style>
                       <FontFamily>Times new Roman</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -1009,6 +1021,215 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="pTotal">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!pTotal.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Format>#,0.00 'р.';(#,0.00 'р.')</Format>
+                      <rd:FormatSymbolCulture>ru-RU</rd:FormatSymbolCulture>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pTotal</rd:DefaultName>
+            <Top>7.32356cm</Top>
+            <Left>15.80001cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Стоимость без скидки:</Value>
+                    <Style>
+                      <FontFamily>Times new Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>7.32356cm</Top>
+            <Left>10.73701cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.77543cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Размер скидки:</Value>
+                    <Style>
+                      <FontFamily>Times new Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>8.06468cm</Top>
+            <Left>10.73701cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.77543cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="pTotal2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(IsNothing(Parameters!pDiscountCard.Value)
+,0
+,Parameters!pTotal.Value * 0.1)</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Format>#,0.00 'р.'</Format>
+                      <rd:FormatSymbolCulture>ru-RU</rd:FormatSymbolCulture>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pTotal</rd:DefaultName>
+            <Top>8.09995cm</Top>
+            <Left>15.80001cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+              <rd:FormatSymbolCulture>ru-RU</rd:FormatSymbolCulture>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Сумма для оплаты:</Value>
+                    <Style>
+                      <FontFamily>Times new Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>8.84107cm</Top>
+            <Left>10.73701cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.77542cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="pTotal3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(IsNothing(Parameters!pDiscountCard.Value)
+,Parameters!pTotal.Value
+,Parameters!pTotal.Value * 0.9)</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Format>#,0.00 'р.'</Format>
+                      <rd:FormatSymbolCulture>ru-RU</rd:FormatSymbolCulture>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pTotal</rd:DefaultName>
+            <Top>8.87634cm</Top>
+            <Left>15.8cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>22.42625cm</Height>
         <Style />
@@ -1087,6 +1308,7 @@
     </ReportParameter>
     <ReportParameter Name="pDiscountCard">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="pReportDate">
@@ -1099,6 +1321,10 @@
     </ReportParameter>
     <ReportParameter Name="pEmployeeName">
       <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pTotal">
+      <DataType>Float</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -1146,6 +1372,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>pEmployeeName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>pTotal</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
