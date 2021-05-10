@@ -121,7 +121,7 @@ namespace OnlineStore.View
             // 
             // InvoiceToolStripButton
             // 
-            this.InvoiceToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceToolStripButton.Image")));
+            this.InvoiceToolStripButton.Image = global::OnlineStore.Properties.Resources.printer;
             this.InvoiceToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.InvoiceToolStripButton.Name = "InvoiceToolStripButton";
             this.InvoiceToolStripButton.Size = new System.Drawing.Size(64, 22);

@@ -56,6 +56,13 @@ namespace OnlineStore.View
             ordersDataGridView.Columns[8].HeaderText = "Оплачено";
             ordersDataGridView.Columns[9].HeaderText = "Причина отмены";
 
+            ordersDataGridView.Columns[0].Visible = false;
+
+            
+
+       
+
+
             ordersDataGridView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ordersDataGridView.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ordersDataGridView.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

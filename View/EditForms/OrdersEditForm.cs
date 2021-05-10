@@ -117,7 +117,7 @@ namespace OnlineStore.View
 
         private void SetUpGUI()
         {
-            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            btnAccept.Text = isNewRow ? "Добавить" : "Сохранить";
             cancellationSignTextBox.Enabled = isNewRow ? false : true;
             paidTextBox.Enabled = isNewRow ? false : true;
 

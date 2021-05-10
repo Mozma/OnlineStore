@@ -513,6 +513,8 @@
       <DependentUpon>marketModel.edmx</DependentUpon>
       <LastGenOutput>marketModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\printer.ico" />
+    <None Include="Resources\printer.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

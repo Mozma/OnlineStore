@@ -110,7 +110,7 @@ namespace OnlineStore.View
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(205, 122);
+            this.btnAccept.Location = new System.Drawing.Point(117, 122);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(104, 23);
             this.btnAccept.TabIndex = 1;
@@ -120,7 +120,7 @@ namespace OnlineStore.View
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(117, 122);
+            this.btnCancel.Location = new System.Drawing.Point(227, 122);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 23);
             this.btnCancel.TabIndex = 2;

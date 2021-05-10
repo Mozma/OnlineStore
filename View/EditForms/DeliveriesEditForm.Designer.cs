@@ -31,6 +31,8 @@ namespace OnlineStore.View
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeliveriesEditForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.orderNumberComboBox = new System.Windows.Forms.ComboBox();
             this.deliveryDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@ namespace OnlineStore.View
             this.trackNumberTextBox = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.orderNumberComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,30 @@ namespace OnlineStore.View
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 170);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "Номер заказа:";
+            // 
+            // orderNumberComboBox
+            // 
+            this.orderNumberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderNumberComboBox.DisplayMember = "Category_Code";
+            this.orderNumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.orderNumberComboBox.FormattingEnabled = true;
+            this.orderNumberComboBox.Location = new System.Drawing.Point(120, 112);
+            this.orderNumberComboBox.Name = "orderNumberComboBox";
+            this.orderNumberComboBox.Size = new System.Drawing.Size(223, 21);
+            this.orderNumberComboBox.TabIndex = 51;
+            this.orderNumberComboBox.ValueMember = "Category_Code";
             // 
             // deliveryDateDateTimePicker
             // 
@@ -170,7 +194,7 @@ namespace OnlineStore.View
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(277, 188);
+            this.btnAccept.Location = new System.Drawing.Point(178, 188);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(93, 23);
             this.btnAccept.TabIndex = 1;
@@ -180,37 +204,13 @@ namespace OnlineStore.View
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(178, 188);
+            this.btnCancel.Location = new System.Drawing.Point(277, 188);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 23);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
-            this.label3.TabIndex = 52;
-            this.label3.Text = "Номер заказа:";
-            // 
-            // orderNumberComboBox
-            // 
-            this.orderNumberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderNumberComboBox.DisplayMember = "Category_Code";
-            this.orderNumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.orderNumberComboBox.FormattingEnabled = true;
-            this.orderNumberComboBox.Location = new System.Drawing.Point(120, 112);
-            this.orderNumberComboBox.Name = "orderNumberComboBox";
-            this.orderNumberComboBox.Size = new System.Drawing.Size(223, 21);
-            this.orderNumberComboBox.TabIndex = 51;
-            this.orderNumberComboBox.ValueMember = "Category_Code";
             // 
             // DeliveriesEditForm
             // 

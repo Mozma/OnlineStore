@@ -29,6 +29,7 @@ namespace OnlineStore.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
             this.productsDataGridView = new System.Windows.Forms.DataGridView();
@@ -37,8 +38,10 @@ namespace OnlineStore.View
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).BeginInit();
             this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // productsDataGridView
@@ -58,7 +61,7 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.productsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.productsDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.productsDataGridView.Location = new System.Drawing.Point(12, 32);
             this.productsDataGridView.MultiSelect = false;
             this.productsDataGridView.Name = "productsDataGridView";
             this.productsDataGridView.ReadOnly = true;
@@ -115,6 +118,10 @@ namespace OnlineStore.View
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(OnlineStore.Order);
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +139,7 @@ namespace OnlineStore.View
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +152,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.ToolStripButton btnUpdate;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.BindingSource orderBindingSource;
     }
 }

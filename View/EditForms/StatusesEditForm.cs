@@ -36,7 +36,7 @@ namespace OnlineStore.View
                 FillItems();
             }
 
-            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            btnAccept.Text = isNewRow ? "Добавить" : "Сохранить";
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

@@ -35,10 +35,10 @@ namespace OnlineStore.View
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.categoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.levelTextBox = new System.Windows.Forms.TextBox();
             this.roleNameTextBox = new System.Windows.Forms.TextBox();
             this.roleCodeTextBox = new System.Windows.Forms.TextBox();
+            this.categoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -92,36 +92,36 @@ namespace OnlineStore.View
             this.label1.TabIndex = 5;
             this.label1.Text = "Код роли:";
             // 
-            // priceTextBox
+            // levelTextBox
             // 
             this.levelTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.levelTextBox.Location = new System.Drawing.Point(113, 66);
-            this.levelTextBox.Name = "priceTextBox";
+            this.levelTextBox.Name = "levelTextBox";
             this.levelTextBox.Size = new System.Drawing.Size(162, 20);
             this.levelTextBox.TabIndex = 3;
             // 
-            // productNameTextBox
+            // roleNameTextBox
             // 
             this.roleNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.roleNameTextBox.Location = new System.Drawing.Point(113, 40);
-            this.roleNameTextBox.Name = "productNameTextBox";
+            this.roleNameTextBox.Name = "roleNameTextBox";
             this.roleNameTextBox.Size = new System.Drawing.Size(162, 20);
             this.roleNameTextBox.TabIndex = 2;
             // 
-            // productCodeTextBox
+            // roleCodeTextBox
             // 
             this.roleCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.roleCodeTextBox.Location = new System.Drawing.Point(113, 14);
-            this.roleCodeTextBox.Name = "productCodeTextBox";
+            this.roleCodeTextBox.Name = "roleCodeTextBox";
             this.roleCodeTextBox.Size = new System.Drawing.Size(162, 20);
             this.roleCodeTextBox.TabIndex = 1;
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(212, 123);
+            this.btnAccept.Location = new System.Drawing.Point(113, 123);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(93, 23);
             this.btnAccept.TabIndex = 1;
@@ -131,7 +131,7 @@ namespace OnlineStore.View
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(113, 123);
+            this.btnCancel.Location = new System.Drawing.Point(212, 123);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 23);
             this.btnCancel.TabIndex = 2;

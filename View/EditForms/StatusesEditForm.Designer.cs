@@ -121,7 +121,7 @@ namespace OnlineStore.View
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(221, 118);
+            this.btnAccept.Location = new System.Drawing.Point(121, 118);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(93, 23);
             this.btnAccept.TabIndex = 1;
@@ -131,7 +131,7 @@ namespace OnlineStore.View
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(122, 118);
+            this.btnCancel.Location = new System.Drawing.Point(220, 118);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 23);
             this.btnCancel.TabIndex = 2;

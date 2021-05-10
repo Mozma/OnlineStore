@@ -40,7 +40,7 @@ namespace OnlineStore.View
                 FillItems();
             }
 
-            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            btnAccept.Text = isNewRow ? "Добавить" : "Сохранить";
 
         }
 

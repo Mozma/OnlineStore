@@ -43,7 +43,7 @@ namespace OnlineStore.View
 
             this.orderID = orderID;
 
-            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
+            btnAccept.Text = isNewRow ? "Добавить" : "Сохранить";
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
