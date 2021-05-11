@@ -9,9 +9,15 @@ namespace OnlineStore.View
 {
     public partial class OrdersForm : Form
     {
+        private int panelHeight;
+        private bool panelHided;
+
         public OrdersForm()
         {
             InitializeComponent();
+            panelHeight = pnlFilter.Height;
+            pnlFilter.Height = 0;
+            panelHided = true;
         }
 
         private void OrdersForm_Load(object sender, EventArgs e)
@@ -40,11 +46,46 @@ namespace OnlineStore.View
             LoadData();
         }
 
+        private void tsbFilter_Click(object sender, EventArgs e)
+        {
+            //if(panelHided)
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            ChangePanelHeight();
+
+        }
+
+        private void cbOrderDate_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpOrderDateBeg.Enabled = cbOrderDate.Checked ? true : false;
+            dtpOrderDateEnd.Enabled = cbOrderDate.Checked ? true : false;
+        }
+
+        private void cbCompletionDate_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpCompletionDateBeg.Enabled = cbCompletionDate.Checked ? true : false;
+            dtpCompletionDateEnd.Enabled = cbCompletionDate.Checked ? true : false;
+        }
+
+
         /// <summary>
         /// Метод настройки названий и кнопок.
         /// </summary>
-        void SetUpGUI() 
+        void SetUpGUI()
         {
+            using (MarketDBEntities context = new MarketDBEntities())
+            {
+                List<Status> statuses = (from Status in context.Statuses select Status).ToList();
+
+                cmbStatuses.DataSource = statuses;
+                cmbStatuses.DisplayMember = "Statuse_name";
+                cmbStatuses.ValueMember = "Statuse_name";
+                cmbStatuses.SelectedIndex = -1;
+
+            }
             ordersDataGridView.Columns[0].HeaderText = "Ид";
             ordersDataGridView.Columns[1].HeaderText = "ФИО клиента";
             ordersDataGridView.Columns[2].HeaderText = "ФИО сотрудника";
@@ -58,15 +99,35 @@ namespace OnlineStore.View
 
             ordersDataGridView.Columns[0].Visible = false;
 
-            
-
-       
-
-
             ordersDataGridView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ordersDataGridView.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ordersDataGridView.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-        }  
+        }
+
+        private void ChangePanelHeight()
+        {
+            if (panelHided)
+            {
+                pnlFilter.Height = pnlFilter.Height + 7;
+                if (pnlFilter.Height >= panelHeight)
+                {
+                    timer.Stop();
+                    panelHided = false;
+                    this.Refresh();
+                }
+            }
+            else
+            {
+                pnlFilter.Height = pnlFilter.Height - 7;
+                if (pnlFilter.Height <= 0)
+                {
+                    timer.Stop();
+                    panelHided = true;
+                    this.Refresh();
+                }
+
+            }
+        }
 
 
         /// <summary>
@@ -92,6 +153,8 @@ namespace OnlineStore.View
                             };
 
                 ordersDataGridView.DataSource = query.ToList();
+
+                
             }
             ordersDataGridView.Refresh();
         }
@@ -185,5 +248,8 @@ namespace OnlineStore.View
                 }
             }
         }
+
+       
+
     }
 }

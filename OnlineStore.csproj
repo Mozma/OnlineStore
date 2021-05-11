@@ -513,6 +513,8 @@
       <DependentUpon>marketModel.edmx</DependentUpon>
       <LastGenOutput>marketModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\filter.png" />
+    <None Include="Resources\filter.ico" />
     <Content Include="Resources\printer.ico" />
     <None Include="Resources\printer.png" />
     <Content Include="SqlServerTypes\readme.htm" />
