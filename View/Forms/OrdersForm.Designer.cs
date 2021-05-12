@@ -30,7 +30,7 @@ namespace OnlineStore.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -46,7 +46,7 @@ namespace OnlineStore.View
             this.label2 = new System.Windows.Forms.Label();
             this.tbFIOEmployee = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbOrderNumber = new System.Windows.Forms.TextBox();
             this.dtpOrderDateBeg = new System.Windows.Forms.DateTimePicker();
             this.dtpCompletionDateBeg = new System.Windows.Forms.DateTimePicker();
             this.dtpCompletionDateEnd = new System.Windows.Forms.DateTimePicker();
@@ -61,15 +61,15 @@ namespace OnlineStore.View
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbTotalCostBeg = new System.Windows.Forms.TextBox();
+            this.tbTotalCostEnd = new System.Windows.Forms.TextBox();
+            this.tbPaidBeg = new System.Windows.Forms.TextBox();
+            this.tbPaidEnd = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlFilter = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cmbStatuses = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -87,14 +87,14 @@ namespace OnlineStore.View
             this.ordersDataGridView.AllowUserToResizeRows = false;
             this.ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordersDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ordersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ordersDataGridView.ColumnHeadersHeight = 46;
             this.ordersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ordersDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -221,12 +221,12 @@ namespace OnlineStore.View
             this.label3.TabIndex = 12;
             this.label3.Text = "Номер заказа";
             // 
-            // textBox3
+            // tbOrderNumber
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 7);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(209, 20);
-            this.textBox3.TabIndex = 11;
+            this.tbOrderNumber.Location = new System.Drawing.Point(109, 7);
+            this.tbOrderNumber.Name = "tbOrderNumber";
+            this.tbOrderNumber.Size = new System.Drawing.Size(209, 20);
+            this.tbOrderNumber.TabIndex = 11;
             // 
             // dtpOrderDateBeg
             // 
@@ -354,33 +354,37 @@ namespace OnlineStore.View
             this.label11.TabIndex = 29;
             this.label11.Text = "по";
             // 
-            // textBox4
+            // tbTotalCostBeg
             // 
-            this.textBox4.Location = new System.Drawing.Point(460, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 20);
-            this.textBox4.TabIndex = 33;
+            this.tbTotalCostBeg.Location = new System.Drawing.Point(460, 54);
+            this.tbTotalCostBeg.Name = "tbTotalCostBeg";
+            this.tbTotalCostBeg.Size = new System.Drawing.Size(168, 20);
+            this.tbTotalCostBeg.TabIndex = 33;
+            this.tbTotalCostBeg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTotalCostBeg_KeyPress);
             // 
-            // textBox5
+            // tbTotalCostEnd
             // 
-            this.textBox5.Location = new System.Drawing.Point(658, 54);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(168, 20);
-            this.textBox5.TabIndex = 34;
+            this.tbTotalCostEnd.Location = new System.Drawing.Point(658, 54);
+            this.tbTotalCostEnd.Name = "tbTotalCostEnd";
+            this.tbTotalCostEnd.Size = new System.Drawing.Size(168, 20);
+            this.tbTotalCostEnd.TabIndex = 34;
+            this.tbTotalCostEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTotalCostBeg_KeyPress);
             // 
-            // textBox6
+            // tbPaidBeg
             // 
-            this.textBox6.Location = new System.Drawing.Point(460, 77);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(168, 20);
-            this.textBox6.TabIndex = 35;
+            this.tbPaidBeg.Location = new System.Drawing.Point(460, 77);
+            this.tbPaidBeg.Name = "tbPaidBeg";
+            this.tbPaidBeg.Size = new System.Drawing.Size(168, 20);
+            this.tbPaidBeg.TabIndex = 35;
+            this.tbPaidBeg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTotalCostBeg_KeyPress);
             // 
-            // textBox7
+            // tbPaidEnd
             // 
-            this.textBox7.Location = new System.Drawing.Point(658, 77);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(168, 20);
-            this.textBox7.TabIndex = 36;
+            this.tbPaidEnd.Location = new System.Drawing.Point(658, 77);
+            this.tbPaidEnd.Name = "tbPaidEnd";
+            this.tbPaidEnd.Size = new System.Drawing.Size(168, 20);
+            this.tbPaidEnd.TabIndex = 36;
+            this.tbPaidEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTotalCostBeg_KeyPress);
             // 
             // label12
             // 
@@ -403,21 +407,21 @@ namespace OnlineStore.View
             // pnlFilter
             // 
             this.pnlFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFilter.Controls.Add(this.button2);
-            this.pnlFilter.Controls.Add(this.button1);
+            this.pnlFilter.Controls.Add(this.btnReset);
+            this.pnlFilter.Controls.Add(this.btnSearch);
             this.pnlFilter.Controls.Add(this.cmbStatuses);
             this.pnlFilter.Controls.Add(this.label14);
-            this.pnlFilter.Controls.Add(this.textBox5);
+            this.pnlFilter.Controls.Add(this.tbTotalCostEnd);
             this.pnlFilter.Controls.Add(this.label13);
             this.pnlFilter.Controls.Add(this.tbFIOCustomer);
             this.pnlFilter.Controls.Add(this.label12);
             this.pnlFilter.Controls.Add(this.label1);
-            this.pnlFilter.Controls.Add(this.textBox7);
+            this.pnlFilter.Controls.Add(this.tbPaidEnd);
             this.pnlFilter.Controls.Add(this.tbFIOEmployee);
-            this.pnlFilter.Controls.Add(this.textBox6);
+            this.pnlFilter.Controls.Add(this.tbPaidBeg);
             this.pnlFilter.Controls.Add(this.label2);
-            this.pnlFilter.Controls.Add(this.textBox3);
-            this.pnlFilter.Controls.Add(this.textBox4);
+            this.pnlFilter.Controls.Add(this.tbOrderNumber);
+            this.pnlFilter.Controls.Add(this.tbTotalCostBeg);
             this.pnlFilter.Controls.Add(this.label3);
             this.pnlFilter.Controls.Add(this.label8);
             this.pnlFilter.Controls.Add(this.dtpOrderDateBeg);
@@ -439,23 +443,25 @@ namespace OnlineStore.View
             this.pnlFilter.Size = new System.Drawing.Size(1182, 105);
             this.pnlFilter.TabIndex = 39;
             // 
-            // button2
+            // btnReset
             // 
-            this.button2.Location = new System.Drawing.Point(832, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 22);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "Сбросить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(832, 30);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(122, 22);
+            this.btnReset.TabIndex = 42;
+            this.btnReset.Text = "Сбросить";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(832, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 22);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Применить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(832, 6);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(122, 22);
+            this.btnSearch.TabIndex = 41;
+            this.btnSearch.Text = "Применить";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbStatuses
             // 
@@ -527,7 +533,7 @@ namespace OnlineStore.View
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbFIOEmployee;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbOrderNumber;
         private System.Windows.Forms.DateTimePicker dtpOrderDateBeg;
         private System.Windows.Forms.DateTimePicker dtpCompletionDateBeg;
         private System.Windows.Forms.DateTimePicker dtpCompletionDateEnd;
@@ -542,10 +548,10 @@ namespace OnlineStore.View
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbTotalCostBeg;
+        private System.Windows.Forms.TextBox tbTotalCostEnd;
+        private System.Windows.Forms.TextBox tbPaidBeg;
+        private System.Windows.Forms.TextBox tbPaidEnd;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel pnlFilter;
@@ -555,7 +561,7 @@ namespace OnlineStore.View
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ComboBox cmbStatuses;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

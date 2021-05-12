@@ -2,6 +2,8 @@
 using OnlineStore.View.Report;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -23,7 +25,7 @@ namespace OnlineStore.View
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             LoadData();
-            SetUpGUI();   
+            SetUpGUI();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace OnlineStore.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateItem();           
+            UpdateItem();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -46,16 +48,59 @@ namespace OnlineStore.View
             LoadData();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetFilter();
+        }
+
+        private void InvoiceToolStripButton_Click(object sender, EventArgs e)
+        {
+            using (var context = new MarketDBEntities())
+            {
+                try
+                {
+                    int index = ordersDataGridView.SelectedRows[0].Index;
+                    Order order = context.Orders.Find(ordersDataGridView[0, index].Value);
+
+                    if (order.Statuse_code == "З04")
+                    {
+                        var query = from cart in context.CartViews
+                                    where cart.Order_id == order.Order_id
+                                    select cart;
+
+                        InoiceReportForm rptForm = new InoiceReportForm(order, query.ToList());
+                        rptForm.ShowDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Helper.PostError(ex.Message);
+                }
+            }
+        }
+
+        private void tbTotalCostBeg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void tsbFilter_Click(object sender, EventArgs e)
         {
-            //if(panelHided)
             timer.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             ChangePanelHeight();
-
         }
 
         private void cbOrderDate_CheckedChanged(object sender, EventArgs e)
@@ -71,6 +116,8 @@ namespace OnlineStore.View
         }
 
 
+
+
         /// <summary>
         /// Метод настройки названий и кнопок.
         /// </summary>
@@ -83,7 +130,7 @@ namespace OnlineStore.View
                 cmbStatuses.DataSource = statuses;
                 cmbStatuses.DisplayMember = "Statuse_name";
                 cmbStatuses.ValueMember = "Statuse_name";
-                cmbStatuses.SelectedIndex = -1;
+                cmbStatuses.SelectedItem = "Empty";
 
             }
             ordersDataGridView.Columns[0].HeaderText = "Ид";
@@ -104,6 +151,9 @@ namespace OnlineStore.View
             ordersDataGridView.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
+        /// <summary>
+        /// Метод, который позволяет плавно изменить высоту панели с фильтрацией.
+        /// </summary>
         private void ChangePanelHeight()
         {
             if (panelHided)
@@ -154,15 +204,15 @@ namespace OnlineStore.View
 
                 ordersDataGridView.DataSource = query.ToList();
 
-                
+
             }
             ordersDataGridView.Refresh();
         }
-        
+
         /// <summary>
         /// Вызов формы для добавления записи с контролем ошибок.
         /// </summary>
-        void AddItem() 
+        void AddItem()
         {
             var editForm = new OrdersEditForm(null);
             if (editForm.ShowDialog() == DialogResult.OK)
@@ -175,7 +225,7 @@ namespace OnlineStore.View
         /// <summary>
         /// Вызов формы для обновление выбранной записи с контролем ошибок.
         /// </summary>
-        void UpdateItem() 
+        void UpdateItem()
         {
             if (ordersDataGridView.CurrentCell == null)
                 return;
@@ -199,7 +249,7 @@ namespace OnlineStore.View
         /// <summary>
         /// Удаление выбранной строки с подтверждением удаления и контролем ошибок.
         /// </summary>
-        void DeleteItem() 
+        void DeleteItem()
         {
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -209,7 +259,7 @@ namespace OnlineStore.View
                     try
                     {
                         int index = ordersDataGridView.SelectedRows[0].Index;
-                        Order selectedItem = marketDBEntities.Orders.Find(ordersDataGridView[0, index].Value); 
+                        Order selectedItem = marketDBEntities.Orders.Find(ordersDataGridView[0, index].Value);
 
                         marketDBEntities.Orders.Remove(selectedItem);
                         marketDBEntities.SaveChanges();
@@ -223,33 +273,89 @@ namespace OnlineStore.View
             }
         }
 
-        private void InvoiceToolStripButton_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Применение фильтра.
+        /// </summary>
+        private void ApplyFilter()
         {
-            using (var context = new MarketDBEntities())
+            String str = "";
+            bool IsFirst = true;
+
+            if (!String.IsNullOrEmpty(tbOrderNumber.Text))
             {
-                try
-                {
-                    int index = ordersDataGridView.SelectedRows[0].Index;
-                    Order order = context.Orders.Find(ordersDataGridView[0, index].Value);
-
-                    if (order.Statuse_code == "З04") 
-                    {
-                        var query = from cart in context.CartViews
-                                    where cart.Order_id == order.Order_id
-                                    select cart;
-
-                        InoiceReportForm rptForm = new InoiceReportForm(order,query.ToList());
-                        rptForm.ShowDialog();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Helper.PostError(ex.Message);
-                }
+                str = String.Format("OrderNumber = '{0}'", tbOrderNumber.Text);
             }
+
+            using (MarketDBEntities context = new MarketDBEntities())
+            {
+                var query = from order in context.Orders
+                            select new
+                            {
+                                OrderID = order.Order_id,
+                                CustomerName = order.Customer.Full_name,
+                                EmployeeName = order.Employee.Full_name,
+                                OrderNumber = order.Order_number,
+                                OrderDate = order.Order_date,
+                                CompletionDate = order.Completion_date,
+                                Status = order.Status.Statuse_name,
+                                TotalCost = order.Total_cost,
+                                Paid = order.Paid,
+                                CancellationSign = order.Cancellation_sign
+                            };
+
+                Decimal tmp;
+
+                if (!String.IsNullOrWhiteSpace(tbFIOCustomer.Text))
+                    query = query.Where(x => x.CustomerName == tbFIOCustomer.Text.Trim());
+
+                if (!String.IsNullOrWhiteSpace(tbFIOEmployee.Text))
+                    query = query.Where(x => x.EmployeeName == tbFIOEmployee.Text.Trim());
+
+                if (!String.IsNullOrWhiteSpace(tbOrderNumber.Text))
+                    query = query.Where(x => x.OrderNumber == tbOrderNumber.Text.Trim());
+
+                if (cbOrderDate.Checked)
+                    query = query.Where(x => x.OrderDate >= dtpOrderDateBeg.Value && x.OrderDate <= dtpOrderDateEnd.Value);
+
+                if (cbCompletionDate.Checked)
+                    query = query.Where(x => x.CompletionDate >= dtpCompletionDateBeg.Value && x.CompletionDate <= dtpCompletionDateBeg.Value);
+
+                if (!cmbStatuses.SelectedValue.Equals("Статус не указан"))
+                    query = query.Where(x => x.Status == cmbStatuses.SelectedValue.ToString());
+
+                if (!String.IsNullOrWhiteSpace(tbTotalCostBeg.Text))
+                {
+                    tmp = Convert.ToDecimal(tbTotalCostBeg.Text);
+                    query = query.Where(x => x.TotalCost >= tmp);
+                }
+                if (!String.IsNullOrWhiteSpace(tbTotalCostEnd.Text))
+                {
+                    tmp = Convert.ToDecimal(tbTotalCostEnd.Text);
+                    query = query.Where(x => x.TotalCost <= tmp);
+                }
+
+                if (!String.IsNullOrWhiteSpace(tbPaidBeg.Text))
+                {
+                    tmp = Convert.ToDecimal(tbPaidBeg.Text);
+                    query = query.Where(x => x.Paid >= tmp);
+                }
+                if (!String.IsNullOrWhiteSpace(tbPaidEnd.Text))
+                {
+                    tmp = Convert.ToDecimal(tbPaidEnd.Text);
+                    query = query.Where(x => x.Paid <= tmp);
+                }
+
+                ordersDataGridView.DataSource = query.ToList();
+           }
+            ordersDataGridView.Refresh();
+
+        }
+        private void ResetFilter()
+        {
+            LoadData();
         }
 
-       
 
     }
 }
