@@ -42,7 +42,7 @@ namespace OnlineStore.View
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(22, 103);
+            this.btnCancel.Location = new System.Drawing.Point(124, 103);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -51,7 +51,7 @@ namespace OnlineStore.View
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(103, 103);
+            this.btnAccept.Location = new System.Drawing.Point(22, 103);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(96, 23);
             this.btnAccept.TabIndex = 3;

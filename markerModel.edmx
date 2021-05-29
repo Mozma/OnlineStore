@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MarketDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Cart_id" />
+          </Key>
+          <Property Name="Cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Order_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_Code" />
+          </Key>
+          <Property Name="Category_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Category_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Parentcategory_code" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_id" />
+          </Key>
+          <Property Name="Customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Full_name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="90" />
+          <Property Name="Discount_card" Type="varchar" MaxLength="20" />
+          <Property Name="Registration_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="Delivery_id" />
+          </Key>
+          <Property Name="Delivery_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Track_number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Delivery_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Delivery_date" Type="date" Nullable="false" />
+          <Property Name="Order_id" Type="int" Nullable="false" />
+          <Property Name="Statuse_code" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_id" />
+          </Key>
+          <Property Name="Employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Full_name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" Nullable="false" />
+          <Property Name="Employee_id" Type="int" />
+          <Property Name="Order_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Order_date" Type="date" Nullable="false" />
+          <Property Name="Completion_date" Type="date" Nullable="false" />
+          <Property Name="Statuse_code" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Total_cost" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Paid" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Cancellation_sign" Type="text" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Product_code" />
+          </Key>
+          <Property Name="Product_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Category_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Role_code" />
+          </Key>
+          <Property Name="Role_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Statuse_code" />
+          </Key>
+          <Property Name="Statuse_code" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Statuse_name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Role_code" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MarketDB.Admin.DeliveryView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="DeliveryView">
+          <Key>
+            <PropertyRef Name="Track_number" />
+            <PropertyRef Name="Delivery_date" />
+            <PropertyRef Name="Delivery_type" />
+          </Key>
+          <Property Name="Track_number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Order_date" Type="date" />
+          <Property Name="Delivery_date" Type="date" Nullable="false" />
+          <Property Name="Total_cost" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Paid" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Delivery_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="16" />
+          <Property Name="Adress" Type="varchar" MaxLength="90" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MarketDB.Admin.OrdersView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="OrdersView">
+          <Key>
+            <PropertyRef Name="Order_id" />
+            <PropertyRef Name="Order_number" />
+            <PropertyRef Name="Order_date" />
+            <PropertyRef Name="Completion_date" />
+            <PropertyRef Name="Total_cost" />
+            <PropertyRef Name="Paid" />
+            <PropertyRef Name="Full_name" />
+            <PropertyRef Name="Discount_card" />
+            <PropertyRef Name="Statuse_name" />
+          </Key>
+          <Property Name="Order_id" Type="int" Nullable="false" />
+          <Property Name="Order_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Order_date" Type="date" Nullable="false" />
+          <Property Name="Completion_date" Type="date" Nullable="false" />
+          <Property Name="Total_cost" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Paid" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Full_name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Discount_card" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Statuse_name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Cancellation_sign" Type="text" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MarketDB.Admin.ProductView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ProductView">
+          <Key>
+            <PropertyRef Name="Order_number" />
+            <PropertyRef Name="Product_name" />
+            <PropertyRef Name="Category_name" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Order_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MarketDB.Admin.SellsView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="SellsView">
+          <Key>
+            <PropertyRef Name="Category_name" />
+          </Key>
+          <Property Name="Year" Type="int" />
+          <Property Name="Category_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sells" Type="int" />
+          <Property Name="Sum" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Customer_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Statuse_code" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="Statuse_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Customer_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_code" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Статусы">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Statuse_code" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Statuse_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Категории_Категории">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_Code" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="Parentcategory_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Перечень_Заказ">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Перечень_Товары">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Product_code" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Товары_Категории">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_Code" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Category_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище MarketDBModelContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="DeliveryView" EntityType="Self.DeliveryView" store:Type="Views" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [DeliveryView].[Track_number] AS [Track_number], 
+    [DeliveryView].[Order_date] AS [Order_date], 
+    [DeliveryView].[Delivery_date] AS [Delivery_date], 
+    [DeliveryView].[Total_cost] AS [Total_cost], 
+    [DeliveryView].[Paid] AS [Paid], 
+    [DeliveryView].[Delivery_type] AS [Delivery_type], 
+    [DeliveryView].[Login] AS [Login], 
+    [DeliveryView].[Adress] AS [Adress]
+    FROM [Admin].[DeliveryView] AS [DeliveryView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrdersView" EntityType="Self.OrdersView" store:Type="Views" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [OrdersView].[Order_id] AS [Order_id], 
+    [OrdersView].[Order_number] AS [Order_number], 
+    [OrdersView].[Order_date] AS [Order_date], 
+    [OrdersView].[Completion_date] AS [Completion_date], 
+    [OrdersView].[Total_cost] AS [Total_cost], 
+    [OrdersView].[Paid] AS [Paid], 
+    [OrdersView].[Full_name] AS [Full_name], 
+    [OrdersView].[Discount_card] AS [Discount_card], 
+    [OrdersView].[Statuse_name] AS [Statuse_name], 
+    [OrdersView].[Cancellation_sign] AS [Cancellation_sign]
+    FROM [Admin].[OrdersView] AS [OrdersView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductView" EntityType="Self.ProductView" store:Type="Views" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [ProductView].[Order_number] AS [Order_number], 
+    [ProductView].[Product_name] AS [Product_name], 
+    [ProductView].[Category_name] AS [Category_name], 
+    [ProductView].[Amount] AS [Amount], 
+    [ProductView].[Price] AS [Price], 
+    [ProductView].[Login] AS [Login]
+    FROM [Admin].[ProductView] AS [ProductView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SellsView" EntityType="Self.SellsView" store:Type="Views" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [SellsView].[Year] AS [Year], 
+    [SellsView].[Category_name] AS [Category_name], 
+    [SellsView].[Sells] AS [Sells], 
+    [SellsView].[Sum] AS [Sum]
+    FROM [Admin].[SellsView] AS [SellsView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Customer_Users" Association="Self.FK_Customer_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Order" Association="Self.FK_Delivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Statuses" Association="Self.FK_Delivery_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Users" Association="Self.FK_Employee_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_roles" Association="Self.FK_Users_Users_roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Статусы" Association="Self.FK_Заказ_Статусы">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Категории_Категории" Association="Self.FK_Категории_Категории">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Перечень_Заказ" Association="Self.FK_Перечень_Заказ">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Перечень_Товары" Association="Self.FK_Перечень_Товары">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Товары_Категории" Association="Self.FK_Товары_Категории">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarketDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Cart_id" />
+          </Key>
+          <Property Name="Cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Перечень_Заказ" FromRole="Cart" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Перечень_Товары" FromRole="Cart" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_Code" />
+          </Key>
+          <Property Name="Category_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Parentcategory_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories1" Relationship="Self.FK_Категории_Категории" FromRole="Categories" ToRole="Categories1" />
+          <NavigationProperty Name="Categories2" Relationship="Self.FK_Категории_Категории" FromRole="Categories1" ToRole="Categories" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Товары_Категории" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_id" />
+          </Key>
+          <Property Name="Customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Full_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Registration_date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Customer_Users" FromRole="Customer" ToRole="Users" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="Delivery_id" />
+          </Key>
+          <Property Name="Delivery_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Track_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Delivery_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Delivery_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Order_id" Type="Int32" Nullable="false" />
+          <Property Name="Statuse_code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Delivery_Order" FromRole="Delivery" ToRole="Order" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_Delivery_Statuses" FromRole="Delivery" ToRole="Statuses" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_id" />
+          </Key>
+          <Property Name="Employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Full_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Employee_Users" FromRole="Employee" ToRole="Users" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_id" Type="Int32" />
+          <Property Name="Order_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Completion_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Statuse_code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_cost" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Cancellation_sign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK_Перечень_Заказ" FromRole="Order" ToRole="Cart" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK_Delivery_Order" FromRole="Order" ToRole="Delivery" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_Заказ_Статусы" FromRole="Order" ToRole="Statuses" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Product_code" />
+          </Key>
+          <Property Name="Product_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Category_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK_Перечень_Товары" FromRole="Products" ToRole="Cart" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Товары_Категории" FromRole="Products" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Role_code" />
+          </Key>
+          <Property Name="Role_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Users_roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Statuse_code" />
+          </Key>
+          <Property Name="Statuse_code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Statuse_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK_Delivery_Statuses" FromRole="Statuses" ToRole="Delivery" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Заказ_Статусы" FromRole="Statuses" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Users" FromRole="Users" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Users" FromRole="Users" ToRole="Employee" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Users_roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="DeliveryView">
+          <Key>
+            <PropertyRef Name="Track_number" />
+            <PropertyRef Name="Delivery_date" />
+            <PropertyRef Name="Delivery_type" />
+          </Key>
+          <Property Name="Track_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order_date" Type="DateTime" Precision="0" />
+          <Property Name="Delivery_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total_cost" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Delivery_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Adress" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrdersView">
+          <Key>
+            <PropertyRef Name="Order_id" />
+            <PropertyRef Name="Order_number" />
+            <PropertyRef Name="Order_date" />
+            <PropertyRef Name="Completion_date" />
+            <PropertyRef Name="Total_cost" />
+            <PropertyRef Name="Paid" />
+            <PropertyRef Name="Full_name" />
+            <PropertyRef Name="Discount_card" />
+            <PropertyRef Name="Statuse_name" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" />
+          <Property Name="Order_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Completion_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total_cost" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Full_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Statuse_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cancellation_sign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductView">
+          <Key>
+            <PropertyRef Name="Order_number" />
+            <PropertyRef Name="Product_name" />
+            <PropertyRef Name="Category_name" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Order_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellsView">
+          <Key>
+            <PropertyRef Name="Category_name" />
+          </Key>
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sells" Type="Int32" />
+          <Property Name="Sum" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Перечень_Заказ">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Перечень_Товары">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Product_code" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Категории_Категории">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_Code" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="Parentcategory_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Товары_Категории">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_Code" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Category_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Customer_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Statuse_code" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="Statuse_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Статусы">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Statuse_code" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Statuse_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_code" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarketDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="DeliveryView" EntityType="Self.DeliveryView" />
+          <EntitySet Name="OrdersView" EntityType="Self.OrdersView" />
+          <EntitySet Name="ProductView" EntityType="Self.ProductView" />
+          <EntitySet Name="SellsView" EntityType="Self.SellsView" />
+          <AssociationSet Name="FK_Перечень_Заказ" Association="Self.FK_Перечень_Заказ">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Перечень_Товары" Association="Self.FK_Перечень_Товары">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Категории_Категории" Association="Self.FK_Категории_Категории">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Товары_Категории" Association="Self.FK_Товары_Категории">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Users" Association="Self.FK_Customer_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Order" Association="Self.FK_Delivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Statuses" Association="Self.FK_Delivery_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Users" Association="Self.FK_Employee_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Статусы" Association="Self.FK_Заказ_Статусы">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_roles" Association="Self.FK_Users_Users_roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="GetChart" ReturnType="Collection(MarketDBModel.GetChart_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetChart_Result">
+          <Property Type="String" Name="Per" Nullable="true" MaxLength="7" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MarketDBModelContainer" CdmEntityContainer="MarketDBEntities">
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="MarketDBModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Cart_id" ColumnName="Cart_id" />
+                <ScalarProperty Name="Product_code" ColumnName="Product_code" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MarketDBModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Category_Code" ColumnName="Category_Code" />
+                <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Parentcategory_code" ColumnName="Parentcategory_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="MarketDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Discount_card" ColumnName="Discount_card" />
+                <ScalarProperty Name="Registration_date" ColumnName="Registration_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery">
+            <EntityTypeMapping TypeName="MarketDBModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="Delivery_id" ColumnName="Delivery_id" />
+                <ScalarProperty Name="Track_number" ColumnName="Track_number" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Delivery_type" ColumnName="Delivery_type" />
+                <ScalarProperty Name="Delivery_date" ColumnName="Delivery_date" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="Statuse_code" ColumnName="Statuse_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="MarketDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="MarketDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+                <ScalarProperty Name="Order_number" ColumnName="Order_number" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="Completion_date" ColumnName="Completion_date" />
+                <ScalarProperty Name="Statuse_code" ColumnName="Statuse_code" />
+                <ScalarProperty Name="Total_cost" ColumnName="Total_cost" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Cancellation_sign" ColumnName="Cancellation_sign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MarketDBModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Product_code" ColumnName="Product_code" />
+                <ScalarProperty Name="Product_name" ColumnName="Product_name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Category_code" ColumnName="Category_code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MarketDBModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="MarketDBModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Statuse_code" ColumnName="Statuse_code" />
+                <ScalarProperty Name="Statuse_name" ColumnName="Statuse_name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MarketDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryView">
+            <EntityTypeMapping TypeName="MarketDBModel.DeliveryView">
+              <MappingFragment StoreEntitySet="DeliveryView">
+                <ScalarProperty Name="Track_number" ColumnName="Track_number" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="Delivery_date" ColumnName="Delivery_date" />
+                <ScalarProperty Name="Total_cost" ColumnName="Total_cost" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Delivery_type" ColumnName="Delivery_type" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersView">
+            <EntityTypeMapping TypeName="MarketDBModel.OrdersView">
+              <MappingFragment StoreEntitySet="OrdersView">
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="Order_number" ColumnName="Order_number" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="Completion_date" ColumnName="Completion_date" />
+                <ScalarProperty Name="Total_cost" ColumnName="Total_cost" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+                <ScalarProperty Name="Discount_card" ColumnName="Discount_card" />
+                <ScalarProperty Name="Statuse_name" ColumnName="Statuse_name" />
+                <ScalarProperty Name="Cancellation_sign" ColumnName="Cancellation_sign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductView">
+            <EntityTypeMapping TypeName="MarketDBModel.ProductView">
+              <MappingFragment StoreEntitySet="ProductView">
+                <ScalarProperty Name="Order_number" ColumnName="Order_number" />
+                <ScalarProperty Name="Product_name" ColumnName="Product_name" />
+                <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellsView">
+            <EntityTypeMapping TypeName="MarketDBModel.SellsView">
+              <MappingFragment StoreEntitySet="SellsView">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+                <ScalarProperty Name="Sells" ColumnName="Sells" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetChart" FunctionName="Хранилище MarketDBModel.GetChart">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MarketDBModel.GetChart_Result">
+                <ScalarProperty Name="Per" ColumnName="Per" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -23,28 +23,38 @@ namespace OnlineStore.Controller
 
             //TODO: Убрать присвоение из логин формы.
 
-            //  var context = new MarketDBEntities();
-            // context.ChangeDatabase(userId: username, password: password);
-
-            
-
-
-            DataBaseConnection.Connection = new SqlConnection(builder.ToString());
-            DataBaseConnection.Username = username;
-            
-            var entityConnectionStringBuilder = new EntityConnectionStringBuilder();
-            entityConnectionStringBuilder.Provider = "System.Data.SqlClient";
-            entityConnectionStringBuilder.ProviderConnectionString = builder.ToString();
-            entityConnectionStringBuilder.Metadata = "res://*/marketModel.csdl|res://*/marketModel.ssdl|res://*/marketModel.msl";
-
-            DataBaseConnection.EFConnection = entityConnectionStringBuilder.ToString();
+            SetEFConnection(username, password, builder.ToString());
 
             if (!Connect()) 
             {
                 return null;
             }
+
             return new SqlConnection(builder.ToString());
         }
+
+        private static void SetEFConnection(string username, string password, string connectionString) 
+        {
+            string connectionName = "MarketDBEntities";
+
+            var entityConnectionStringBuilder = new EntityConnectionStringBuilder();
+            entityConnectionStringBuilder.Provider = "System.Data.SqlClient";
+            entityConnectionStringBuilder.ProviderConnectionString = connectionString;
+            entityConnectionStringBuilder.Metadata = "res://*/marketModel.csdl|res://*/marketModel.ssdl|res://*/marketModel.msl";
+
+            DataBaseConnection.Connection = new SqlConnection(connectionString);
+            DataBaseConnection.Username = username;
+            DataBaseConnection.EFConnection = entityConnectionStringBuilder.ToString();
+
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
+
+            connectionStringsSection.ConnectionStrings[connectionName].ConnectionString = entityConnectionStringBuilder.ToString();
+            config.Save();
+
+            ConfigurationManager.RefreshSection("connectionStrings");
+        }
+
 
         public static bool Connect() 
         {
