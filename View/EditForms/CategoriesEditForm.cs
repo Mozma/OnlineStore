@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
+
 
 namespace OnlineStore.View.EditForms
 {
@@ -102,7 +104,7 @@ namespace OnlineStore.View.EditForms
                         $"Category_Code='{category.Category_Code}'" +
                         $", Category_name='{category.Category_name}'" +
                         $", Description={(category.Description == null ? "NULL" : '\'' + category.Description + '\'') }" +
-                        $", Parentcategory_code='{category.Parentcategory_code}'" +
+                        $", Parentcategory_code={(category.Parentcategory_code == null ? "NULL" : '\'' + category.Parentcategory_code + '\'') }" +
                         $" Where Category_Code='{oldKey}'";
 
 
@@ -159,7 +161,9 @@ namespace OnlineStore.View.EditForms
         {
             categoryCodeTextBox.Text = category.Category_Code;
             categoryNameTextBox.Text = category.Category_name;
-            parentCategoryComboBox.SelectedValue = category.Parentcategory_code;
+            
+            if(category.Parentcategory_code!= null)
+                parentCategoryComboBox.SelectedValue = category.Parentcategory_code;
 
             if (category.Description != null)
                 descriptionTextBox.Text = category.Description;
@@ -176,7 +180,15 @@ namespace OnlineStore.View.EditForms
             {
                 category.Category_Code = categoryCodeTextBox.Text;
                 category.Category_name = categoryNameTextBox.Text;
-                category.Parentcategory_code = parentCategoryComboBox.SelectedValue.ToString();
+
+                if (parentCategoryComboBox.SelectedIndex != -1)
+                {
+                    category.Parentcategory_code = parentCategoryComboBox.SelectedValue.ToString();
+                }
+                else
+                {
+                    category.Parentcategory_code = null;
+                }
 
                 if (!String.IsNullOrWhiteSpace(descriptionTextBox.Text))
                 {
@@ -223,6 +235,9 @@ namespace OnlineStore.View.EditForms
             return flag;
         }
 
-
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            parentCategoryComboBox.SelectedIndex = -1;
+        }
     }
 }
