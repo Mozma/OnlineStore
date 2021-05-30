@@ -136,9 +136,15 @@ namespace OnlineStore.View.EditForms
             MarketDBEntities entities = new MarketDBEntities();
 
             List<Category> categories = (from Category in entities.Categories select Category).ToList();
-       
+
+
+            var entity = new Category();
+            entity.Category_Code = "_EMPTY_";
+            entity.Category_name = "<Категория не выбрана>";
+            categories.Insert(0, entity);
+
             parentCategoryComboBox.DataSource = categories;
-            parentCategoryComboBox.SelectedIndex = -1;
+            parentCategoryComboBox.SelectedIndex = 0;
             parentCategoryComboBox.DisplayMember = "Category_name";
             parentCategoryComboBox.ValueMember = "Category_Code";
         }
@@ -148,7 +154,7 @@ namespace OnlineStore.View.EditForms
         /// </summary>
         private void ResetItems()
         {
-            parentCategoryComboBox.SelectedIndex = -1;
+            parentCategoryComboBox.SelectedValue = "_EMPTY_";
             categoryCodeTextBox.Text = "";
             categoryNameTextBox.Text = "";
             descriptionTextBox.Text = "";
@@ -181,7 +187,7 @@ namespace OnlineStore.View.EditForms
                 category.Category_Code = categoryCodeTextBox.Text;
                 category.Category_name = categoryNameTextBox.Text;
 
-                if (parentCategoryComboBox.SelectedIndex != -1)
+                if (!parentCategoryComboBox.SelectedValue.Equals("_EMPTY_"))
                 {
                     category.Parentcategory_code = parentCategoryComboBox.SelectedValue.ToString();
                 }
@@ -235,9 +241,6 @@ namespace OnlineStore.View.EditForms
             return flag;
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            parentCategoryComboBox.SelectedIndex = -1;
-        }
+
     }
 }

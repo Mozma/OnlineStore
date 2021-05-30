@@ -33,7 +33,6 @@ namespace OnlineStore.View.EditForms
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,7 +69,6 @@ namespace OnlineStore.View.EditForms
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -83,18 +81,6 @@ namespace OnlineStore.View.EditForms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(366, 163);
             this.panel1.TabIndex = 3;
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.Transparent;
-            this.btnReset.BackgroundImage = global::OnlineStore.Properties.Resources.refresh2;
-            this.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReset.Location = new System.Drawing.Point(325, 124);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(23, 23);
-            this.btnReset.TabIndex = 18;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // label5
             // 
@@ -147,7 +133,7 @@ namespace OnlineStore.View.EditForms
             this.parentCategoryComboBox.FormattingEnabled = true;
             this.parentCategoryComboBox.Location = new System.Drawing.Point(110, 125);
             this.parentCategoryComboBox.Name = "parentCategoryComboBox";
-            this.parentCategoryComboBox.Size = new System.Drawing.Size(209, 21);
+            this.parentCategoryComboBox.Size = new System.Drawing.Size(238, 21);
             this.parentCategoryComboBox.TabIndex = 13;
             this.parentCategoryComboBox.ValueMember = "Category_Code";
             // 
@@ -208,6 +194,5 @@ namespace OnlineStore.View.EditForms
         private System.Windows.Forms.TextBox categoryNameTextBox;
         private System.Windows.Forms.TextBox categoryCodeTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.Button btnReset;
     }
 }
