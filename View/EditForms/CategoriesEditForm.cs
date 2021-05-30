@@ -30,16 +30,18 @@ namespace OnlineStore.View.EditForms
             isNewRow = category == null ? true : false;
             this.Text = isNewRow ? titleAdd : titleEdit;
 
-            LoadData();
+            
 
             if (isNewRow)
             {
                 this.category = new Category();
+                LoadData();
             }
             else
             {
                 this.category = category;
                 oldKey = category.Category_Code;
+                LoadData();
                 FillItems();
             }
 
@@ -137,12 +139,15 @@ namespace OnlineStore.View.EditForms
 
             List<Category> categories = (from Category in entities.Categories select Category).ToList();
 
-
             var entity = new Category();
             entity.Category_Code = "_EMPTY_";
             entity.Category_name = "<Категория не выбрана>";
             categories.Insert(0, entity);
-
+            
+            if (!isNewRow) {
+                categories.RemoveAt(categories.FindIndex(x => x.Category_Code.Equals(category.Category_Code)));
+                
+            }
             parentCategoryComboBox.DataSource = categories;
             parentCategoryComboBox.SelectedIndex = 0;
             parentCategoryComboBox.DisplayMember = "Category_name";
