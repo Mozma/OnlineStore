@@ -6,7 +6,7 @@ using System.Data.Entity.Infrastructure;
 
 using System.Windows.Forms;
 using System.Linq;
-
+using System.Data.Entity.Validation;
 
 namespace OnlineStore.View
 {
@@ -117,7 +117,7 @@ namespace OnlineStore.View
 
         private void SetUpGUI()
         {
-            btnAccept.Text = isNewRow ? "Добавить" : "Сохранить";
+            btnAccept.Text = isNewRow ? "Добавить" : "Изменить";
             cancellationSignTextBox.Enabled = isNewRow ? false : true;
             paidTextBox.Enabled = isNewRow ? false : true;
 
@@ -194,10 +194,16 @@ namespace OnlineStore.View
 
 
                 List<Employee> employees = (from Employee in entities.Employees select Employee).ToList();
+
+                var entity = new Employee();
+                entity.Employee_id = -1;
+                entity.Full_name = "<Сотрудник не выбран>";
+                employees.Insert(0, entity);
+
                 employeeComboBox.DataSource = employees;
                 employeeComboBox.DisplayMember = "Full_name";
                 employeeComboBox.ValueMember = "Employee_id";
-                employeeComboBox.SelectedIndex = -1;
+                employeeComboBox.SelectedIndex = 0;
 
                 List<Status> statuses = (from Status in entities.Statuses select Status).ToList();
                 statusComboBox.DataSource = statuses;
@@ -215,7 +221,7 @@ namespace OnlineStore.View
             if (isNewRow)
             {
                 customerComboBox.SelectedValue = -1;
-                employeeComboBox.SelectedValue = -1;
+                employeeComboBox.SelectedValue = 0;
                 statusComboBox.SelectedValue = 1;
 
                 orderNumberTextBox.Text = "";
@@ -238,9 +244,18 @@ namespace OnlineStore.View
         private void FillItems()
         {
             customerComboBox.SelectedValue = order.Customer_id;
-            employeeComboBox.SelectedValue = order.Employee_id;
-            statusComboBox.SelectedValue = order.Statuse_code;
+            if (order.Employee_id != null)
+            {
+                employeeComboBox.SelectedValue = order.Employee_id;
+            }
+            else 
+            {
+                employeeComboBox.SelectedIndex = 0;
 
+            }
+
+            statusComboBox.SelectedValue = order.Statuse_code;
+            
             orderNumberTextBox.Text = order.Order_number;
             orderDateDateTimePicker.Value = order.Order_date;
             completionDateDateTimePicker.Value = order.Completion_date;
@@ -277,7 +292,16 @@ namespace OnlineStore.View
                 }
 
                 order.Customer_id = Convert.ToInt32(customerComboBox.SelectedValue);
-                order.Employee_id = Convert.ToInt32(employeeComboBox.SelectedValue);
+                if (employeeComboBox.SelectedIndex == 0)
+                {
+                    order.Employee_id = null;  
+                }
+                else
+                {
+                    order.Employee_id = Convert.ToInt32(employeeComboBox.SelectedValue);
+                }
+
+
                 order.Order_number = orderNumberTextBox.Text;
                 order.Order_date = orderDateDateTimePicker.Value;
                 order.Completion_date = completionDateDateTimePicker.Value;

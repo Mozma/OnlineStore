@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+
 using System.Windows.Forms;
 
 namespace OnlineStore.View
@@ -86,8 +87,20 @@ namespace OnlineStore.View
 
         private void tbTotalCostBeg_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8)
+            //char number = e.KeyChar;
+            //if (!Char.IsDigit(number) && number != 8)
+            //{
+            //    e.Handled = true;
+            //}
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -115,9 +128,6 @@ namespace OnlineStore.View
             dtpCompletionDateEnd.Enabled = cbCompletionDate.Checked ? true : false;
         }
 
-
-
-
         /// <summary>
         /// Метод настройки названий и кнопок.
         /// </summary>
@@ -127,12 +137,19 @@ namespace OnlineStore.View
             {
                 List<Status> statuses = (from Status in context.Statuses select Status).ToList();
 
+
+                var entity = new Status();
+                entity.Statuse_code = "_EMPTY_";
+                entity.Statuse_name = "<Статус не выбран>";
+                statuses.Insert(0, entity);
+
                 cmbStatuses.DataSource = statuses;
-                cmbStatuses.DisplayMember = "Statuse_name";
                 cmbStatuses.ValueMember = "Statuse_name";
-                cmbStatuses.SelectedItem = "Empty";
+                cmbStatuses.DisplayMember = "Statuse_name";
+                cmbStatuses.SelectedItem = "<Статус не выбран>"; 
 
             }
+
             ordersDataGridView.Columns[0].HeaderText = "Ид";
             ordersDataGridView.Columns[1].HeaderText = "ФИО клиента";
             ordersDataGridView.Columns[2].HeaderText = "ФИО сотрудника";
@@ -280,7 +297,6 @@ namespace OnlineStore.View
         private void ApplyFilter()
         {
             String str = "";
-            bool IsFirst = true;
 
             if (!String.IsNullOrEmpty(tbOrderNumber.Text))
             {
@@ -306,11 +322,14 @@ namespace OnlineStore.View
 
                 Decimal tmp;
 
+
+                
+
                 if (!String.IsNullOrWhiteSpace(tbFIOCustomer.Text))
-                    query = query.Where(x => x.CustomerName == tbFIOCustomer.Text.Trim());
+                    query = query.Where(x => x.CustomerName.ToUpper().Contains(tbFIOCustomer.Text.Trim().ToUpper()));
 
                 if (!String.IsNullOrWhiteSpace(tbFIOEmployee.Text))
-                    query = query.Where(x => x.EmployeeName == tbFIOEmployee.Text.Trim());
+                    query = query.Where(x => x.EmployeeName.ToUpper().Contains(tbFIOEmployee.Text.Trim().ToUpper()));
 
                 if (!String.IsNullOrWhiteSpace(tbOrderNumber.Text))
                     query = query.Where(x => x.OrderNumber == tbOrderNumber.Text.Trim());
@@ -321,8 +340,9 @@ namespace OnlineStore.View
                 if (cbCompletionDate.Checked)
                     query = query.Where(x => x.CompletionDate >= dtpCompletionDateBeg.Value && x.CompletionDate <= dtpCompletionDateBeg.Value);
 
-                if (!cmbStatuses.SelectedValue.Equals("Статус не указан"))
-                    query = query.Where(x => x.Status == cmbStatuses.SelectedValue.ToString());
+                if (!cmbStatuses.SelectedValue.Equals("<Статус не выбран>"))
+                    query = query.Where(x => x.Status.Equals(cmbStatuses.SelectedValue.ToString()));
+                
 
                 if (!String.IsNullOrWhiteSpace(tbTotalCostBeg.Text))
                 {

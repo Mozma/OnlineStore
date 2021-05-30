@@ -22,12 +22,17 @@ namespace OnlineStore.View
         {
             switch (DataBaseConnection.Username) 
             {
-                case "Manager":
+                case "Admin":
+                    rolesToolStripMenuItem.Visible = true;
+                    usersToolStripMenuItem.Visible = true;
+                    adminToolStripSeparator.Visible = true;
+                    break;
+                default:
                     rolesToolStripMenuItem.Visible = false;
                     usersToolStripMenuItem.Visible = false;
                     adminToolStripSeparator.Visible = false;
-                    
                     break;
+
             }
             this.Text += $" ({DataBaseConnection.Username})";
         }

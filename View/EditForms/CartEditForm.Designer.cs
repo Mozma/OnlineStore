@@ -75,6 +75,7 @@ namespace OnlineStore.View
             this.productCodeComboBox.Size = new System.Drawing.Size(202, 21);
             this.productCodeComboBox.TabIndex = 5;
             this.productCodeComboBox.ValueMember = "Product_code";
+            this.productCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.productCodeComboBox_SelectedIndexChanged);
             // 
             // label2
             // 

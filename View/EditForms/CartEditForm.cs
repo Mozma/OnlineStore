@@ -86,6 +86,22 @@ namespace OnlineStore.View
             ResetItems();
         }
 
+
+        private void productCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (productCodeComboBox.SelectedIndex != -1)
+            {
+                using (MarketDBEntities entities = new MarketDBEntities())
+                {
+                    var product = entities.Products.SingleOrDefault(b => b.Product_code == productCodeComboBox.SelectedValue.ToString());
+                    priceTextBox.Text = product.Price.ToString();
+                }
+            }else
+            {
+                priceTextBox.Text = "";
+            }
+        }
+
         /// <summary>
         /// Отправка запроса на изменение данных. 
         /// </summary>
@@ -226,6 +242,7 @@ namespace OnlineStore.View
 
             return flag;
         }
+
 
     }
 }
