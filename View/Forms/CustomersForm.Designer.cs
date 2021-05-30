@@ -49,7 +49,9 @@ namespace OnlineStore.View
             this.customersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.customersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.customersDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.customersDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -58,12 +60,12 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.customersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.customersDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.customersDataGridView.Location = new System.Drawing.Point(0, 28);
             this.customersDataGridView.MultiSelect = false;
             this.customersDataGridView.Name = "customersDataGridView";
             this.customersDataGridView.ReadOnly = true;
             this.customersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customersDataGridView.Size = new System.Drawing.Size(881, 394);
+            this.customersDataGridView.Size = new System.Drawing.Size(905, 409);
             this.customersDataGridView.TabIndex = 0;
             // 
             // toolStrip

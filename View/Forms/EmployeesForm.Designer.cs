@@ -41,7 +41,7 @@ namespace OnlineStore.View
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // customersDataGridView
+            // employeesDataGridView
             // 
             this.employeesDataGridView.AllowUserToAddRows = false;
             this.employeesDataGridView.AllowUserToDeleteRows = false;
@@ -49,7 +49,9 @@ namespace OnlineStore.View
             this.employeesDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.employeesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.employeesDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.employeesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -58,12 +60,12 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.employeesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.employeesDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.employeesDataGridView.Location = new System.Drawing.Point(0, 28);
             this.employeesDataGridView.MultiSelect = false;
-            this.employeesDataGridView.Name = "customersDataGridView";
+            this.employeesDataGridView.Name = "employeesDataGridView";
             this.employeesDataGridView.ReadOnly = true;
             this.employeesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.employeesDataGridView.Size = new System.Drawing.Size(881, 394);
+            this.employeesDataGridView.Size = new System.Drawing.Size(905, 413);
             this.employeesDataGridView.TabIndex = 0;
             // 
             // toolStrip
@@ -115,7 +117,7 @@ namespace OnlineStore.View
             this.btnRefresh.Text = "Обновить";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // EmploeesForm
+            // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +126,7 @@ namespace OnlineStore.View
             this.Controls.Add(this.employeesDataGridView);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "EmploeesForm";
+            this.Name = "EmployeesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Обзор справочника  \"Сотрудники\"";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);

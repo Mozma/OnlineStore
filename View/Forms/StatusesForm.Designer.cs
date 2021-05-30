@@ -49,7 +49,9 @@ namespace OnlineStore.View
             this.statusesDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.statusesDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.statusesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -58,12 +60,12 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.statusesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.statusesDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.statusesDataGridView.Location = new System.Drawing.Point(0, 28);
             this.statusesDataGridView.MultiSelect = false;
             this.statusesDataGridView.Name = "statusesDataGridView";
             this.statusesDataGridView.ReadOnly = true;
             this.statusesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.statusesDataGridView.Size = new System.Drawing.Size(421, 322);
+            this.statusesDataGridView.Size = new System.Drawing.Size(505, 341);
             this.statusesDataGridView.TabIndex = 0;
             // 
             // toolStrip
@@ -75,7 +77,7 @@ namespace OnlineStore.View
             this.btnRefresh});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(445, 25);
+            this.toolStrip.Size = new System.Drawing.Size(505, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip";
             // 
@@ -119,7 +121,7 @@ namespace OnlineStore.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 366);
+            this.ClientSize = new System.Drawing.Size(505, 366);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusesDataGridView);
             this.DoubleBuffered = true;

@@ -41,7 +41,7 @@ namespace OnlineStore.View
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // customersDataGridView
+            // deliveriesDataGridView
             // 
             this.deliveriesDataGridView.AllowUserToAddRows = false;
             this.deliveriesDataGridView.AllowUserToDeleteRows = false;
@@ -49,7 +49,9 @@ namespace OnlineStore.View
             this.deliveriesDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.deliveriesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.deliveriesDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.deliveriesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -58,12 +60,12 @@ namespace OnlineStore.View
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.deliveriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.deliveriesDataGridView.Location = new System.Drawing.Point(12, 28);
+            this.deliveriesDataGridView.Location = new System.Drawing.Point(0, 28);
             this.deliveriesDataGridView.MultiSelect = false;
-            this.deliveriesDataGridView.Name = "customersDataGridView";
+            this.deliveriesDataGridView.Name = "deliveriesDataGridView";
             this.deliveriesDataGridView.ReadOnly = true;
             this.deliveriesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.deliveriesDataGridView.Size = new System.Drawing.Size(762, 394);
+            this.deliveriesDataGridView.Size = new System.Drawing.Size(786, 412);
             this.deliveriesDataGridView.TabIndex = 0;
             // 
             // toolStrip
