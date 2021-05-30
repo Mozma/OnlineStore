@@ -215,13 +215,6 @@ namespace OnlineStore.View.EditForms
                 flag = false;
             }
 
-
-            if (parentCategoryComboBox.SelectedIndex == -1)
-            {
-                error += "Родительская категория не выбрана.\n";
-                flag = false;
-            }
-
             if (flag == false)
             {
                 MessageBox.Show(this, error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);

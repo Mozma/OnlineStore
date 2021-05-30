@@ -50,7 +50,7 @@ namespace OnlineStore.View
             catch (Exception e)
             {
                 MessageBox.Show(this, e.Message, "Ошибка ввода данных",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbPassword.Text = null;
                 return false;
             }
@@ -61,7 +61,7 @@ namespace OnlineStore.View
                 connection = ConnectionController.MakeConnection(login, password);
                 if (connection == null)
                 {
-                    throw new Exception("Логин, пароли или имя БД указаны не верно.");
+                    throw new Exception("Не удалось подключится к БД. Логин или пароль указаны не верно.");
                 }
                 
                 DataBaseConnection.Connection = connection;
@@ -69,7 +69,7 @@ namespace OnlineStore.View
             catch (Exception e)
             {
                 MessageBox.Show(this, e.Message, "Ошибка входа в систему",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbPassword.Text = null;
                 return false;
             }

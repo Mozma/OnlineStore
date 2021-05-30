@@ -136,7 +136,7 @@ namespace OnlineStore.View
                     }
                     catch (Exception ex)
                     {
-                        Helper.PostError(ex.Message);
+                        Helper.PostError(ex.GetBaseException().Message);
                     }
                 }
             }
