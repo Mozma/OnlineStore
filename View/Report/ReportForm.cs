@@ -31,5 +31,10 @@ namespace OnlineStore.View.Report
             productReportViewer.ZoomMode = ZoomMode.PageWidth; 
             
         }
+
+        private void fromDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

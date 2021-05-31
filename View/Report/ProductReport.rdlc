@@ -195,7 +195,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Amount</rd:DefaultName>
@@ -250,7 +253,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Sum</rd:DefaultName>
@@ -310,7 +316,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox15</rd:DefaultName>
@@ -365,7 +374,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox16</rd:DefaultName>
@@ -425,7 +437,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -480,7 +495,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <RightIndent>5pt</RightIndent>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox12</rd:DefaultName>
@@ -684,7 +702,10 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <LeftIndent>5pt</LeftIndent>
+                            <Style>
+                              <TextAlign>Left</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Category_name</rd:DefaultName>
@@ -752,6 +773,7 @@
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
+                                <LeftIndent>5pt</LeftIndent>
                                 <Style />
                               </Paragraph>
                             </Paragraphs>

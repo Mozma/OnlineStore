@@ -37,6 +37,8 @@ namespace OnlineStore.View.Report
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GetProductReport_ResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@ namespace OnlineStore.View.Report
             // 
             // fromDateTimePicker
             // 
-            this.fromDateTimePicker.Location = new System.Drawing.Point(12, 10);
+            this.fromDateTimePicker.Location = new System.Drawing.Point(72, 10);
             this.fromDateTimePicker.Name = "fromDateTimePicker";
             this.fromDateTimePicker.Size = new System.Drawing.Size(136, 20);
             this.fromDateTimePicker.TabIndex = 1;
@@ -71,26 +73,46 @@ namespace OnlineStore.View.Report
             // 
             // toDateTimePicker
             // 
-            this.toDateTimePicker.Location = new System.Drawing.Point(154, 10);
+            this.toDateTimePicker.Location = new System.Drawing.Point(239, 10);
             this.toDateTimePicker.Name = "toDateTimePicker";
             this.toDateTimePicker.Size = new System.Drawing.Size(136, 20);
             this.toDateTimePicker.TabIndex = 2;
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(296, 8);
+            this.btnAccept.Location = new System.Drawing.Point(386, 9);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(115, 23);
+            this.btnAccept.Size = new System.Drawing.Size(133, 22);
             this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Получить отчёт";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Период с";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(214, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "по";
             // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 660);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.toDateTimePicker);
             this.Controls.Add(this.fromDateTimePicker);
@@ -100,6 +122,7 @@ namespace OnlineStore.View.Report
             this.Text = "Отчёт по продажам";
             ((System.ComponentModel.ISupportInitialize)(this.GetProductReport_ResultBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,5 +133,7 @@ namespace OnlineStore.View.Report
         private System.Windows.Forms.DateTimePicker fromDateTimePicker;
         private System.Windows.Forms.DateTimePicker toDateTimePicker;
         private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
