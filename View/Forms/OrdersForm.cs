@@ -87,19 +87,10 @@ namespace OnlineStore.View
 
         private void tbTotalCostBeg_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //char number = e.KeyChar;
-            //if (!Char.IsDigit(number) && number != 8)
-            //{
-            //    e.Handled = true;
-            //}
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != ','))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
-
-            // only allow one decimal point
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
