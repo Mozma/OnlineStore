@@ -74,7 +74,7 @@ namespace OnlineStore.View
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(177, 20);
             this.tbUsername.TabIndex = 1;
-            this.tbUsername.Text = "Admin";
+            this.tbUsername.Text = "MarketAdmin";
             // 
             // label2
             // 
@@ -92,7 +92,7 @@ namespace OnlineStore.View
             this.tbPassword.PasswordChar = '•';
             this.tbPassword.Size = new System.Drawing.Size(177, 20);
             this.tbPassword.TabIndex = 2;
-            this.tbPassword.Text = "1234";
+            this.tbPassword.Text = "DiplomDB654321";
             // 
             // btnClose
             // 

@@ -38,13 +38,13 @@ namespace OnlineStore.View.EditForms
             // 
             // lbCategories
             // 
-            this.lbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lbCategories.FormattingEnabled = true;
+            this.lbCategories.HorizontalScrollbar = true;
             this.lbCategories.Location = new System.Drawing.Point(12, 25);
             this.lbCategories.Name = "lbCategories";
-            this.lbCategories.Size = new System.Drawing.Size(192, 251);
+            this.lbCategories.Size = new System.Drawing.Size(192, 290);
             this.lbCategories.TabIndex = 0;
             this.lbCategories.SelectedIndexChanged += new System.EventHandler(this.lbCategories_SelectedIndexChanged);
             // 
@@ -54,9 +54,10 @@ namespace OnlineStore.View.EditForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbProducts.FormattingEnabled = true;
+            this.lbProducts.HorizontalScrollbar = true;
             this.lbProducts.Location = new System.Drawing.Point(210, 25);
             this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(287, 251);
+            this.lbProducts.Size = new System.Drawing.Size(364, 290);
             this.lbProducts.TabIndex = 1;
             this.lbProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbProducts_MouseDoubleClick);
             // 
@@ -82,7 +83,7 @@ namespace OnlineStore.View.EditForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 288);
+            this.ClientSize = new System.Drawing.Size(586, 334);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbProducts);

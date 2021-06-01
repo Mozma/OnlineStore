@@ -31,8 +31,8 @@ namespace OnlineStore.View.EditForms
             lbCategories.DisplayMember = "Category_name";
             lbCategories.ValueMember = "Category_Code";
 
-            lbProducts.DisplayMember = "Product_name";
-            lbProducts.ValueMember = "Product_code";
+            lbProducts.DisplayMember = "DisplayValue";
+            lbProducts.ValueMember = "ProductCode";
 
             flag = true;
 
@@ -43,20 +43,22 @@ namespace OnlineStore.View.EditForms
         {
             MarketDBEntities entities = new MarketDBEntities();
 
-            List<Product> products = (from Product in entities.Products 
-                                      where Product.Category_code == lbCategories.SelectedValue.ToString() 
-                                      select Product).ToList();
+            var prod = entities.Products
+                    .Where(x => x.Category_code == lbCategories.SelectedValue.ToString())
+                    .AsEnumerable().OrderBy(y => y.Product_name)
+                    .Select(s => new
+                    {
+                        ProductCode = s.Product_code,
+                        DisplayValue = s.Product_name + " | " + String.Format("{0:n} руб.", s.Price)
+                    }
+                    ).ToList();
 
-            lbProducts.DataSource = products;
+            lbProducts.DataSource = prod;
 
-            if (products.Count != 0)
+            if (prod.Count != 0)
             {
                 lbProducts.SelectedIndex = 0;
             }
-
-
-
-
         }
 
 
