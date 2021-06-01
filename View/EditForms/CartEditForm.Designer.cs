@@ -39,12 +39,14 @@ namespace OnlineStore.View
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnShowSelector = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnShowSelector);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.productCodeComboBox);
             this.panel1.Controls.Add(this.label2);
@@ -53,7 +55,7 @@ namespace OnlineStore.View
             this.panel1.Controls.Add(this.amountTextBox);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 104);
+            this.panel1.Size = new System.Drawing.Size(327, 104);
             this.panel1.TabIndex = 0;
             // 
             // label3
@@ -72,7 +74,7 @@ namespace OnlineStore.View
             this.productCodeComboBox.FormattingEnabled = true;
             this.productCodeComboBox.Location = new System.Drawing.Point(80, 15);
             this.productCodeComboBox.Name = "productCodeComboBox";
-            this.productCodeComboBox.Size = new System.Drawing.Size(202, 21);
+            this.productCodeComboBox.Size = new System.Drawing.Size(192, 21);
             this.productCodeComboBox.TabIndex = 5;
             this.productCodeComboBox.ValueMember = "Product_code";
             this.productCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.productCodeComboBox_SelectedIndexChanged);
@@ -90,7 +92,7 @@ namespace OnlineStore.View
             // 
             this.priceTextBox.Location = new System.Drawing.Point(80, 67);
             this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(202, 20);
+            this.priceTextBox.Size = new System.Drawing.Size(228, 20);
             this.priceTextBox.TabIndex = 2;
             // 
             // label1
@@ -106,12 +108,12 @@ namespace OnlineStore.View
             // 
             this.amountTextBox.Location = new System.Drawing.Point(80, 41);
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(202, 20);
+            this.amountTextBox.Size = new System.Drawing.Size(228, 20);
             this.amountTextBox.TabIndex = 0;
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(117, 122);
+            this.btnAccept.Location = new System.Drawing.Point(147, 122);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(104, 23);
             this.btnAccept.TabIndex = 1;
@@ -121,7 +123,7 @@ namespace OnlineStore.View
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(227, 122);
+            this.btnCancel.Location = new System.Drawing.Point(257, 122);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 23);
             this.btnCancel.TabIndex = 2;
@@ -129,11 +131,21 @@ namespace OnlineStore.View
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnShowSelector
+            // 
+            this.btnShowSelector.Location = new System.Drawing.Point(279, 14);
+            this.btnShowSelector.Name = "btnShowSelector";
+            this.btnShowSelector.Size = new System.Drawing.Size(30, 23);
+            this.btnShowSelector.TabIndex = 7;
+            this.btnShowSelector.Text = ". . .";
+            this.btnShowSelector.UseVisualStyleBackColor = true;
+            this.btnShowSelector.Click += new System.EventHandler(this.btnShowSelector_Click);
+            // 
             // CartEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(321, 152);
+            this.ClientSize = new System.Drawing.Size(351, 152);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.panel1);
@@ -160,5 +172,6 @@ namespace OnlineStore.View
         private System.Windows.Forms.ComboBox productCodeComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.Button btnShowSelector;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OnlineStore.Controller;
+using OnlineStore.View.EditForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -243,6 +244,17 @@ namespace OnlineStore.View
             return flag;
         }
 
+        private void btnShowSelector_Click(object sender, EventArgs e)
+        {
+            using (var productSelector = new ProductSelectorForm())
+            {
+                //productSelector.ShowDialog();
 
+                if (productSelector.ShowDialog() == DialogResult.OK)
+                {
+                    productCodeComboBox.SelectedValue = productSelector.ProductCode;
+                }
+            }
+        }
     }
 }
