@@ -83,6 +83,7 @@
       <HintPath>packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
@@ -132,6 +133,9 @@
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
+      <DependentUpon>marketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetChart_Result.cs">
       <DependentUpon>marketModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProductReport_Result.cs">
@@ -512,18 +516,18 @@
     <None Include="Resources\back.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\filter.png" />
+    <None Include="Resources\filter.ico" />
     <Content Include="marketModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>marketModel.Context.cs</LastGenOutput>
       <DependentUpon>marketModel.edmx</DependentUpon>
+      <LastGenOutput>marketModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="marketModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>marketModel.edmx</DependentUpon>
       <LastGenOutput>marketModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\filter.png" />
-    <None Include="Resources\filter.ico" />
     <Content Include="Resources\printer.ico" />
     <None Include="Resources\printer.png" />
     <Content Include="SqlServerTypes\readme.htm" />

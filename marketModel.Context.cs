@@ -43,6 +43,23 @@ namespace OnlineStore
         public virtual DbSet<SellsView> SellsViews { get; set; }
         public virtual DbSet<CartView> CartViews { get; set; }
     
+        public virtual ObjectResult<GetChart_Result> GetChart(string category, Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var categoryParameter = category != null ?
+                new ObjectParameter("category", category) :
+                new ObjectParameter("category", typeof(string));
+    
+            var startParameter = start.HasValue ?
+                new ObjectParameter("Start", start) :
+                new ObjectParameter("Start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("End", end) :
+                new ObjectParameter("End", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetChart_Result>("GetChart", categoryParameter, startParameter, endParameter);
+        }
+    
         public virtual ObjectResult<GetProductReport_Result> GetProductReport(Nullable<System.DateTime> beg_date, Nullable<System.DateTime> end_date)
         {
             var beg_dateParameter = beg_date.HasValue ?

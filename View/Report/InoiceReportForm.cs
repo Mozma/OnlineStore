@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
 using System.Data;
-using System.Reflection;
 
 namespace OnlineStore.View.Report
 {
@@ -24,10 +23,6 @@ namespace OnlineStore.View.Report
             this.order = order;
 
             InitializeComponent();
-
-            /*
-           */
-
         }
 
         private void InoiceReportForm_Load(object sender, EventArgs e)
@@ -39,7 +34,6 @@ namespace OnlineStore.View.Report
                             select cart;
 
                 ReportDataSource rds = new ReportDataSource("DataSet2", query.ToList());
-                //CartViewBindingSource.DataSource = rds;
 
                 reportViewer.LocalReport.DataSources.Add(rds);
 

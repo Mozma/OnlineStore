@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище MarketDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище MarketDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Cart_id" />
@@ -79,7 +79,7 @@
             <PropertyRef Name="Product_code" />
           </Key>
           <Property Name="Product_code" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_name" Type="varchar(max)" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Category_code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Description" Type="text" />
@@ -105,9 +105,27 @@
             <PropertyRef Name="User_id" />
           </Key>
           <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Role_code" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MarketDB.Admin.CartView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="CartView">
+          <Key>
+            <PropertyRef Name="Cart_id" />
+            <PropertyRef Name="Product_code" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Order_id" />
+            <PropertyRef Name="Product_name" />
+          </Key>
+          <Property Name="Cart_id" Type="int" Nullable="false" />
+          <Property Name="Product_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Order_id" Type="int" Nullable="false" />
+          <Property Name="Product_name" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "MarketDB.Admin.DeliveryView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -123,7 +141,7 @@
           <Property Name="Total_cost" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Paid" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Delivery_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="16" />
+          <Property Name="Login" Type="varchar" MaxLength="40" />
           <Property Name="Adress" Type="varchar" MaxLength="90" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
@@ -137,7 +155,6 @@
             <PropertyRef Name="Total_cost" />
             <PropertyRef Name="Paid" />
             <PropertyRef Name="Full_name" />
-            <PropertyRef Name="Discount_card" />
             <PropertyRef Name="Statuse_name" />
           </Key>
           <Property Name="Order_id" Type="int" Nullable="false" />
@@ -147,7 +164,7 @@
           <Property Name="Total_cost" Type="numeric" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Paid" Type="numeric" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Full_name" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="Discount_card" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Discount_card" Type="varchar" MaxLength="20" />
           <Property Name="Statuse_name" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Cancellation_sign" Type="text" />
         </EntityType>
@@ -163,11 +180,11 @@
             <PropertyRef Name="Login" />
           </Key>
           <Property Name="Order_number" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_name" Type="varchar(max)" Nullable="false" />
           <Property Name="Category_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="40" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "MarketDB.Admin.SellsView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -179,24 +196,6 @@
           <Property Name="Category_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Sells" Type="int" />
           <Property Name="Sum" Type="numeric" Precision="38" Scale="2" />
-        </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "MarketDB.dbo.CartView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="CartView">
-          <Key>
-            <PropertyRef Name="Cart_id" />
-            <PropertyRef Name="Product_code" />
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Order_id" />
-            <PropertyRef Name="Product_name" />
-          </Key>
-          <Property Name="Cart_id" Type="int" Nullable="false" />
-          <Property Name="Product_code" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Amount" Type="int" Nullable="false" />
-          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Order_id" Type="int" Nullable="false" />
-          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Customer_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -342,7 +341,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GetProductReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="GetChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="Start" Type="date" Mode="In" />
+          <Parameter Name="End" Type="date" Mode="In" />
+        </Function>
+        <Function Name="GetProductReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="beg_date" Type="date" Mode="In" />
           <Parameter Name="end_date" Type="date" Mode="In" />
         </Function>
@@ -357,6 +361,16 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="CartView" EntityType="Self.CartView" store:Type="Views" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [CartView].[Cart_id] AS [Cart_id], 
+    [CartView].[Product_code] AS [Product_code], 
+    [CartView].[Amount] AS [Amount], 
+    [CartView].[Price] AS [Price], 
+    [CartView].[Order_id] AS [Order_id], 
+    [CartView].[Product_name] AS [Product_name]
+    FROM [Admin].[CartView] AS [CartView]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="DeliveryView" EntityType="Self.DeliveryView" store:Type="Views" store:Schema="Admin">
             <DefiningQuery>SELECT 
     [DeliveryView].[Track_number] AS [Track_number], 
@@ -400,16 +414,6 @@
     [SellsView].[Sells] AS [Sells], 
     [SellsView].[Sum] AS [Sum]
     FROM [Admin].[SellsView] AS [SellsView]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CartView" EntityType="Self.CartView" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CartView].[Cart_id] AS [Cart_id], 
-    [CartView].[Product_code] AS [Product_code], 
-    [CartView].[Amount] AS [Amount], 
-    [CartView].[Price] AS [Price], 
-    [CartView].[Order_id] AS [Order_id], 
-    [CartView].[Product_name] AS [Product_name]
-    FROM [dbo].[CartView] AS [CartView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Customer_Users" Association="Self.FK_Customer_Users">
             <End Role="Users" EntitySet="Users" />
@@ -554,7 +558,7 @@
             <PropertyRef Name="Product_code" />
           </Key>
           <Property Name="Product_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Category_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -585,8 +589,8 @@
             <PropertyRef Name="User_id" />
           </Key>
           <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Role_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Users" FromRole="Users" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Users" FromRole="Users" ToRole="Employee" />
@@ -604,7 +608,7 @@
           <Property Name="Total_cost" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Delivery_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Adress" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrdersView">
@@ -616,7 +620,6 @@
             <PropertyRef Name="Total_cost" />
             <PropertyRef Name="Paid" />
             <PropertyRef Name="Full_name" />
-            <PropertyRef Name="Discount_card" />
             <PropertyRef Name="Statuse_name" />
           </Key>
           <Property Name="Order_id" Type="Int32" Nullable="false" />
@@ -626,7 +629,7 @@
           <Property Name="Total_cost" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Full_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Discount_card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Statuse_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cancellation_sign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -640,11 +643,11 @@
             <PropertyRef Name="Login" />
           </Key>
           <Property Name="Order_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="SellsView">
           <Key>
@@ -862,15 +865,24 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="GetChart" ReturnType="Collection(MarketDBModel.GetChart_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="Start" Mode="In" Type="DateTime" />
+            <Parameter Name="End" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="GetProductReport" ReturnType="Collection(MarketDBModel.GetProductReport_Result)">
             <Parameter Name="beg_date" Mode="In" Type="DateTime" />
             <Parameter Name="end_date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="CartViews" EntityType="MarketDBModel.CartView" />
         </EntityContainer>
+        <ComplexType Name="GetChart_Result">
+          <Property Type="String" Name="Per" Nullable="true" MaxLength="7" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetProductReport_Result">
           <Property Type="String" Name="Category_name" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Product_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Product_name" Nullable="false" />
           <Property Type="Int32" Name="Amount" Nullable="true" />
           <Property Type="Decimal" Name="Sum" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
@@ -888,7 +900,7 @@
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <Property Name="Order_id" Type="Int32" Nullable="false" />
-          <Property Name="Product_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1062,6 +1074,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetChart" FunctionName="Хранилище MarketDBModel.GetChart">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MarketDBModel.GetChart_Result">
+                <ScalarProperty Name="Per" ColumnName="Per" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetProductReport" FunctionName="Хранилище MarketDBModel.GetProductReport">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MarketDBModel.GetProductReport_Result">
