@@ -46,7 +46,6 @@ namespace OnlineStore.View
             this.label1.TabIndex = 0;
             this.label1.Text = "Загрузка...";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // LoadingForm
             // 
@@ -62,7 +61,6 @@ namespace OnlineStore.View
             this.Name = "LoadingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadingForm";
-            this.Load += new System.EventHandler(this.LoadingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

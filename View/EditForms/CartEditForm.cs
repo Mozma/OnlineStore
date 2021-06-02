@@ -248,8 +248,6 @@ namespace OnlineStore.View
         {
             using (var productSelector = new ProductSelectorForm())
             {
-                //productSelector.ShowDialog();
-
                 if (productSelector.ShowDialog() == DialogResult.OK)
                 {
                     productCodeComboBox.SelectedValue = productSelector.ProductCode;

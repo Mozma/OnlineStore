@@ -21,8 +21,6 @@ namespace OnlineStore.Controller
             builder.Password = password;
             builder.Pooling = true;
 
-            //TODO: Убрать присвоение из логин формы.
-
             SetEFConnection(username, password, builder.ToString());
 
             if (!Connect()) 

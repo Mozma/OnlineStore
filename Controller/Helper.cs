@@ -21,9 +21,6 @@ namespace OnlineStore.Controller
 
             try
             {
-                // use the const name if it's not null, otherwise
-                // using the convention of connection string = EF contextname
-                // grab the type name and we're done
                 var configNameEf = string.IsNullOrEmpty(configConnectionStringName)
                     ? source.GetType().Name
                     : configConnectionStringName;
@@ -35,7 +32,6 @@ namespace OnlineStore.Controller
                 var sqlCnxStringBuilder = new SqlConnectionStringBuilder
                     (entityCnxStringBuilder.ProviderConnectionString);
 
-                // only populate parameters with values if added
                 if (!string.IsNullOrEmpty(initialCatalog))
                     sqlCnxStringBuilder.InitialCatalog = initialCatalog;
                 if (!string.IsNullOrEmpty(dataSource))
@@ -58,7 +54,6 @@ namespace OnlineStore.Controller
 
         public static void PostError(string msg)
         {
-            int state = 0;
             string errorMsg = msg;
 
             if (msg.Contains("DELETE") && msg.Contains("REFERENCE"))

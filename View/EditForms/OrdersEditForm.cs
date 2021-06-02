@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Infrastructure;
-
 using System.Windows.Forms;
 using System.Linq;
-using System.Data.Entity.Validation;
 
 namespace OnlineStore.View
 {

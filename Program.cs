@@ -1,6 +1,5 @@
 ﻿using OnlineStore.View;
 using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace OnlineStore
@@ -16,11 +15,6 @@ namespace OnlineStore
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /*
-            ProductsForm productsForm = new ProductsForm();
-            productsForm.ShowDialog();
-            */
-
 
             if (ShowLoginForm())
             {

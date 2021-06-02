@@ -9,8 +9,6 @@ namespace OnlineStore.View.Chart
 {
     public partial class ChartForm : Form
     {
-
-        
         public ChartForm()
         {
             InitializeComponent();
@@ -71,11 +69,6 @@ namespace OnlineStore.View.Chart
 
             sellsChart.DataBind();
 
-        }
-
-        private void ShowButton_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void categoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
